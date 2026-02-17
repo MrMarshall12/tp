@@ -6,8 +6,8 @@ import seedu.address.model.Model;
  * Changes the remark of a person in the address book.
  */
 public class RemarkCommand extends Command {
-
     public static final String COMMAND_WORD = "remark";
+    public static final String MESSAGE_NOT_IMPLEMENTED_YET = "Message not implemented yet.";
 
     @Override
     public CommandResult execute(Model model) {
