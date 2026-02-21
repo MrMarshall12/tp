@@ -369,6 +369,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * **Tingkat Administrative Staff**: A person who manages the Tingkat delivery service.
 * **Delivery Route**: A sequence of stops planned for delivering meals to customers.
 * **Subscription**: A predefined plan for meal delivery over a specific period (e.g., 5, 10, or 20 days).
+* **Command**: A user input that triggers a specific action in the application (e.g., `add`, `delete`, `list`).
 
 --------------------------------------------------------------------------------------------------------------------
 
