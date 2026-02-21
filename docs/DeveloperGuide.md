@@ -274,11 +274,12 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* Tingkat delivery management staff that handles the planning and administration of catering food to homes.
-* prefer desktop apps over other types
-* can type fast
-* prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
+* handle the **planning and administration of deliveries** for tingkat caterers
+* has a need to **manage a significant number** of customers
+* prefer **desktop apps** over other types
+* can **type fast**
+* **prefers typing** to mouse interactions
+* is **reasonably comfortable using** CLI apps
 
 **Value proposition**: Provides fast and organised solution for tingkat caterers to manage their customer information for delivery planning
 
@@ -358,18 +359,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Glossary
 
+* **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Tingkat Delivery**: Subscription-based home-cooked meal delivery service commonly found in Singapore.
 * **Tingkat Package**: The food catering package, ordered for a set number of days, usually 5, 10, or 20 days.
 * **CLI (Command Line Interface)**: A text-based user interface used to interact with software by typing commands.
 * **GUI (Graphical User Interface)**: A visual interface that allows users to interact with the application through graphical elements like buttons, windows, and icons.
 * **Customer**: A person who subscribes to the Tingkat delivery service.
+* **Delivery Rider/Driver**: A person who delivers meals to customers.
+* **Tingkat Administrative Staff**: A person who manages the Tingkat delivery service.
 * **Delivery Route**: A sequence of stops planned for delivering meals to customers.
 * **Subscription**: A predefined plan for meal delivery over a specific period (e.g., 5, 10, or 20 days).
-* **Command**: A user input that triggers a specific action in the application (e.g., `add`, `delete`, `list`).
-* **Parser**: A component that interprets user commands and converts them into executable actions.
-* **Model**: The component responsible for managing the application's data and business logic.
-* **Storage**: The component responsible for saving and loading data to and from persistent storage.
-* **PlantUML**: A tool used to create UML diagrams for visualizing the architecture and design of the application.
 
 --------------------------------------------------------------------------------------------------------------------
 
