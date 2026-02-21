@@ -3,10 +3,9 @@
   title: "John Doe's Project Portfolio Page"
 ---
 
-### Project: AddressBook Level 3
+### Project: ServeMate
 
-AddressBook - Level 3 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
-
+ServeMate is a desktop address book created for **administrative staff** for tingkat food delivery to manage their customer contacts for delivery planning.
 Given below are my contributions to the project.
 
 * **New Feature**: Added the ability to undo/redo previous commands.
