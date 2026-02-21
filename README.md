@@ -22,7 +22,7 @@
 3. Run the application using the following command:
 
    ```bash
-   java -jar chatbot.jar
+   java -jar ServeMate.jar
    ```
 
 ## 📖 Features
