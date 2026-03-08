@@ -351,7 +351,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1c. A customer with the same name already exists.
 
-    * 1c1. ServeMate shows an error message "This person already exists in the address book".
+    * 1c1. ServeMate shows an error message indicating that the customer already exists.
 
       Use case ends.
 
@@ -369,7 +369,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 2a. The list is empty.
+* 1a. The list is empty.
 
   Use case ends.
 
@@ -381,7 +381,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3b. The given index is out of range.
 
-    * 3b1. ServeMate shows an error message "The person index provided is invalid".
+    * 3b1. ServeMate shows an error message indicating that the provided index is invalid.
 
       Use case resumes at step 2.
 
@@ -399,7 +399,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 2a. The list is empty.
+* 1a. The list is empty.
 
   Use case ends.
 
@@ -411,13 +411,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3b. The given index is out of range.
 
-    * 3b1. ServeMate shows an error message "The person index provided is invalid".
+    * 3b1. ServeMate shows an error message indicating that the provided index is invalid.
 
       Use case resumes at step 2.
 
 * 3c. No fields are specified for editing.
 
-    * 3c1. ServeMate shows an error message "At least one field to edit must be provided".
+    * 3c1. ServeMate shows an error message indicating that at least one field must be provided for editing.
 
       Use case resumes at step 2.
 
@@ -429,7 +429,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3e. Editing the name causes a duplicate with an existing customer.
 
-    * 3e1. ServeMate shows an error message "This person already exists in the address book".
+    * 3e1. ServeMate shows an error message indicating that the customer already exists.
 
       Use case resumes at step 2.
 
@@ -456,9 +456,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-* 2a. No customers match the specified criteria.
+* 1c. No customers match the specified criteria.
 
-    * 2a1. ServeMate shows an empty result list.
+    * 1c1. ServeMate shows an empty result list.
 
       Use case ends.
 
