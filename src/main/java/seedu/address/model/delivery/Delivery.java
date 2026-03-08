@@ -11,27 +11,33 @@ import java.util.Objects;
 public class Delivery {
 
     // Data fields
-    private final Date date;
-    private final Time time;
+    private final StartDate startDate;
+    private final EndDate endDate;
+    private final DeliveryTime deliveryTime;
 
     /**
      * Every field must be present and not null.
      */
-    public Delivery(Date date, Time time) {
-        this.date = date;
-        this.time = time;
+    public Delivery(StartDate startDate, EndDate endDate, DeliveryTime deliveryTime) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.deliveryTime = deliveryTime;
     }
 
-    public Date getDate() {
-        return date;
+    public StartDate getStartDate() {
+        return startDate;
     }
 
-    public Time getTime() {
-        return time;
+    public EndDate getEndDate() {
+        return endDate;
+    }
+
+    public DeliveryTime getDeliveryTime() {
+        return deliveryTime;
     }
 
     /**
-     * Returns true if both deliveries have the same dates.
+     * Returns true if both deliveries have the overlapping delivery date ranges.
      * This defines the notion of equality between two deliveries consistent
      * with the application logic.
      */
@@ -41,7 +47,10 @@ public class Delivery {
         }
 
         return otherDelivery != null
-                && date.date.isEqual(otherDelivery.date.date);
+                && (
+                        endDate.date.isAfter(otherDelivery.startDate.date)
+                    || otherDelivery.endDate.date.isAfter(startDate.date)
+                );
     }
 
     @Override
@@ -56,21 +65,23 @@ public class Delivery {
         }
 
         Delivery otherDelivery = (Delivery) other;
-        return date.equals(otherDelivery.date)
-                && time.equals(otherDelivery.time);
+        return startDate.equals(otherDelivery.startDate)
+                && endDate.equals(otherDelivery.endDate)
+                && deliveryTime.equals(otherDelivery.deliveryTime);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(date, time);
+        return Objects.hash(startDate, endDate, deliveryTime);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("date", date)
-                .add("time", time)
+                .add("start date", startDate)
+                .add("end date", endDate)
+                .add("delivery time", deliveryTime)
                 .toString();
     }
 }

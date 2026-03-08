@@ -11,7 +11,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Represents a Delivery's time in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidDeliveryTime(String)}
  */
-public class deliveryTime {
+public class DeliveryTime {
     public static final String MESSAGE_CONSTRAINTS =
             "Time should be of the valid delivery time format";
 
@@ -25,11 +25,11 @@ public class deliveryTime {
     public final LocalTime time;
 
     /**
-     * Constructs a {@code Time}.
+     * Constructs a {@code DeliveryTime}.
      *
      * @param time A valid time string in the valid format.
      */
-    public deliveryTime(String time) {
+    public DeliveryTime(String time) {
         requireNonNull(time);
         checkArgument(isValidDeliveryTime(time), MESSAGE_CONSTRAINTS);
         this.time = LocalTime.parse(time, formatter);
@@ -60,11 +60,11 @@ public class deliveryTime {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof deliveryTime)) {
+        if (!(other instanceof DeliveryTime)) {
             return false;
         }
 
-        deliveryTime otherTime = (deliveryTime) other;
+        DeliveryTime otherTime = (DeliveryTime) other;
         return time.equals(otherTime.time);
     }
 
