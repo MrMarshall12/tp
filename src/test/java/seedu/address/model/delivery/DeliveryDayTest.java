@@ -33,6 +33,7 @@ public class DeliveryDayTest {
         assertTrue(DeliveryDay.isValidDeliveryDay("Monday"));
         assertTrue(DeliveryDay.isValidDeliveryDay("thursday"));
         assertTrue(DeliveryDay.isValidDeliveryDay("FRIDAY"));
+        assertTrue(DeliveryDay.isValidDeliveryDay("WEDnesDay"));
     }
 
     @Test
