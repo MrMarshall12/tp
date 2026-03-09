@@ -10,7 +10,6 @@ import java.util.Set;
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.delivery.Delivery;
-import seedu.address.model.delivery.UniqueDeliveryList;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -27,7 +26,7 @@ public class Person {
     // Data fields
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
-    private final UniqueDeliveryList deliveries;
+    private final Delivery delivery;
 
     /**
      * Constructs a {@code Person} where every field,
@@ -40,20 +39,20 @@ public class Person {
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
-        this.deliveries = new UniqueDeliveryList();
+        this.delivery = null;
     }
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, UniqueDeliveryList deliveries) {
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Delivery delivery) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
-        this.deliveries = deliveries;
+        this.delivery = delivery;
     }
 
     public Name getName() {
@@ -73,19 +72,18 @@ public class Person {
     }
 
     /**
+     * Returns the Delivery object of the customer, which could be null.
+     */
+    public Delivery getDelivery() {
+        return delivery;
+    }
+
+    /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
-    }
-
-    /**
-     * Returns an immutable delivery observable list, which throws {@code @UnsupportedOperationException}
-     * if modification is attempted.
-     */
-    public ObservableList<Delivery> getDeliveries() {
-        return deliveries.asUnmodifiableObservableList();
     }
 
     /**
@@ -117,18 +115,27 @@ public class Person {
         }
 
         Person otherPerson = (Person) other;
-        return name.equals(otherPerson.name)
-                && phone.equals(otherPerson.phone)
-                && email.equals(otherPerson.email)
-                && address.equals(otherPerson.address)
-                && tags.equals(otherPerson.tags)
-                && deliveries.equals(otherPerson.deliveries);
+
+        if (delivery == null) {
+            return name.equals(otherPerson.name)
+                    && phone.equals(otherPerson.phone)
+                    && email.equals(otherPerson.email)
+                    && address.equals(otherPerson.address)
+                    && tags.equals(otherPerson.tags);
+        } else {
+            return name.equals(otherPerson.name)
+                    && phone.equals(otherPerson.phone)
+                    && email.equals(otherPerson.email)
+                    && address.equals(otherPerson.address)
+                    && tags.equals(otherPerson.tags)
+                    && delivery.equals(otherPerson.delivery);
+        }
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags, deliveries);
+        return Objects.hash(name, phone, email, address, tags, delivery);
     }
 
     @Override
@@ -139,7 +146,7 @@ public class Person {
                 .add("email", email)
                 .add("address", address)
                 .add("tags", tags)
-                .add("deliveries", deliveries)
+                .add("delivery", delivery)
                 .toString();
     }
 
