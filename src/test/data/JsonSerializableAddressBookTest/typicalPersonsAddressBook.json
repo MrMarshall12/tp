@@ -5,7 +5,14 @@
     "phone" : "94351253",
     "email" : "alice@example.com",
     "address" : "123, Jurong West Ave 6, #08-111",
-    "tags" : [ "friends" ]
+    "tags" : [ "friends" ],
+    "delivery": {
+        "startDate": "2025-10-19",
+        "endDate": "2025-10-30",
+        "deliveryDays": [ "Monday", "Tuesday" ],
+        "deliveryTime": "12:00",
+        "skippedDates": [ "2025-10-21", "2025-10-22" ]
+    }
   }, {
     "name" : "Benson Meier",
     "phone" : "98765432",
