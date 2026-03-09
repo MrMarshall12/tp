@@ -614,8 +614,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * **Delivery Route**: A sequence of stops planned for delivering meals to customers.
 * **Subscription**: A predefined plan for meal delivery over a specific period (e.g., 5, 10, or 20 days).
 * **Command**: A user input that triggers a specific action in the application (e.g., `add`, `delete`, `list`).
-* **Singapore Address Format:** A sequence of elements used to physically locate buildings, in the form `<Block Number>, <Street Name>, <Unit Number (if any)>, Singapore <Postal Code>` (e.g., 757 Woodlands Ave 4, #04-27, Singapore 730757).
-* **Singapore Phone Number Format:** A 8-digit number containing no spaces used for telecommunications within Singapore (e.g., `81234567`).
 * **JavaScript Object Notation (JSON)**: A file format for storing and transmitting data as human-readable text.
 * **Java Archive (JAR)**: A file format that can be used to compress and bundle multiple files associated with a Java application into a single file for ease of distribution and execution.
 
