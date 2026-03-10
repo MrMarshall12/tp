@@ -99,6 +99,9 @@ public class TypicalPersons {
         return ab;
     }
 
+    /**
+     * Returns a list of typical persons.
+     */
     public static List<Person> getTypicalPersons() {
         return new ArrayList<>(Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));
     }
