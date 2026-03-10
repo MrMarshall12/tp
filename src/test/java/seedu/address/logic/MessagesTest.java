@@ -10,7 +10,6 @@ import static seedu.address.testutil.TypicalDeliveries.DELIVERY_ALICE;
 import static seedu.address.testutil.TypicalDeliveries.DELIVERY_CARL;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
-import static seedu.address.testutil.TypicalPersons.CARL;
 
 import org.junit.jupiter.api.Test;
 
@@ -47,7 +46,6 @@ public class MessagesTest {
     void formatPerson_differentPersonMessage() {
         // ensures that Alice and Carl have delivery and Benson has no delivery
         assertTrue(ALICE.hasDelivery());
-        assertTrue(CARL.hasDelivery());
         assertFalse(BENSON.hasDelivery());
 
         // different person and same non-null delivery -> different person message displayed -> returns false
@@ -59,7 +57,8 @@ public class MessagesTest {
         assertNotEquals(formatPerson(BENSON), formatPerson(editedAlice));
 
         // different person and different non-null delivery -> different person message displayed -> returns false
-        assertNotEquals(formatPerson(ALICE), formatPerson(CARL));
+        editedBenson = new PersonBuilder(BENSON).withDelivery(DELIVERY_CARL).build();
+        assertNotEquals(formatPerson(ALICE), formatPerson(editedBenson));
 
         // different person and only one delivery is null -> different person message displayed -> returns false
         assertNotEquals(formatPerson(ALICE), formatPerson(BENSON));
@@ -82,7 +81,6 @@ public class MessagesTest {
     void formatDelivery_differentDeliveryMessage() {
         // ensures that Alice and Carl have delivery and Benson has no delivery
         assertTrue(ALICE.hasDelivery());
-        assertTrue(CARL.hasDelivery());
         assertFalse(BENSON.hasDelivery());
 
         // different person and same non-null delivery -> different delivery message displayed -> returns false
@@ -94,7 +92,8 @@ public class MessagesTest {
         assertNotEquals(formatDelivery(BENSON), formatDelivery(editedAlice));
 
         // different person and different non-null delivery -> different delivery message displayed -> returns false
-        assertNotEquals(formatDelivery(ALICE), formatDelivery(CARL));
+        editedBenson = new PersonBuilder(BENSON).withDelivery(DELIVERY_CARL).build();
+        assertNotEquals(formatDelivery(ALICE), formatDelivery(editedBenson));
 
         // different person and only one delivery is null -> different delivery message displayed -> returns false
         assertNotEquals(formatDelivery(ALICE), formatDelivery(BENSON));
