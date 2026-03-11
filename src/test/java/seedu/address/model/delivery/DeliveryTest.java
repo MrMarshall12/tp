@@ -3,14 +3,14 @@ package seedu.address.model.delivery;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DELIVERY_DAY_FIRST;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DELIVERY_TIME_ONE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_END_DATE_ONE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_SKIPPED_DATE_SECOND;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_START_DATE_TWO;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DELIVERY_DAY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DELIVERY_TIME_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_END_DATE_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_SKIPPED_DATE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_START_DATE_AMY;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalDeliveries.DELIVERY_ONE;
-import static seedu.address.testutil.TypicalDeliveries.DELIVERY_TWO;
+import static seedu.address.testutil.TypicalDeliveries.DELIVERY_ALICE;
+import static seedu.address.testutil.TypicalDeliveries.DELIVERY_CARL;
 
 import org.junit.jupiter.api.Test;
 
@@ -27,48 +27,48 @@ public class DeliveryTest {
     @Test
     public void equals() {
         // same values -> returns true
-        Delivery deliveryOneCopy = new DeliveryBuilder(DELIVERY_ONE).build();
-        assertTrue(DELIVERY_ONE.equals(deliveryOneCopy));
+        Delivery deliveryOneCopy = new DeliveryBuilder(DELIVERY_ALICE).build();
+        assertTrue(DELIVERY_ALICE.equals(deliveryOneCopy));
 
         // same object -> returns true
-        assertTrue(DELIVERY_ONE.equals(DELIVERY_ONE));
+        assertTrue(DELIVERY_ALICE.equals(DELIVERY_ALICE));
 
         // null -> returns false
-        assertFalse(DELIVERY_ONE.equals(null));
+        assertFalse(DELIVERY_ALICE.equals(null));
 
         // different type -> returns false
-        assertFalse(DELIVERY_ONE.equals(5));
+        assertFalse(DELIVERY_ALICE.equals(5));
 
         // different delivery -> returns false
-        assertFalse(DELIVERY_ONE.equals(DELIVERY_TWO));
+        assertFalse(DELIVERY_ALICE.equals(DELIVERY_CARL));
 
         // different start date -> returns false
-        Delivery editedDeliveryOne = new DeliveryBuilder(DELIVERY_ONE).withStartDate(VALID_START_DATE_TWO).build();
-        assertFalse(DELIVERY_ONE.equals(editedDeliveryOne));
+        Delivery editedDeliveryOne = new DeliveryBuilder(DELIVERY_ALICE).withStartDate(VALID_START_DATE_AMY).build();
+        assertFalse(DELIVERY_ALICE.equals(editedDeliveryOne));
 
         // different end date -> returns false
-        Delivery editedDeliveryTwo = new DeliveryBuilder(DELIVERY_TWO).withEndDate(VALID_END_DATE_ONE).build();
-        assertFalse(DELIVERY_TWO.equals(editedDeliveryTwo));
+        Delivery editedDeliveryTwo = new DeliveryBuilder(DELIVERY_CARL).withEndDate(VALID_END_DATE_AMY).build();
+        assertFalse(DELIVERY_CARL.equals(editedDeliveryTwo));
 
         // different delivery time -> returns false
-        editedDeliveryTwo = new DeliveryBuilder(DELIVERY_TWO).withDeliveryTime(VALID_DELIVERY_TIME_ONE).build();
-        assertFalse(DELIVERY_TWO.equals(editedDeliveryTwo));
+        editedDeliveryTwo = new DeliveryBuilder(DELIVERY_CARL).withDeliveryTime(VALID_DELIVERY_TIME_AMY).build();
+        assertFalse(DELIVERY_CARL.equals(editedDeliveryTwo));
 
         // different delivery days -> returns false
-        editedDeliveryOne = new DeliveryBuilder(DELIVERY_ONE).withDeliveryDays(VALID_DELIVERY_DAY_FIRST).build();
-        assertFalse(DELIVERY_ONE.equals(editedDeliveryOne));
+        editedDeliveryOne = new DeliveryBuilder(DELIVERY_ALICE).withDeliveryDays(VALID_DELIVERY_DAY).build();
+        assertFalse(DELIVERY_ALICE.equals(editedDeliveryOne));
 
         // different skipped date -> returns false
-        editedDeliveryOne = new DeliveryBuilder(DELIVERY_ONE).withSkippedDates(VALID_SKIPPED_DATE_SECOND).build();
-        assertFalse(DELIVERY_ONE.equals(editedDeliveryOne));
+        editedDeliveryOne = new DeliveryBuilder(DELIVERY_ALICE).withSkippedDates(VALID_SKIPPED_DATE).build();
+        assertFalse(DELIVERY_ALICE.equals(editedDeliveryOne));
     }
 
     @Test
     public void toStringMethod() {
-        String expected = Delivery.class.getCanonicalName() + "{start date=" + DELIVERY_ONE.getStartDate()
-                + ", end date=" + DELIVERY_ONE.getEndDate() + ", delivery days=" + DELIVERY_ONE.getDeliveryDays()
-                + ", delivery time=" + DELIVERY_ONE.getDeliveryTime()
-                + ", skipped dates=" + DELIVERY_ONE.getSkippedDates() + "}";
-        assertEquals(expected, DELIVERY_ONE.toString());
+        String expected = Delivery.class.getCanonicalName() + "{start date=" + DELIVERY_ALICE.getStartDate()
+                + ", end date=" + DELIVERY_ALICE.getEndDate() + ", delivery days=" + DELIVERY_ALICE.getDeliveryDays()
+                + ", delivery time=" + DELIVERY_ALICE.getDeliveryTime()
+                + ", skipped dates=" + DELIVERY_ALICE.getSkippedDates() + "}";
+        assertEquals(expected, DELIVERY_ALICE.toString());
     }
 }

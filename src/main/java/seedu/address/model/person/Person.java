@@ -32,13 +32,7 @@ public class Person {
      * except for deliveries, must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.tags.addAll(tags);
-        this.delivery = null;
+        this(name, phone, email, address, tags, null);
     }
 
     /**
@@ -71,7 +65,14 @@ public class Person {
     }
 
     /**
-     * Returns the Delivery object of the customer, which could be null.
+     * Returns true if the person has a {@code delivery}.
+     */
+    public boolean hasDelivery() {
+        return delivery != null;
+    }
+
+    /**
+     * Returns the Delivery object of the person, which could be null.
      */
     public Delivery getDelivery() {
         return delivery;

@@ -3,8 +3,8 @@ package seedu.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.storage.JsonAdaptedPerson.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalDeliveries.DELIVERY_TWO;
-import static seedu.address.testutil.TypicalPersons.BENSON;
+import static seedu.address.testutil.TypicalDeliveries.DELIVERY_CARL;
+import static seedu.address.testutil.TypicalPersons.CARL;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,24 +27,24 @@ public class JsonAdaptedPersonTest {
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_TAG = "#friend";
 
-    private static final String VALID_NAME = BENSON.getName().toString();
-    private static final String VALID_PHONE = BENSON.getPhone().toString();
-    private static final String VALID_EMAIL = BENSON.getEmail().toString();
-    private static final String VALID_ADDRESS = BENSON.getAddress().toString();
-    private static final List<JsonAdaptedTag> VALID_TAGS = BENSON.getTags().stream()
+    private static final String VALID_NAME = CARL.getName().toString();
+    private static final String VALID_PHONE = CARL.getPhone().toString();
+    private static final String VALID_EMAIL = CARL.getEmail().toString();
+    private static final String VALID_ADDRESS = CARL.getAddress().toString();
+    private static final List<JsonAdaptedTag> VALID_TAGS = CARL.getTags().stream()
             .map(JsonAdaptedTag::new)
             .collect(Collectors.toList());
-    private static final JsonAdaptedDelivery VALID_DELIVERY = new JsonAdaptedDelivery(DELIVERY_TWO);
+    private static final JsonAdaptedDelivery VALID_DELIVERY = new JsonAdaptedDelivery(DELIVERY_CARL);
 
     @Test
     public void toModelType_validPersonDetails_returnsPerson() throws Exception {
-        JsonAdaptedPerson person = new JsonAdaptedPerson(BENSON);
-        assertEquals(BENSON, person.toModelType());
+        JsonAdaptedPerson person = new JsonAdaptedPerson(CARL);
+        assertEquals(CARL, person.toModelType());
     }
 
     @Test
     public void toModelType_validPersonDetailsWithDelivery_returnsPerson() throws Exception {
-        Person personWithDelivery = new PersonBuilder(BENSON).withDelivery(DELIVERY_TWO).build();
+        Person personWithDelivery = new PersonBuilder(CARL).withDelivery(DELIVERY_CARL).build();
         JsonAdaptedPerson person = new JsonAdaptedPerson(personWithDelivery);
         assertEquals(personWithDelivery, person.toModelType());
     }
@@ -131,9 +131,9 @@ public class JsonAdaptedPersonTest {
     public void toModelType_invalidDelivery_throwsIllegalValueException() {
         JsonAdaptedPerson person =
                 new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
-                        VALID_TAGS, new JsonAdaptedDelivery(DELIVERY_TWO.getStartDate().toString(),
-                                DELIVERY_TWO.getEndDate().toString(), new ArrayList<>(),
-                                DELIVERY_TWO.getDeliveryTime().toString(), new ArrayList<>()));
+                        VALID_TAGS, new JsonAdaptedDelivery(DELIVERY_CARL.getStartDate().toString(),
+                                DELIVERY_CARL.getEndDate().toString(), new ArrayList<>(),
+                                DELIVERY_CARL.getDeliveryTime().toString(), new ArrayList<>()));
         assertThrows(IllegalValueException.class, person::toModelType);
     }
 

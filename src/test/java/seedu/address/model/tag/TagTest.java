@@ -13,8 +13,13 @@ public class TagTest {
 
     @Test
     public void constructor_invalidTagName_throwsIllegalArgumentException() {
-        String invalidTagName = "";
-        assertThrows(IllegalArgumentException.class, () -> new Tag(invalidTagName));
+        // empty tag
+        String emptyTagName = "";
+        assertThrows(IllegalArgumentException.class, () -> new Tag(emptyTagName));
+
+        // non alphanumeric tag
+        String nonAlphanumericTagName = "(foodie)";
+        assertThrows(IllegalArgumentException.class, () -> new Tag(nonAlphanumericTagName));
     }
 
     @Test

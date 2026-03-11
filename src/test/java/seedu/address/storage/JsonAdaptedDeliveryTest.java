@@ -3,8 +3,8 @@ package seedu.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.storage.JsonAdaptedDelivery.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalDeliveries.DELIVERY_FOUR;
-import static seedu.address.testutil.TypicalDeliveries.DELIVERY_ONE;
+import static seedu.address.testutil.TypicalDeliveries.DELIVERY_ALICE;
+import static seedu.address.testutil.TypicalDeliveries.DELIVERY_ELLE;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,20 +26,20 @@ public class JsonAdaptedDeliveryTest {
     private static final String INVALID_DELIVERY_TIME = "20.20";
     private static final String INVALID_SKIPPED_DATE = "2019/10/13";
 
-    private static final String VALID_START_DATE = DELIVERY_ONE.getStartDate().toString();
-    private static final String VALID_END_DATE = DELIVERY_ONE.getEndDate().toString();
-    private static final List<JsonAdaptedDeliveryDay> VALID_DELIVERY_DAYS = DELIVERY_ONE.getDeliveryDays().stream()
+    private static final String VALID_START_DATE = DELIVERY_ALICE.getStartDate().toString();
+    private static final String VALID_END_DATE = DELIVERY_ALICE.getEndDate().toString();
+    private static final List<JsonAdaptedDeliveryDay> VALID_DELIVERY_DAYS = DELIVERY_ALICE.getDeliveryDays().stream()
             .map(JsonAdaptedDeliveryDay::new)
             .collect(Collectors.toList());
-    private static final String VALID_DELIVERY_TIME = DELIVERY_ONE.getDeliveryTime().toString();
-    private static final List<JsonAdaptedSkippedDate> VALID_SKIPPED_DATES = DELIVERY_ONE.getSkippedDates().stream()
+    private static final String VALID_DELIVERY_TIME = DELIVERY_ALICE.getDeliveryTime().toString();
+    private static final List<JsonAdaptedSkippedDate> VALID_SKIPPED_DATES = DELIVERY_ALICE.getSkippedDates().stream()
             .map(JsonAdaptedSkippedDate::new)
             .collect(Collectors.toList());
 
     @Test
     public void toModelType_validDeliveryDetails_returnsDelivery() throws Exception {
-        JsonAdaptedDelivery delivery = new JsonAdaptedDelivery(DELIVERY_ONE);
-        assertEquals(DELIVERY_ONE, delivery.toModelType());
+        JsonAdaptedDelivery delivery = new JsonAdaptedDelivery(DELIVERY_ALICE);
+        assertEquals(DELIVERY_ALICE, delivery.toModelType());
     }
 
     @Test
@@ -125,10 +125,11 @@ public class JsonAdaptedDeliveryTest {
 
     @Test
     public void toModelType_nullSkippedDates_returnsDelivery() throws Exception {
-        JsonAdaptedDelivery delivery = new JsonAdaptedDelivery(DELIVERY_FOUR.getStartDate().toString(),
-                DELIVERY_FOUR.getEndDate().toString(),
-                DELIVERY_FOUR.getDeliveryDays().stream().map(JsonAdaptedDeliveryDay::new).collect(Collectors.toList()),
-                DELIVERY_FOUR.getDeliveryTime().toString(), null);
-        assertEquals(DELIVERY_FOUR, delivery.toModelType());
+        JsonAdaptedDelivery delivery = new JsonAdaptedDelivery(DELIVERY_ELLE.getStartDate().toString(),
+                DELIVERY_ELLE.getEndDate().toString(),
+                DELIVERY_ELLE.getDeliveryDays().stream().map(JsonAdaptedDeliveryDay::new).collect(Collectors.toList()),
+                DELIVERY_ELLE.getDeliveryTime().toString(),
+                DELIVERY_ELLE.getSkippedDates().stream().map(JsonAdaptedSkippedDate::new).collect(Collectors.toList()));
+        assertEquals(DELIVERY_ELLE, delivery.toModelType());
     }
 }

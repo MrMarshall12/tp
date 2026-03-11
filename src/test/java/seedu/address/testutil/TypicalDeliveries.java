@@ -10,23 +10,23 @@ import seedu.address.model.delivery.Delivery;
  * A utility class containing a list of {@code Delivery} objects to be used in tests.
  */
 public class TypicalDeliveries {
-    public static final Delivery DELIVERY_ONE = new DeliveryBuilder().withStartDate("2025-10-19")
+    public static final Delivery DELIVERY_ALICE = new DeliveryBuilder().withStartDate("2025-10-19")
             .withEndDate("2025-10-30").withDeliveryDays("Monday", "Tuesday")
             .withDeliveryTime("12:00")
             .withSkippedDates("2025-10-21", "2025-10-22").build();
-    public static final Delivery DELIVERY_TWO = new DeliveryBuilder().withStartDate("2025-10-19")
+    public static final Delivery DELIVERY_CARL = new DeliveryBuilder().withStartDate("2025-10-19")
             .withEndDate("2025-10-30").withDeliveryDays("Monday", "Tuesday", "Thursday")
             .withDeliveryTime("14:14")
             .withSkippedDates("2025-10-21", "2025-10-24").build();
-    public static final Delivery DELIVERY_THREE = new DeliveryBuilder().withStartDate("2024-10-21")
+    public static final Delivery DELIVERY_DANIEL = new DeliveryBuilder().withStartDate("2024-10-21")
             .withEndDate("2024-10-29").withDeliveryDays("Tuesday", "Wednesday", "Thursday")
             .withDeliveryTime("15:15")
             .withSkippedDates("2024-10-24").build();
-    public static final Delivery DELIVERY_FOUR = new DeliveryBuilder().withStartDate("2019-03-19")
+    public static final Delivery DELIVERY_ELLE = new DeliveryBuilder().withStartDate("2019-03-19")
             .withEndDate("2019-03-27").withDeliveryDays("Wednesday", "Friday")
             .withDeliveryTime("12:00")
             .withSkippedDates().build();
-    public static final Delivery DELIVERY_FIVE = new DeliveryBuilder().withStartDate("2019-05-21")
+    public static final Delivery DELIVERY_FIONA = new DeliveryBuilder().withStartDate("2019-05-21")
             .withEndDate("2019-06-29").withDeliveryDays("Monday", "Thursday")
             .withDeliveryTime("11:11")
             .withSkippedDates("2019-05-28").build();
@@ -34,6 +34,7 @@ public class TypicalDeliveries {
     private TypicalDeliveries() {} // prevents instantiation
 
     public static List<Delivery> getTypicalDeliveries() {
-        return new ArrayList<>(Arrays.asList(DELIVERY_ONE, DELIVERY_TWO, DELIVERY_THREE, DELIVERY_FOUR, DELIVERY_FIVE));
+        return new ArrayList<>(Arrays.asList(
+                DELIVERY_ALICE, DELIVERY_CARL, DELIVERY_DANIEL, DELIVERY_ELLE, DELIVERY_FIONA));
     }
 }
