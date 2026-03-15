@@ -44,6 +44,7 @@ public class Person {
     //@author BenedTj
     /**
      * Every field must be present and not null.
+     * This field should be used when delivery is not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Delivery delivery) {
         requireAllNonNull(name, phone, email, address, tags);
