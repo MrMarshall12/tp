@@ -28,8 +28,14 @@ public class Person {
     private final Delivery delivery;
 
     /**
-     * Constructs a {@code Person} where every field,
-     * except for deliveries, must be present and not null.
+     * Constructs a {@code Person} with the given name, phone, email, address and tag.
+     * <p>
+     * The {@code delivery} field is set to {@code null} by default.
+     * @param name
+     * @param phone
+     * @param email
+     * @param address
+     * @param tags
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
         this(name, phone, email, address, tags, null);
