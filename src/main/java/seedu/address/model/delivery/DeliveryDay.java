@@ -44,7 +44,7 @@ public class DeliveryDay {
      *
      * TODO: Move the usage of this formatter.
      */
-    private static final DateTimeFormatter NUMBER_FORMATTER = DateTimeFormatter.ofPattern("e");
+    public static final DateTimeFormatter NUMBER_FORMATTER = DateTimeFormatter.ofPattern("e");
 
     public final DayOfWeek day;
 
