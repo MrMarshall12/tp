@@ -28,14 +28,14 @@ public class Person {
     private final Delivery delivery;
 
     /**
-     * Constructs a {@code Person} with the given name, phone, email, address and tag.
-     * <p>
-     * The {@code delivery} field is set to {@code null} by default.
-     * @param name Name of the person, which must not be null.
-     * @param phone Phone number of the person, which must not be null.
-     * @param email Email of the person, which must not be null.
-     * @param address Address of the person, which must not be null.
-     * @param tags Set of tags associated with the person, which must not be null.
+     * Constructs a {@code Person} with the given name, phone, email, address and tags.
+     * The {@code delivery} field is initialized to {@code null}.
+     *
+     * @param name Name of the person. Must not be null.
+     * @param phone Phone number of the person. Must not be null.
+     * @param email Email of the person. Must not be null.
+     * @param address Address of the person. Must not be null.
+     * @param tags Set of tags associated with the person. Must not be null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
         this(name, phone, email, address, tags, null);
@@ -58,6 +58,7 @@ public class Person {
 
     /**
      * Returns a new {@code Person} without any delivery assigned.
+     *
      * @return A copy of this person with their delivery removed.
      */
     public Person withoutDelivery() {

@@ -33,11 +33,10 @@ public class Messages {
     }
 
     /**
-     * Formats the {@code person} for display to the user.
-     * <p>
+     * Formats the given {@code person} for display to the user.
      * The person's delivery, if any, is not returned.
      *
-     * @param person The person to be formatted.
+     * @param person The person to format.
      * @return String representation of the person's information.
      */
     public static String formatPerson(Person person) {
@@ -56,14 +55,12 @@ public class Messages {
 
     /**
      * Formats the {@code person}'s delivery for display to the user.
-     * <p>
-     * If the person has no delivery, only the name is returned.
-     * Otherwise, both the person's name and their delivery are
-     * returned.
+     * If the person has no delivery, only the person's name is returned.
+     * Otherwise, both the person's name and delivery are returned.
      *
      * @param person The person whose delivery is to be formatted.
      * @return String representation of the person's name and, if
-     *         present, their delivery suitable for display.
+     *         present, their delivery, suitable for display.
      */
     public static String formatDeliveryFromPerson(Person person) {
         if (!person.hasDelivery()) {
