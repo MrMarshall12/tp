@@ -143,6 +143,24 @@ Examples:
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
+### Locating customers by delivery date: `find-delivery`
+
+Finds customers who have a delivery scheduled on the given date.
+
+Format: `find-delivery DATE`
+
+* The date should be in the format `yyyy-MM-dd`, where `yyyy` is the 4-digit year, `MM` is the 2-digit month, and `dd` is the 2-digit day. e.g. `2026-04-01`
+* A customer is shown only if all of the following are true:
+  * They have a delivery assigned.
+  * The given date falls within their delivery's start and end dates (inclusive).
+  * The day of week of the given date matches one of their scheduled delivery days.
+  * The given date has not been marked as a skipped date.
+* If no customers match, an empty list is shown.
+
+Examples:
+* `find-delivery 2026-04-01` returns all customers with a delivery on Wednesday, 1 April 2026.
+* `find-delivery 2026-12-25` returns all customers with a delivery on Friday, 25 December 2026.
+
 ### Deleting a customer : `delete`
 
 Deletes the specified customer and the delivery associated with them.
