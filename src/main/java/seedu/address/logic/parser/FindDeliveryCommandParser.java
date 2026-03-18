@@ -2,9 +2,6 @@ package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
-
 import seedu.address.logic.commands.FindDeliveryCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.delivery.DeliveryDatePredicate;
@@ -30,13 +27,6 @@ public class FindDeliveryCommandParser implements Parser<FindDeliveryCommand> {
                             FindDeliveryCommand.MESSAGE_USAGE));
         }
 
-        try {
-            LocalDate date = LocalDate.parse(trimmedArgs);
-            return new FindDeliveryCommand(new DeliveryDatePredicate(date));
-        } catch (DateTimeParseException e) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                            FindDeliveryCommand.MESSAGE_USAGE));
-        }
+        return new FindDeliveryCommand(new DeliveryDatePredicate(ParserUtil.parseDate(trimmedArgs)));
     }
 }

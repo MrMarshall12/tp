@@ -3,6 +3,7 @@ package seedu.address.logic.parser;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_DATE;
 
 import java.time.LocalDate;
 
@@ -36,7 +37,6 @@ public class FindDeliveryCommandParserTest {
 
     @Test
     public void parse_invalidDate_throwsParseException() {
-        assertParseFailure(parser, "invalid-date",
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindDeliveryCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "invalid-date", MESSAGE_INVALID_DATE);
     }
 }
