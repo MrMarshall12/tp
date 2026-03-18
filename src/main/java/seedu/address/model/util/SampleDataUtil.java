@@ -1,8 +1,6 @@
 package seedu.address.model.util;
 
-import java.time.DayOfWeek;
 import java.util.Arrays;
-import java.util.EnumSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
