@@ -29,6 +29,9 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 ## **Design**
 
+> **Note:** <br>
+> All references of a person in this design section represent a customer.
+
 ### Architecture
 
 <puml src="diagrams/ArchitectureDiagram.puml" width="280" />
@@ -180,11 +183,11 @@ Step 1. The user launches the application for the first time. The `VersionedAddr
 
 <puml src="diagrams/UndoRedoState0.puml" alt="UndoRedoState0" />
 
-Step 2. The user executes `delete 5` command to delete the 5th person in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
+Step 2. The user executes `delete 5` command to delete the 5th customer in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
 
 <puml src="diagrams/UndoRedoState1.puml" alt="UndoRedoState1" />
 
-Step 3. The user executes `add n/David …​` to add a new person. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
+Step 3. The user executes `add n/David …​` to add a new customer. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
 
 <puml src="diagrams/UndoRedoState2.puml" alt="UndoRedoState2" />
 
@@ -194,7 +197,7 @@ Step 3. The user executes `add n/David …​` to add a new person. The `add` co
 
 </box>
 
-Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
+Step 4. The user now decides that adding the customer was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
 
 <puml src="diagrams/UndoRedoState3.puml" alt="UndoRedoState3" />
 
@@ -250,7 +253,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 * **Alternative 2:** Individual command knows how to undo/redo by
   itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
+  * Pros: Will use less memory (e.g. for `delete`, just save the customer being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
 
 _{more aspects and alternatives to be added}_
@@ -483,44 +486,62 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case 6: Add upcoming delivery**
+**Use case 6: Add upcoming delivery for a customer**
 
 **MSS**
 
-1. User requests to add a new upcoming delivery with required fields
-2. ServeMate adds the upcoming delivery to the list of upcoming deliveries
-3. ServeMate shows a success message with the added upcoming delivery's details
+1. User requests to list customers
+2. ServeMate shows a list of customers
+3. User requests to add a new upcoming delivery for a customer with required fields
+4. ServeMate adds the upcoming delivery to the customer's details
+5. ServeMate shows a success message with the added upcoming delivery's details
 
    Use case ends.
 
 **Extensions**
 
-* 1a. Any required field is missing.
+* 1a. The list is empty.
 
-    * 1a1. ServeMate shows an error message describing the correct command format and requests for a new command from the user.
+  Use case ends.
 
-      Use case resumes from step 1.
+* 3a. The given index is not a positive integer.
 
-* 1b. Any parameter value is invalid.
+    * 3a1. ServeMate shows an error message describing the correct command format and requests for a new command from the user.
 
-    * 1b1. ServeMate shows an error message describing the violated constraint and requests for a new command from the user.
+      Use case resumes at step 3.
 
-      Use case resumes from step 1.
+* 3b. The given index is out of range.
 
-* 1c. A delivery to the same customer at the same date and time already exists.
+    * 3b1. ServeMate shows an error message indicating that the provided index is invalid and requests for a new command from the user.
 
-    * 1c1. ServeMate shows an error message describing that a delivery to the same customer at the same date and time already exists.
+      Use case resumes at step 3.
 
-      Use case ends.
+* 3c. Any required field is missing.
 
-**Use case 7: Delete a particular delivery**
+    * 3c1. ServeMate shows an error message describing the correct command format and requests for a new command from the user.
+
+      Use case resumes from step 3.
+
+* 3d. Any parameter value is invalid.
+
+    * 3d1. ServeMate shows an error message describing the violated constraint and requests for a new command from the user.
+
+      Use case resumes from step 3.
+
+* 3e. A delivery to the same customer already exists.
+
+    * 3e1. ServeMate removes the delivery already added to the customer from the customer's details.
+
+      Use case resumes from step 4.
+
+**Use case 7: Delete a particular customer's delivery**
 
 **MSS**
 
-1. User requests to list all upcoming deliveries
-2. ServeMate shows a list of all upcoming deliveries from today onwards
-3. User requests to delete a particular upcoming delivery in the list
-4. ServeMate deletes the particular upcoming delivery
+1. User requests to list customers
+2. ServeMate shows a list of customers
+3. User requests to delete a particular customer's delivery
+4. ServeMate deletes the particular customer's delivery from the customer's details
 5. ServeMate shows a confirmation message with the deleted delivery's details
    Use case ends.
 
@@ -541,6 +562,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * 3b1. ServeMate shows an error message describing that the index value given is invalid and requests for a new command from the user.
 
     Use case resumes at step 3.
+
+* 3c. The details of the customer at the given index does not have a delivery added to it.
+
+  * 3c1. ServeMate shows an error message describing that the customer at the index value does not have a delivery added to the customer details.
+
+    Use case ends.
 
 **Use case 8: Tag customer with delivery note**
 
@@ -651,17 +678,17 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
-### Deleting a person
+### Deleting a customer
 
-1. Deleting a person while all persons are being shown
+1. Deleting a customer while all customers are being shown
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+   1. Prerequisites: List all customers using the `list` command. Multiple customers in the list.
 
    1. Test case: `delete 1`<br>
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
    1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+      Expected: No customer is deleted. Error details shown in the status message. Status bar remains the same.
 
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
