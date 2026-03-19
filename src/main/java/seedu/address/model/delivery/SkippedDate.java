@@ -14,7 +14,7 @@ import java.time.format.DateTimeParseException;
 public class SkippedDate {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Date should be of the valid skipped date format";
+            "Date should be of the valid skipped date format yyyy-MM-dd";
 
     /**
      * The date must follow the format yyyy-MM-dd
