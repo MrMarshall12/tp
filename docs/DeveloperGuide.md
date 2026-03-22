@@ -443,30 +443,30 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Use case 4: Filter customers by attributes**
 
 **MSS**
-1. User requests to list customers
-2. ServeMate shows a list of customers
-3. User requests to filter customers by attributes and provide one or more filters with keyword(s)
-4. ServeMate displays the list of customers that match the given filter(s)
+1. User requests to list customers.
+2. ServeMate displays a list of customers.
+3. User requests to filter customers by attributes and provides one or more filters, each containing one or more keywords.
+4. ServeMate displays the list of customers that match the given filter(s).
 
    Use case ends.
 
 **Extensions**
 
-* 3a. The command format is invalid.
+* 3a. ServeMate detects an error in the command format.
 
-    * 3a1. ServeMate shows an error message describing the correct command format.
+    * 3a1. ServeMate displays an error message describing the correct command format.
 
       Use case resumes at step 3.
 
-* 3b. Any provided filter violates keyword format constraints.
+* 3b. ServeMate detects a violation of keyword format constraints in a filter.
 
-    * 3b1. ServeMate shows an error message describing the violated constraint.
+    * 3b1. ServeMate displays an error message describing the violated constraint.
 
       Use case resumes at step 3.
 
 * 3c. No customers match the specified filters.
 
-    * 3c1. ServeMate shows an empty result list.
+    * 3c1. ServeMate displays an empty result list.
 
       Use case ends.
 
