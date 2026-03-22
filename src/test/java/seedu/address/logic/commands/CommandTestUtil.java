@@ -108,11 +108,11 @@ public class CommandTestUtil {
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
 
-        DESC_AMY_RESCHEDULE = new RescheduleDeliveryDescriptorBuilder(). withStartDate(VALID_START_DATE_AMY)
+        DESC_AMY_RESCHEDULE = new RescheduleDeliveryDescriptorBuilder().withStartDate(VALID_START_DATE_AMY)
                 .withEndDate(VALID_END_DATE_AMY)
                 .withDeliveryTime(VALID_DELIVERY_TIME_AMY)
                 .withDeliveryDays(VALID_DELIVERY_DAY_AMY).build();
-        DESC_BOB_RESCHEDULE = new RescheduleDeliveryDescriptorBuilder(). withStartDate(VALID_START_DATE_BOB)
+        DESC_BOB_RESCHEDULE = new RescheduleDeliveryDescriptorBuilder().withStartDate(VALID_START_DATE_BOB)
                 .withEndDate(VALID_END_DATE_BOB)
                 .withDeliveryTime(VALID_DELIVERY_TIME_BOB)
                 .withDeliveryDays(VALID_DELIVERY_DAY_BOB).build();

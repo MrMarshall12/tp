@@ -1,15 +1,15 @@
 package seedu.address.testutil;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import seedu.address.logic.commands.RescheduleCommand.RescheduleDeliveryDescriptor;
 import seedu.address.model.delivery.Delivery;
 import seedu.address.model.delivery.DeliveryDay;
 import seedu.address.model.delivery.DeliveryTime;
 import seedu.address.model.delivery.EndDate;
 import seedu.address.model.delivery.StartDate;
-
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * A utility class to help with building RescheduleDeliveryDescriptor objects.
