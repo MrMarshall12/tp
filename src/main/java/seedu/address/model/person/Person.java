@@ -6,11 +6,9 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.delivery.Delivery;
-import seedu.address.model.delivery.DeliveryDay;
 import seedu.address.model.tag.Tag;
 
 /**

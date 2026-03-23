@@ -31,8 +31,9 @@ public class PersonHasExpiredDeliveryPredicate implements Predicate<Person> {
     public boolean test(Person person) {
         Delivery delivery = person.getDelivery();
 
+        // Person has no delivery -> person has no expired deliveries
         if (delivery == null) {
-            return false; // person has no delivery -> person has no expired deliveries
+            return false;
         }
 
         return new DeliveryHasExpiredPredicate(beforeDate).test(delivery);
