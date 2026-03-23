@@ -1,7 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE_BEFORE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_BEFORE_DATE;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -20,9 +20,9 @@ public class ExpiredCommand extends Command {
             + ": Finds all persons whose deliveries have ended before the specified date "
             + "and displays them as a list with index numbers.\n"
             + "Parameters: "
-            + PREFIX_DATE_BEFORE + "DATE (yyyy-MM-dd)\n"
+            + PREFIX_BEFORE_DATE + "DATE (yyyy-MM-dd)\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_DATE_BEFORE + "2026-04-01";
+            + PREFIX_BEFORE_DATE + "2026-04-01";
 
     private final PersonHasExpiredDeliveryPredicate predicate;
 

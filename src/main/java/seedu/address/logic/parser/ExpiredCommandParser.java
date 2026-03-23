@@ -1,7 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE_BEFORE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_BEFORE_DATE;
 import static seedu.address.logic.parser.ParserUtil.arePrefixesPresent;
 import static seedu.address.logic.parser.ParserUtil.parseDate;
 
@@ -26,18 +26,18 @@ public class ExpiredCommandParser implements Parser<ExpiredCommand> {
      */
     public ExpiredCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_DATE_BEFORE);
+                ArgumentTokenizer.tokenize(args, PREFIX_BEFORE_DATE);
 
         // Check that required prefixes are present and there is no text before the first prefix.
-        if (!arePrefixesPresent(argMultimap, PREFIX_DATE_BEFORE)
+        if (!arePrefixesPresent(argMultimap, PREFIX_BEFORE_DATE)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ExpiredCommand.MESSAGE_USAGE));
         }
 
         // Check that there are no duplicate prefixes.
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_DATE_BEFORE);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_BEFORE_DATE);
 
-        String dateString = argMultimap.getValue(PREFIX_DATE_BEFORE).get();
+        String dateString = argMultimap.getValue(PREFIX_BEFORE_DATE).get();
         LocalDate date = parseDate(dateString);
         PersonHasExpiredDeliveryPredicate predicate = new PersonHasExpiredDeliveryPredicate(date);
         return new ExpiredCommand(predicate);

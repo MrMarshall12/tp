@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE_BEFORE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_BEFORE_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -120,7 +120,7 @@ public class AddressBookParserTest {
         String dateString = "2026-04-01";
         LocalDate date = LocalDate.of(2026, 4, 1);
         ExpiredCommand command = (ExpiredCommand) parser.parseCommand(
-                ExpiredCommand.COMMAND_WORD + " " + PREFIX_DATE_BEFORE + dateString);
+                ExpiredCommand.COMMAND_WORD + " " + PREFIX_BEFORE_DATE + dateString);
         assertEquals(new ExpiredCommand(new PersonHasExpiredDeliveryPredicate(date)), command);
     }
 
