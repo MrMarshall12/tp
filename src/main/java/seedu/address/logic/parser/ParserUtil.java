@@ -1,7 +1,10 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.DateTimeUtil.*;
+import static seedu.address.commons.util.DateTimeUtil.convertDayNumberToDayWord;
+import static seedu.address.commons.util.DateTimeUtil.isValidDeliveryDate;
+import static seedu.address.commons.util.DateTimeUtil.isValidDeliveryDayNumber;
+import static seedu.address.commons.util.DateTimeUtil.parseDeliveryDate;
 import static seedu.address.model.delivery.DeliveryDay.toDeliveryDay;
 
 import java.time.LocalDate;

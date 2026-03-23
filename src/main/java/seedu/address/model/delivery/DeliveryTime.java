@@ -1,12 +1,12 @@
 package seedu.address.model.delivery;
 
-import seedu.address.commons.util.DateTimeUtil;
-
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 import static seedu.address.commons.util.DateTimeUtil.parseDeliveryTime;
 
 import java.time.LocalTime;
+
+import seedu.address.commons.util.DateTimeUtil;
 
 /**
  * Represents a Delivery's time in the address book.

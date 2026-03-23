@@ -1,5 +1,7 @@
 package seedu.address.commons.util;
 
+import static java.util.Objects.requireNonNull;
+
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -9,12 +11,21 @@ import java.time.format.ResolverStyle;
 import java.time.format.TextStyle;
 import java.util.Locale;
 
-import static java.util.Objects.requireNonNull;
-
 /**
  * Helper functions for handling dates, days and times.
  */
 public class DateTimeUtil {
+    /**
+     * The day input that uses this formatter must follow the format of
+     * having the number representing the day of the week.
+     *
+     * Examples of day number inputs accepted by the formatter: 1, 2.
+     * The formatter will only successfully parse numbers in the range 1-7.
+     *
+     */
+    public static final DateTimeFormatter DAY_NUMBER_FORMATTER =
+            DateTimeFormatter.ofPattern("e", Locale.UK).withResolverStyle(ResolverStyle.STRICT);
+
     /**
      * The date must follow the format yyyy-MM-dd
      * where yyyy is the 4-digit year, MM is the 2-digit month number,
@@ -34,24 +45,12 @@ public class DateTimeUtil {
      */
     private static final DateTimeFormatter DAY_WORD_FORMATTER =
             DateTimeFormatter.ofPattern("EEEE", Locale.ENGLISH).withResolverStyle(ResolverStyle.STRICT);
-
-    /**
-     * The day input that uses this formatter must follow the format of
-     * having the number representing the day of the week.
-     *
-     * Examples of day number inputs accepted by the formatter: 1, 2.
-     * The formatter will only successfully parse numbers in the range 1-7.
-     *
-     */
-    public static final DateTimeFormatter DAY_NUMBER_FORMATTER =
-            DateTimeFormatter.ofPattern("e", Locale.UK).withResolverStyle(ResolverStyle.STRICT);
-
     /**
      * The time must follow the format HH:mm
      * where HH is the hour value in the 24-hour format
      * and mm is the minute value.
      */
-    public static final DateTimeFormatter TIME_FORMATTER =
+    private static final DateTimeFormatter TIME_FORMATTER =
             DateTimeFormatter.ofPattern("HH:mm").withResolverStyle(ResolverStyle.STRICT);
 
     /**
