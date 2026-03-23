@@ -58,8 +58,10 @@ public class DateTimeUtil {
 
     /**
      * Parses raw string dates into their corresponding LocalDate objects.
+     *
+     * @throws DateTimeParseException If the argument passed is an invalid delivery date value.
      */
-    public static LocalDate parseDeliveryDate(String date) {
+    public static LocalDate parseDeliveryDate(String date) throws DateTimeParseException {
         return LocalDate.parse(date, DATE_FORMATTER);
     }
 
