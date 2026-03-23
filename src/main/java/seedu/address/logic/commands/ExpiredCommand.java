@@ -24,10 +24,6 @@ public class ExpiredCommand extends Command {
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_DATE_BEFORE + "2026-04-01";
 
-    public static final String MESSAGE_INVALID_DATE = "Date keywords should only use yyyy-MM-dd format.";
-    public static final String MESSAGE_INVALID_PREFIX = "Invalid prefix provided. Only supports: "
-            + PREFIX_DATE_BEFORE + ".";
-
     private final PersonHasExpiredDeliveryPredicate predicate;
 
     /**

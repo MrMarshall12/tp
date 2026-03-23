@@ -57,7 +57,7 @@ public class PersonHasExpiredDeliveryPredicate implements Predicate<Person> {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("date", beforeDate)
+                .add("beforeDate", beforeDate)
                 .toString();
     }
 

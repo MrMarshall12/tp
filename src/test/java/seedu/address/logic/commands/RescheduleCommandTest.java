@@ -9,6 +9,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_DELIVERY_TIME_A
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
+import static seedu.address.logic.commands.RescheduleCommand.MESSAGE_NON_EXISTENT_DELIVERY;
 import static seedu.address.logic.commands.RescheduleCommand.RescheduleDeliveryDescriptor;
 import static seedu.address.testutil.TypicalDeliveries.DELIVERY_ELLE;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
@@ -159,6 +160,22 @@ public class RescheduleCommandTest {
                 .withDeliveryTime(VALID_DELIVERY_TIME_AMY).build());
 
         assertCommandFailure(rescheduleCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void execute_validPerson_noDelivery_failure() {
+        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Person firstPersonWithoutDelivery = new PersonBuilder(firstPerson).withDelivery(null).build();
+
+        // Create modified model where first person does not have delivery
+        Model modifiedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        modifiedModel.setPerson(model.getFilteredPersonList().get(0), firstPersonWithoutDelivery);
+
+        RescheduleDeliveryDescriptor descriptor = new RescheduleDeliveryDescriptorBuilder()
+                .withDeliveryTime(VALID_DELIVERY_TIME_AMY).build();
+        RescheduleCommand rescheduleCommand = new RescheduleCommand(INDEX_FIRST_PERSON, descriptor);
+
+        assertCommandFailure(rescheduleCommand, modifiedModel, MESSAGE_NON_EXISTENT_DELIVERY);
     }
 
     @Test
