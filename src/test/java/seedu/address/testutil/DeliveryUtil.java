@@ -44,19 +44,4 @@ public class DeliveryUtil {
                 .map(deliveryDay -> DAY_NUMBER_FORMATTER.format(deliveryDay.getDay()))
                 .collect(Collectors.joining(""));
     }
-
-    /**
-     * Returns an EndDate object encapsulating
-     * the date of {@code startDate} added by {@code numberOfDays}.
-     *
-     * @param startDate The StartDate object that will be added upon.
-     * @param numberOfDays The number of days to be added,
-     *                     which can be a negative number.
-     * @return The EndDate object corresponding to
-     *         the start date added by the number of days.
-     */
-    public static EndDate generateEndDate(StartDate startDate, int numberOfDays) {
-        LocalDate endDate = startDate.date.plusDays(numberOfDays);
-        return new EndDate(DATE_FORMATTER.format(endDate));
-    }
 }
