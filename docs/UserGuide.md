@@ -162,7 +162,7 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd customer on the list.
 * `find n/Betsy` followed by `delete 1` deletes the 1st customer in the results of the `find` command.
 
-### Locating customers by attributes: `find`
+### Finding customers by attributes: `find`
 
 Find customers whose attributes (name, address, tag) match at least 1 of the keywords given in each filter (`n/`, `a/`, `t/`) specified.
 
@@ -186,7 +186,7 @@ Examples:
 * `find n/Alex Bernice a/Yishun t/Vegetarian` displays customers whose name is `Alex` or `Bernice`, with address containing `Yishun` *and* tagged with dietary restriction `Vegetarian`.<br>
   ![result for 'find n/Alex Bernice a/Yishun t/Vegetarian'](images/findAlexBerniceResult.png)
 
-### Locating customers by delivery date: `find-delivery`
+### Finding customers by delivery date: `find-delivery`
 
 Finds customers who have a delivery scheduled on the given date.
 
