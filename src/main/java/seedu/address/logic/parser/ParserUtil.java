@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -266,14 +267,14 @@ public class ParserUtil {
         String[] listOfDeliveryDays = trimmedDeliveryDays.split("");
 
         // Throw ParseException if duplicate delivery days are parsed.
-        if (Arrays.stream(listOfDeliveryDays).distinct().count() == listOfDeliveryDays.length) {
+        if (Arrays.stream(listOfDeliveryDays).distinct().count() != listOfDeliveryDays.length) {
             throw new ParseException(MESSAGE_DUPLICATE_DELIVERY_DAYS);
         }
 
         // Sort delivery days
         Arrays.sort(listOfDeliveryDays);
 
-        Set<DeliveryDay> deliveryDaySet = new HashSet<>();
+        Set<DeliveryDay> deliveryDaySet = new LinkedHashSet<>();
         for (String deliveryDayNumber : listOfDeliveryDays) {
             deliveryDaySet.add(parseDeliveryDayNumber(deliveryDayNumber));
         }
