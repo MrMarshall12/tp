@@ -210,7 +210,7 @@ Finds all customers with deliveries that have expired before the given date.
 
 Format: `expired bf/DATE`
 * `DATE` is in the format `yyyy-MM-dd` (e.g., 2026-04-09).
-* Displays all customers whose delivery end date is **before** the specified date.
+* Displays all customers whose delivery end date is **before** the specified date on the customer panel.
 * Deliveries that end on the exact date specified is **not** considered as expired.
 * Customers without a delivery will not be displayed.
 
