@@ -83,6 +83,7 @@ public class DateTimeUtil {
      * with the format of {@link #DATE_FORMATTER} and returns it.
      */
     public static String formatDeliveryDate(LocalDate date) {
+        requireNonNull(date, "delivery date must not be null");
         return DATE_FORMATTER.format(date);
     }
 
