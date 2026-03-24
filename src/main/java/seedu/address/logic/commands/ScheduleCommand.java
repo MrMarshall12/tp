@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DAYS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NUMBER_OF_DAYS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
@@ -35,7 +36,7 @@ public class ScheduleCommand extends Command {
             + ": Adds a delivery to the person identified by the index number used in the displayed person list.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_START_DATE + "START DATE "
-            + PREFIX_NUMBER_OF_DAYS + "NUMBER OF DAYS "
+            + PREFIX_END_DATE + "NUMBER OF DAYS "
             + PREFIX_TIME + "DELIVERY TIME "
             + PREFIX_DAYS + "DELIVERY DAYS...\n"
             + "Example: " + COMMAND_WORD + " 1 "
