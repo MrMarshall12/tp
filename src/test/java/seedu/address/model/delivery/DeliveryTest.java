@@ -3,7 +3,13 @@ package seedu.address.model.delivery;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.*;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DELIVERY_DAY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DELIVERY_TIME_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DELIVERY_TIME_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_END_DATE_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_SKIPPED_DATE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_START_DATE_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_START_DATE_BOB;
 import static seedu.address.model.delivery.DeliveryDay.toDeliveryDay;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.DeliveryUtil.generateEndDate;
@@ -12,6 +18,7 @@ import static seedu.address.testutil.TypicalDeliveries.DELIVERY_CARL;
 
 import java.util.HashSet;
 import java.util.Set;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.address.testutil.DeliveryBuilder;

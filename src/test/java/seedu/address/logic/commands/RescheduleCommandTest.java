@@ -5,13 +5,20 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.commons.util.DateTimeUtil.formatDeliveryDate;
 import static seedu.address.commons.util.DateTimeUtil.parseDeliveryDate;
-import static seedu.address.logic.commands.CommandTestUtil.*;
+import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY_RESCHEDULE;
+import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB_RESCHEDULE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DELIVERY_TIME_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_START_DATE_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
 import static seedu.address.logic.commands.RescheduleCommand.RescheduleDeliveryDescriptor;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
 import static seedu.address.testutil.TypicalDeliveries.DELIVERY_ELLE;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+
+import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 
@@ -25,8 +32,6 @@ import seedu.address.model.person.Person;
 import seedu.address.testutil.DeliveryBuilder;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.RescheduleDeliveryDescriptorBuilder;
-
-import java.time.LocalDate;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for RescheduleCommand.

@@ -25,9 +25,10 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSucces
 import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_DAY_NUMBER;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.ScheduleCommand;
@@ -158,7 +159,7 @@ public class ScheduleCommandParserTest {
         // start date is after the end date
         LocalDate startDateValue = parseDeliveryDate(VALID_START_DATE_BOB);
         LocalDate endDateValue = startDateValue.plusDays(-5);
-        String endDateDesc =" " + PREFIX_END_DATE + formatDeliveryDate(endDateValue);
+        String endDateDesc = " " + PREFIX_END_DATE + formatDeliveryDate(endDateValue);
 
         assertParseFailure(parser,
                            INDEX_FIRST_PERSON.getOneBased() + START_DATE_DESC_BOB
