@@ -196,21 +196,6 @@ public class ParserUtil {
     }
 
     /**
-     * Parses {@code String numberOfDays} into a {@code NumberOfDays}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code numberOfDays} is invalid.
-     */
-    public static NumberOfDays parseNumberOfDays(String numberOfDays) throws ParseException {
-        requireNonNull(numberOfDays);
-        String trimmedNumberOfDays = numberOfDays.trim();
-        if (!NumberOfDays.isValidNumberOfDays(trimmedNumberOfDays)) {
-            throw new ParseException(NumberOfDays.MESSAGE_CONSTRAINTS);
-        }
-        return new NumberOfDays(trimmedNumberOfDays);
-    }
-
-    /**
      * Returns the {@code EndDate} object when
      * given the {@code startDate} and {@code numberOfDays}.
      *

@@ -3,7 +3,6 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DAYS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NUMBER_OF_DAYS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
@@ -41,7 +40,7 @@ public class ScheduleCommand extends Command {
             + PREFIX_DAYS + "DELIVERY DAYS...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_START_DATE + "2026-10-15 "
-            + PREFIX_NUMBER_OF_DAYS + "5 "
+            + PREFIX_END_DATE + "2026-10-20 "
             + PREFIX_TIME + "12:59 "
             + PREFIX_DAYS + "124";
 
