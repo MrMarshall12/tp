@@ -76,8 +76,6 @@ public class CommandTestUtil {
     public static final String START_DATE_DESC_BOB = " " + PREFIX_START_DATE + VALID_START_DATE_BOB;
     public static final String END_DATE_DESC_AMY = " " + PREFIX_END_DATE + VALID_END_DATE_AMY;
     public static final String END_DATE_DESC_BOB = " " + PREFIX_END_DATE + VALID_END_DATE_BOB;
-    public static final String NUMBER_OF_DAYS_DESC_AMY = " " + PREFIX_NUMBER_OF_DAYS + VALID_NUMBER_OF_DAYS_AMY;
-    public static final String NUMBER_OF_DAYS_DESC_BOB = " " + PREFIX_NUMBER_OF_DAYS + VALID_NUMBER_OF_DAYS_BOB;
     public static final String TIME_DESC_AMY = " " + PREFIX_TIME + VALID_DELIVERY_TIME_AMY;
     public static final String TIME_DESC_BOB = " " + PREFIX_TIME + VALID_DELIVERY_TIME_BOB;
     public static final String DAYS_DESC_AMY = " " + PREFIX_DAYS + VALID_DAYS_AMY;

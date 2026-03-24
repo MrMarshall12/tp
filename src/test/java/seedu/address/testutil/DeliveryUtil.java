@@ -23,23 +23,6 @@ public class DeliveryUtil {
      * Returns the part of command string for the given {@code delivery}'s details.
      */
     public static String getDeliveryDetails(Delivery delivery) {
-        LocalDate startDate = delivery.getStartDate().date;
-        LocalDate endDate = delivery.getEndDate().date;
-        int numberOfDays = (int) ChronoUnit.DAYS.between(startDate, endDate) + 1;
-
-        StringBuilder sb = new StringBuilder();
-        sb.append(PREFIX_START_DATE + delivery.getStartDate().date.toString() + " ");
-        sb.append(PREFIX_NUMBER_OF_DAYS + String.valueOf(numberOfDays) + " ");
-        sb.append(PREFIX_TIME + delivery.getDeliveryTime().time.toString() + " ");
-        sb.append(PREFIX_DAYS + getDeliveryDaysArgument(delivery.getDeliveryDays()) + " ");
-        return sb.toString();
-    }
-
-    /**
-     * Returns the part of command string for the given {@code delivery}'s details.
-     * This is a hotfix until schedule command that takes end date is implemented.
-     */
-    public static String getDeliveryDetailsHotFix(Delivery delivery) {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_START_DATE + delivery.getStartDate().date.toString() + " ");
         sb.append(PREFIX_END_DATE + delivery.getEndDate().date.toString() + " ");

@@ -272,29 +272,6 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseNumberOfDays_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseNumberOfDays((String) null));
-    }
-
-    @Test
-    public void parseNumberOfDays_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseNumberOfDays(INVALID_NUMBER_OF_DAYS));
-    }
-
-    @Test
-    public void parseNumberOfDays_validValueWithoutWhitespace_returnsNumberOfDays() throws ParseException {
-        NumberOfDays expectedNumberOfDays = new NumberOfDays(VALID_NUMBER_OF_DAYS);
-        assertEquals(expectedNumberOfDays, ParserUtil.parseNumberOfDays(VALID_NUMBER_OF_DAYS));
-    }
-
-    @Test
-    public void parseNumberOfDays_validValueWithWhitespace_returnsTrimmedNumberOfDays() throws ParseException {
-        String numberOfDaysWithWhitespace = WHITESPACE + VALID_NUMBER_OF_DAYS + WHITESPACE;
-        NumberOfDays expectedNumberOfDays = new NumberOfDays(VALID_NUMBER_OF_DAYS);
-        assertEquals(expectedNumberOfDays, ParserUtil.parseNumberOfDays(numberOfDaysWithWhitespace));
-    }
-
-    @Test
     public void getEndDate_bothNull_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> ParserUtil.getEndDate(null, null));
     }
