@@ -213,7 +213,7 @@ Format: `expired bf/DATE`
 * Deliveries that end on the exact date specified is **not** considered as expired.
 * Customers without a delivery will not be displayed.
 
-Example:
+Examples:
 * `expired bf/2026-12-21` displays all customers whose deliveries have ended before 21 December 2026.
   ![result for 'expired bf/2026-12-21'](images/findExpiredDelivery.png)
 

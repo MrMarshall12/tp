@@ -44,6 +44,18 @@ public class EndDate {
         return isValidDeliveryDate(test);
     }
 
+    /**
+     * Checks if this end date is before the specified date.
+     *
+     * @param other Date to compare against.
+     * @return {@code true} if end date occurs before the specified date,
+     *         {@code false} otherwise.
+     */
+    public boolean isBefore(LocalDate other) {
+        assert other != null;
+        return date.isBefore(other);
+    }
+
     @Override
     public String toString() {
         return date.toString();
