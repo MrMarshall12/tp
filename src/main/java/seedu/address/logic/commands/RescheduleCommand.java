@@ -106,6 +106,7 @@ public class RescheduleCommand extends Command {
                 personToReschedule.getAddress(), personToReschedule.getTags(), rescheduledDelivery);
     }
 
+    //@@author MrMarshall12
     private Delivery createRescheduledDelivery(Person personToReschedule,
                                                RescheduleDeliveryDescriptor rescheduleDeliveryDescriptor)
             throws CommandException {
@@ -125,6 +126,7 @@ public class RescheduleCommand extends Command {
         Delivery rescheduledDelivery = new Delivery(startDate, endDate, deliveryDays, deliveryTime);
         return rescheduledDelivery;
     }
+    //@@author
 
     @Override
     public boolean equals(Object other) {
