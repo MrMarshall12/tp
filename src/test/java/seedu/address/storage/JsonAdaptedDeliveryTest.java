@@ -2,8 +2,8 @@ package seedu.address.storage;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.address.commons.util.DateTimeUtil.DAY_NUMBER_FORMATTER;
-import static seedu.address.commons.util.DateTimeUtil.DAY_WORD_FORMATTER;
+import static seedu.address.commons.util.DateTimeUtil.FORMATTER_DAY_NUMBER;
+import static seedu.address.commons.util.DateTimeUtil.FORMATTER_DAY_WORD;
 import static seedu.address.logic.commands.CommandTestUtil.UNSORTED_DAYS;
 import static seedu.address.storage.JsonAdaptedDelivery.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -120,8 +120,8 @@ public class JsonAdaptedDeliveryTest {
     public void toModelType_sortedDeliveryDays_returnsDeliveryWithSortedDeliveryDays() throws IllegalValueException {
         List<JsonAdaptedDeliveryDay> unsortedJsonAdaptedDeliveryDays =
                 Arrays.stream(UNSORTED_DAYS.split(""))
-                        .map(day -> DAY_NUMBER_FORMATTER.parse(day))
-                        .map(day -> DAY_WORD_FORMATTER.format(day))
+                        .map(day -> FORMATTER_DAY_NUMBER.parse(day))
+                        .map(day -> FORMATTER_DAY_WORD.format(day))
                         .map(DeliveryDay::toDeliveryDay)
                         .map(JsonAdaptedDeliveryDay::new)
                         .toList();

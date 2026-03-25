@@ -20,7 +20,7 @@ public class DateTimeUtil {
      * where yyyy is the 4-digit year, MM is the 2-digit month number,
      * and dd is the 2-digit date number.
      */
-    public static final DateTimeFormatter DATE_FORMATTER =
+    public static final DateTimeFormatter FORMATTER_DATE =
             DateTimeFormatter.ofPattern("uuuu-MM-dd").withResolverStyle(ResolverStyle.STRICT);
 
     /**
@@ -29,7 +29,7 @@ public class DateTimeUtil {
      * <p>Examples of day number inputs accepted by the formatter: 1, 2.
      * The formatter will only successfully parse numbers in the range 1-7.
      */
-    public static final DateTimeFormatter DAY_NUMBER_FORMATTER =
+    public static final DateTimeFormatter FORMATTER_DAY_NUMBER =
             DateTimeFormatter.ofPattern("e", Locale.UK).withResolverStyle(ResolverStyle.STRICT);
 
     /**
@@ -41,7 +41,7 @@ public class DateTimeUtil {
      * Examples of valid input from the user
      * (after capitalization and lowercasing of some letters): monday, TUESDAY, WEDnesDay.
      */
-    public static final DateTimeFormatter DAY_WORD_FORMATTER =
+    public static final DateTimeFormatter FORMATTER_DAY_WORD =
             DateTimeFormatter.ofPattern("EEEE", Locale.ENGLISH).withResolverStyle(ResolverStyle.STRICT);
 
     /**
@@ -49,7 +49,7 @@ public class DateTimeUtil {
      * where HH is the hour value in the 24-hour format
      * and mm is the minute value.
      */
-    private static final DateTimeFormatter TIME_FORMATTER =
+    private static final DateTimeFormatter FORMATTER_TIME =
             DateTimeFormatter.ofPattern("HH:mm").withResolverStyle(ResolverStyle.STRICT);
 
     /**
@@ -58,7 +58,7 @@ public class DateTimeUtil {
      */
     public static boolean isValidDeliveryDate(String test) {
         try {
-            LocalDate.parse(test, DATE_FORMATTER);
+            LocalDate.parse(test, FORMATTER_DATE);
             return true;
         } catch (DateTimeParseException e) {
             return false;
@@ -73,16 +73,16 @@ public class DateTimeUtil {
      */
     public static LocalDate parseDeliveryDate(String date) throws NullPointerException, DateTimeParseException {
         requireNonNull(date, "delivery date must not be null");
-        return LocalDate.parse(date, DATE_FORMATTER);
+        return LocalDate.parse(date, FORMATTER_DATE);
     }
 
     /**
      * Formats {@code date} into a {@code String}
-     * with the format of {@link #DATE_FORMATTER} and returns it.
+     * with the format of {@link #FORMATTER_DATE} and returns it.
      */
     public static String formatDeliveryDate(LocalDate date) {
         requireNonNull(date, "delivery date must not be null");
-        return DATE_FORMATTER.format(date);
+        return FORMATTER_DATE.format(date);
     }
 
     /**
@@ -98,7 +98,7 @@ public class DateTimeUtil {
 
             String testWithCorrectFormat = test.substring(0, 1).toUpperCase()
                     + test.substring(1).toLowerCase();
-            DayOfWeek.from(DAY_WORD_FORMATTER.parse(testWithCorrectFormat));
+            DayOfWeek.from(FORMATTER_DAY_WORD.parse(testWithCorrectFormat));
             return true;
         } catch (DateTimeParseException e) {
             return false;
@@ -121,7 +121,7 @@ public class DateTimeUtil {
 
         String dayWithCorrectFormat = day.substring(0, 1).toUpperCase()
                 + day.substring(1).toLowerCase();
-        return DayOfWeek.from(DAY_WORD_FORMATTER.parse(dayWithCorrectFormat));
+        return DayOfWeek.from(FORMATTER_DAY_WORD.parse(dayWithCorrectFormat));
     }
 
     /**
@@ -131,7 +131,7 @@ public class DateTimeUtil {
      */
     public static boolean isValidDeliveryDayNumber(String test) {
         try {
-            DayOfWeek.from(DAY_NUMBER_FORMATTER.parse(test));
+            DayOfWeek.from(FORMATTER_DAY_NUMBER.parse(test));
             return true;
         } catch (DateTimeParseException e) {
             return false;
@@ -151,16 +151,16 @@ public class DateTimeUtil {
     public static String convertDayNumberToDayWord(String dayNumber)
             throws NullPointerException, DateTimeParseException {
         requireNonNull(dayNumber, "delivery day number must not be null");
-        DayOfWeek day = DayOfWeek.from(DAY_NUMBER_FORMATTER.parse(dayNumber));
+        DayOfWeek day = DayOfWeek.from(FORMATTER_DAY_NUMBER.parse(dayNumber));
         return day.getDisplayName(TextStyle.FULL, Locale.ENGLISH);
     }
 
     /**
      * Formats {@code day} into a {@code String}
-     * with the format of {@link #DAY_NUMBER_FORMATTER} and returns it.
+     * with the format of {@link #FORMATTER_DAY_NUMBER} and returns it.
      */
     public static String formatDayNumber(DayOfWeek day) {
-        return DAY_NUMBER_FORMATTER.format(day);
+        return FORMATTER_DAY_NUMBER.format(day);
     }
 
     /**
@@ -169,7 +169,7 @@ public class DateTimeUtil {
      */
     public static boolean isValidDeliveryTime(String test) {
         try {
-            LocalTime.parse(test, TIME_FORMATTER);
+            LocalTime.parse(test, FORMATTER_TIME);
             return true;
         } catch (DateTimeParseException e) {
             return false;
@@ -184,6 +184,6 @@ public class DateTimeUtil {
      */
     public static LocalTime parseDeliveryTime(String time) throws NullPointerException, DateTimeParseException {
         requireNonNull(time, "delivery time must not be null");
-        return LocalTime.parse(time, TIME_FORMATTER);
+        return LocalTime.parse(time, FORMATTER_TIME);
     }
 }
