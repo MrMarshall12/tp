@@ -1,9 +1,6 @@
 package seedu.address.storage;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -93,6 +90,7 @@ public class JsonAdaptedDelivery {
                     DeliveryDay.class.getSimpleName()));
         }
 
+        Collections.sort(deliveryDays);
         final Set<DeliveryDay> modelDeliveryDays = new LinkedHashSet<>(deliveryDays);
 
         if (deliveryTime == null) {
