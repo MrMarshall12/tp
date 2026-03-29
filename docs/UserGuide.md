@@ -117,6 +117,7 @@ Displays a help message with a link to access ServeMate's User Guide.
 
 Format: `help`
 
+<br>
 
 ### Adding a customer: `add`
 
@@ -133,11 +134,15 @@ Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
 * `add n/Betsy Crowe t/Halal e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
 
+<br>
+
 ### Listing all customers: `list`
 
 Displays basic information of all customers.
 
 Format: `list`
+
+<br>
 
 ### Editing a customer: `edit`
 
@@ -156,6 +161,8 @@ Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st customer to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd customer to be `Betsy Crower` and clears all existing tags.
 
+<br>
+
 ### Deleting a customer : `delete`
 
 Deletes the specified customer and the delivery associated with them.
@@ -169,6 +176,8 @@ Format: `delete INDEX`
 Examples:
 * `list` followed by `delete 2` deletes the 2nd customer on the list.
 * `find n/Betsy` followed by `delete 1` deletes the 1st customer in the results of the `find` command.
+
+<br>
 
 ### Finding customers by attributes: `find`
 
@@ -192,7 +201,9 @@ Examples:
 * `find n/Alex t/Vegetarian` displays customers whose name is `Alex` *and* tagged with dietary restriction `Vegetarian`.
 * `find n/Bernice a/Yishun Jurong` displays customers whose name is `Bernice` *and* with address containing `Yishun` or `Jurong`.
 * `find n/Alex Bernice a/Yishun t/Vegetarian` displays customers whose name is `Alex` or `Bernice`, with address containing `Yishun` *and* tagged with dietary restriction `Vegetarian`.<br>
-  ![result for 'find n/Alex Bernice a/Yishun t/Vegetarian'](images/findAlexBerniceResult.png)
+  <img src="images/findAlexBerniceResult.png" alt="result for 'find n/Alex Bernice a/Yishun t/Vegetarian'" width="500"/>
+
+<br>
 
 ### Finding deliveries on a given date: `find-delivery`
 
@@ -211,6 +222,8 @@ Examples:
 * `find-delivery dt/2026-04-01` returns all customers with a delivery on Wednesday, 1 April 2026.
 * `find-delivery st/2026-04-01 ed/2026-04-30` returns all customers with a delivery scheduled within April 2026.
 
+<br>
+
 ### Finding customers with expired delivery: `expired`
 
 Finds all customers with deliveries that have expired before the given date.
@@ -224,6 +237,8 @@ Format: `expired bf/DATE`
 Examples:
 * `expired bf/2026-12-21` displays all customers whose deliveries have ended before 21 December 2026.
   ![result for 'expired bf/2026-12-21'](images/findExpiredDelivery.png)
+
+<br>
 
 ### Scheduling a delivery : `schedule`
 
@@ -242,6 +257,8 @@ Examples:
 * `schedule 1 st/2026-02-01 ed/2026-02-02 tm/13:00 d/12` adds a delivery for the 1st customer on the list. The delivery starts on 1 February 2026, ends on 2 February 2026 and occurs at 1 PM on Mondays and Tuesdays.
 * `schedule 4 st/2026-03-11 ed/2026-04-01 tm/15:30 d/246` adds a delivery for the 4th customer on the list. The delivery starts on 11 March 2026, ends on 1 April 2026 and occurs at 3:30 PM on Tuesday, Thursdays and Saturdays.
 
+<br>
+
 ### Unscheduling a delivery : `unschedule`
 
 Deletes the delivery associated with the specified customer.
@@ -257,6 +274,8 @@ Examples:
 * `list` followed by `unschedule 2` deletes the delivery for the 2nd customer on the list.
 * `find n/Bernice` followed by `unschedule 1` deletes the delivery for the 1st customer in the results of the `find` command.
   ![result for 'unschedule 1' after `find n/Bernice`](images/unscheduleBernice.png)
+
+<br>
 
 ### Editing a delivery : `reschedule`
 
@@ -274,6 +293,8 @@ Examples:
 * `reschedule 1 ed/2026-02-02 tm/12:59` Edits the delivery end date and delivery time for the 1st customer to be `2026-02-02` and `12:59` respectively.
 * `reschedule 4 d/25` Edits the delivery days for the 4th customer to be `25` (Tuesday and Friday).
 
+<br>
+
 ### Clearing all entries : `clear`
 
 Deletes **all** customer records and their delivery details (if any). This operation **cannot be undone** and **data cannot be recovered**.
@@ -286,15 +307,21 @@ This action is permanent and cannot be undone. Ensure that you have thoroughly r
 
 Format: `clear`
 
+<br>
+
 ### Exiting the program : `exit`
 
 Exits the program.
 
 Format: `exit`
 
+<br>
+
 ### Saving the data
 
 ServeMate data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+
+<br>
 
 ### Editing the data file
 
@@ -315,8 +342,8 @@ Furthermore, certain edits can cause the ServeMate to behave in unexpected ways 
 **Answer**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous ServeMate home folder.
 <br>
 
-**Question**: Why does the Delivery Panel not automatically update today's date and deliveries when the time passes 12 midnight?<br>
-**Answer**: ServeMate does not automatically refresh the date on the Delivery Panel if the time passes 12 midnight, in case you are still referring to the previous day's deliveries. To refresh the date on the panel, simply close and relaunch ServeMate.
+**Question**: Why does the delivery panel not automatically update today's date and deliveries when the time passes 12 midnight?<br>
+**Answer**: ServeMate does not automatically refresh the date on the delivery panel if the time passes 12 midnight, in case you are still referring to the previous day's deliveries. To refresh the date on the panel, simply close and relaunch ServeMate.
 <br>
 
 **Question**: Why does the `find` command only return customers that matches all filters?<br>
