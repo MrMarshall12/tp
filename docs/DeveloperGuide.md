@@ -313,6 +313,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `ServeMate` and the **Actor** is the `user`, unless specified otherwise)
 
+<br>
+
 **Use case 1: Add a customer**
 
 **MSS**
@@ -343,6 +345,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 1.
 
+<br>
+
 **Use case 2: Delete a customer**
 
 **MSS**
@@ -372,6 +376,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3b1. ServeMate shows an error message indicating that the provided index is invalid and requests for a new command from the user.
 
       Use case resumes at step 3.
+
+<br>
 
 **Use case 3: Edit customer record**
 
@@ -421,6 +427,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 3.
 
+<br>
+
 **Use case 4: Filter customers by attributes**
 
 **MSS**
@@ -451,6 +459,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
+<br>
+
 **Use case 5: View all upcoming deliveries for the day**
 
 **MSS**
@@ -467,6 +477,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. ServeMate displays there are no upcoming deliveries for the day.
 
       Use case ends.
+
+<br>
 
 **Use case 6: Add upcoming delivery for a customer**
 
@@ -516,6 +528,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes from step 4.
 
+<br>
+
 **Use case 7: Delete a delivery associated with a customer**
 
 **MSS**
@@ -551,6 +565,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
+<br>
+
 **Use case 8: Tag customer with delivery note**
 
 **MSS**
@@ -585,6 +601,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   
       Use case resumes at step 3.
 
+<br>
+
 ### Non-Functional Requirements
 
 #### ⚙️ Technical
@@ -613,6 +631,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 #### 📖 Documentation
 1. The Developer Guide and User Guide should be PDF-friendly (e.g. no expandable panels, embedded videos, animated GIFs, etc.).
 2. The Developer Guide and User Guide should have a maximum size of 15MB each, when downloaded as PDF files.
+
+<br>
 
 ### Glossary
 
