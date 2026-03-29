@@ -450,16 +450,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to view all upcoming deliveries for the day
-2. ServeMate shows a list of all upcoming deliveries for the day
+1. User launches application to view all upcoming deliveries for the day.
+2. ServeMate displays a list of all upcoming deliveries for the day, ordered from earliest to latest delivery time.
 
    Use case ends.
 
 **Extensions**
 
-* 1a. ServeMate is unable to find any upcoming deliveries.
+* 1a. ServeMate detects there are no deliveries scheduled for the day.
 
-    * 1a1. ServeMate shows an empty result list.
+    * 1a1. ServeMate displays there are no upcoming deliveries for the day.
 
       Use case ends.
 
