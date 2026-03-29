@@ -333,3 +333,8 @@ If you like to find customers matching any of the filters (e.g. find all custome
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
+
+------------------------------------------------------------------------------------------------------------------
+## Coming soon
+1. **Integrated `find` command:** Finding specific deliveries will be easier and more convenient! We plan to combine the `find-delivery` and `find` commands, so that you can search for both delivery details (e.g. dates) and customer details (e.g. address) all at once.
+2. **Refresh delivery panel:** Currently, you need to relaunch ServeMate to view deliveries scheduled for the new day. Soon, you will be able to refresh the delivery panel whenever needed to view deliveries scheduled on the current day without relaunching ServeMate.
