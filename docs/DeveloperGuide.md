@@ -289,15 +289,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | user          | edit customer's data                                    | correct any mistakes or changes to customer data to keep information accuracy                        |
 | `* *`    | user          | schedule a delivery                                     | track deliveries that need to be made                                                                |
 | `* *`    | user          | unschedule a delivery                                   | remove cancelled delivery                                                                            |
-| `* *`    | familiar user | display all upcoming deliveries                         | inform delivery drivers on their delivery points and plan production                                 |
+| `* *`    | familiar user | display all upcoming deliveries for the day             | prepare the food and plan for the deliveries                                                         |
 | `* *`    | familiar user | create a delivery route                                 | inform delivery drivers on their delivery route                                                      |
 | `* *`    | familiar user | reorder stops within a delivery route                   | ensures deliveries follow an efficient sequence                                                      |
 | `* *`    | familiar user | tag each customer with delivery notes                   | inform drivers about specific instructions with regards to delivery                                  |
-| `* *`    | busy user     | search for a customer by name, phone number, or address | quickly locate customer details when handling customer enquiries                                     |
+| `* *`    | busy user     | search for a customer by name, address or tags          | quickly locate customer details                                                                      |
 | `*`      | expert user   | set estimated time of delivery for a customer           | ensure all customers have their food delivered on time                                               |
 | `*`      | expert user   | set delivery status for a customer                      | keep track of deliveries that have been made and cancelled                                           |
 | `*`      | expert user   | track customers' subscription expiry date               | check how many customers have their subscription close to the expiration date and gently remind them |
-| `*`      | expert user   | track customers' subscription payment                   | know when I received their payements                                                                 |
+| `*`      | expert user   | track customers' subscription payment                   | know when I received their payments                                                                  |
 | `*`      | expert user   | tag each customer by their food preference              | inform the cooks to prepare food that aligns with the customers' food preference                     |
 | `*`      | expert user   | mass copy emails and contact numbers to clipboard       | mass email and message customer about upcoming promotions                                            |
 | `*`      | expert user   | view free time slots                                    | schedule new deliveries for new customers                                                            |
