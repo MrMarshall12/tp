@@ -9,7 +9,9 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Logger;
 
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -28,6 +30,8 @@ import seedu.address.model.tag.Tag;
  * displayed index from the address book.
  */
 public class ScheduleCommand extends Command {
+
+    private static final Logger logger = LogsCenter.getLogger(ScheduleCommand.class);
 
     public static final String COMMAND_WORD = "schedule";
 
@@ -72,11 +76,15 @@ public class ScheduleCommand extends Command {
         Person personToSchedule = lastShownList.get(targetIndex.getZeroBased());
 
         if (personToSchedule.hasDelivery()) {
+            logger.info("Customer to be scheduled " + personToSchedule
+                                + " already has a delivery object");
             throw new CommandException(String.format(MESSAGE_PERSON_HAS_SCHEDULE,
                     Messages.formatDeliveryFromPerson(personToSchedule)));
         }
 
         Person personWithDelivery = addDeliveryToPerson(personToSchedule, toSchedule);
+
+        logger.fine("Customer created: " + personWithDelivery);
 
         assert personWithDelivery.hasDelivery();
 
