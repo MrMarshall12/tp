@@ -76,8 +76,6 @@ public class ScheduleCommand extends Command {
         Person personToSchedule = lastShownList.get(targetIndex.getZeroBased());
 
         if (personToSchedule.hasDelivery()) {
-            logger.info("Customer to be scheduled " + personToSchedule
-                                + " already has a delivery object");
             throw new CommandException(String.format(MESSAGE_PERSON_HAS_SCHEDULE,
                     Messages.formatDeliveryFromPerson(personToSchedule)));
         }
