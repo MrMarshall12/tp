@@ -7,7 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 
 import java.util.Collections;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -210,7 +210,7 @@ public class RescheduleCommand extends Command {
          * @param deliveryDays A set of delivery days to be set.
          */
         public void setDeliveryDays(Set<DeliveryDay> deliveryDays) {
-            this.deliveryDays = (deliveryDays != null) ? new HashSet<>(deliveryDays) : null;
+            this.deliveryDays = (deliveryDays != null) ? new LinkedHashSet<>(deliveryDays) : null;
         }
 
         /**
