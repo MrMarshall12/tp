@@ -527,9 +527,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3e. A delivery to the same customer already exists.
 
-    * 3e1. ServeMate removes the delivery already added to the customer from the customer's details.
+    * 3e1. ServeMate shows an error message describing that the customer already has a delivery scheduled and requests for a new command from the user.
 
-      Use case resumes from step 4.
+      Use case resumes from step 3.
 
 **Use case 7: Delete a delivery associated with a customer**
 
