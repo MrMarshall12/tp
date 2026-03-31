@@ -24,6 +24,7 @@
 
 ### AI Generated Work
 * Gemini was used to generate the ServeMate icon for the application and GUI window.
+* GitHub Copilot was used to aid with the GUI programming.
 
 --------------------------------------------------------------------------------------------------------------------
 
