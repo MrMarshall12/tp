@@ -644,6 +644,35 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   
       Use case resumes at step 3.
 
+**Use case 10: Find expired deliveries**
+
+**MSS**
+
+1. User requests to find all customers whose deliveries have ended before a specific date.
+2. ServeMate displays the list of all matching customers.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. ServeMate detects an error in the command format.
+
+    * 1a1. ServeMate displays an error message describing the correct command format.
+
+      Use case resumes at step 1.
+
+* 1b. ServeMate detects that the provided date is invalid. 
+
+    * 1b1. ServeMate displays an error message describing that the date given is invalid.
+
+      Use case resumes at step 1.
+
+* 1c. No customers have deliveries which end before the specified date.
+
+    * 1c1. ServeMate displays an empty result list.
+
+      Use case ends.
+
 ### Non-Functional Requirements
 
 #### ⚙️ Technical
