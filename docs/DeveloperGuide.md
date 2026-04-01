@@ -16,7 +16,7 @@
 ### Original Source
 * This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
 
-### Inspiration
+### Other Sources
 * Displaying of delivery information under each person card was inspired by [SoCTAssist](https://github.com/AY2526S1-CS2103T-W11-1/tp).
 
 ### Libraries Used
