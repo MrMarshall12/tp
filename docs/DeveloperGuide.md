@@ -217,6 +217,30 @@ The following sequence diagram illustrates the interactions within the `Logic` c
         * Pros: Simpler parsing logic.
         * Cons: Less useful for staff who need to view deliveries over a multi-day period.
 
+### Find customers with expired delivery
+
+**Objective:** Allows administrative staff to track subscriptions that have ended and facilitate renewals.
+
+#### Implementation Details
+The following sequence diagram illustrates the interactions within the `Logic` component for finding customers with an expired delivery:
+
+<box type="info" seamless>
+
+**Note:** The lifeline for `ExpiredCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of the diagram. Additionally, another limitation of PlantUML is that a dotted line cannot be shown from the UML note.
+</box>
+
+<puml src="diagrams/ExpiredSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `expired bf/2026-02-01` Command">
+
+**Execution flow:**
+1. The user enters the `expired` command as an input string.
+2. `LogicManager` receives the input string and passes it to `AddressBookParser`.
+3. `AddressBookParser` creates an `ExpiredCommandParser` to parse the command arguments.
+4. `ExpiredCommandParser` parses the arguments and creates a `PersonHasExpiredDeliveryPredicate` object.
+5. `ExpiredCommandParser` uses the `PersonHasExpiredDeliveryPredicate` to create an `ExpiredCommand` object.
+6. `LogicManager` executes the `ExpiredCommand` object.
+7. `ExpiredCommand` requests `Model` to filter the customer list based on the given `PersonHasExpiredDeliveryPredicate`.
+8. `ExpiredCommand` completes and returns the result of the `expired` command.
+
 ### Schedule delivery
 
 **Objective:** Allows administrative staff to add a delivery to be associated with the specified customer.
@@ -231,7 +255,7 @@ The following sequence diagram illustrates the interactions within the `Logic` c
 
 <puml src="diagrams/ScheduleSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `schedule 1 st/2026-01-01 ed/2026-02-01 tm/14:00 d/123` Command">
 
-**Execution flows:**
+**Execution flow:**
 1. The user enters the `schedule` command as an input string.
 2. `LogicManager` receives the input string and passes it to `AddressBookParser`.
 3. `AddressBookParser` creates a `ScheduleCommandParser` to parse the command arguments.
