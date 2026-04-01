@@ -99,7 +99,11 @@ Action | Command Format (with Examples)
 * Dates are in `yyyy-MM-dd` format, where `yyyy` is the 4-digit year, `MM` is the 2-digit month, and `dd` is the 2-digit day.<br>
   e.g. 9th March 2026 can be written has `2026-03-09`.
 
-* Tags (`t/[TAG]`) are intended for use in placing delivery notes for a particular customer in any way the user sees fit as long as the inputted tags consists of alphanumerical values without whitespaces. Suggested usages are for denoting dietary restrictions of the customer (i.e. `t/Vegetarian`) or the region where the customer lives (`t/West`).
+* Tags (`t/[TAG]`) are intended for use in placing delivery notes for a particular customer in any way the user sees fit.
+  * They should only consist of alphanumerical values without whitespaces.
+  * Suggested usages:
+    * Dietary restrictions of the customer (i.e. `t/Vegetarian`).
+    * The region where the customer lives (`t/West`).
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </box>
