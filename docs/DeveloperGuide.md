@@ -370,9 +370,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to add a customer contact with required fields 
-2. ServeMate adds the customer into the customer list 
-3. ServeMate shows a success message with the added customer’s details
+1. User requests to add a customer contact with required fields.
+2. ServeMate adds the customer into the customer list.
+3. ServeMate shows a success message with the added customer’s details.
 
     Use case ends.
 
@@ -384,7 +384,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 1.
 
-* 1b. ServeMate detects an invalid parameter value.
+* 1b. ServeMate detects an invalid field value.
 
     * 1b1. ServeMate shows an error message describing the violated constraint.
 
@@ -400,11 +400,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to list customers 
-2. ServeMate shows a list of customers 
-3. User requests to delete a customer in the list 
-4. ServeMate deletes the customer
-5. ServeMate shows a success message with the deleted customer’s details
+1. User requests to list customers.
+2. ServeMate shows a list of customers.
+3. User requests to delete a customer in the list.
+4. ServeMate deletes the customer.
+5. ServeMate shows a success message with the deleted customer’s details.
 
     Use case ends.
 
@@ -430,11 +430,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to list customers
-2. ServeMate shows a list of customers
-3. User requests to edit a customer in the list
-4. ServeMate updates the customer record
-5. ServeMate shows a success message with the updated customer’s details
+1. User requests to list customers.
+2. ServeMate shows a list of customers.
+3. User requests to edit a customer in the list.
+4. ServeMate updates the customer record.
+5. ServeMate shows a success message with the updated customer’s details.
 
    Use case ends.
 
@@ -462,7 +462,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 3.
 
-* 3d. ServeMate detects an invalid field value.
+* 3d. ServeMate detects that an invalid field is provided.
 
     * 3d1. ServeMate shows an error message describing the violated constraint.
 
