@@ -24,6 +24,7 @@
 
 ### AI Generated Work
 * Gemini was used to generate the ServeMate icon for the application and GUI window.
+* ChatGPT was used to generate code implementation for custom date formatter `FORMATTER_DATE`.
 * GitHub Copilot was used to aid with the GUI programming.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -177,6 +178,38 @@ This section describes some noteworthy details on how certain features are imple
 ### Find customer by attribute
 
 ### Find delivery by date
+
+**Objective:** Allows administrative staff to filter the customer list to show only customers with deliveries scheduled on a specified date, or within a specified date range.
+
+#### Implementation details
+The following sequence diagram illustrates the interactions within the `Logic` component for finding deliveries by date:
+
+<box type="info" seamless>
+
+**Note:** The lifeline for `FindDeliveryCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of diagram.
+</box>
+
+<puml src="diagrams/FindDeliverySequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `find-delivery dt/2026-04-01` Command" />
+
+**Execution flow:**
+1. The user enters the `find-delivery` command with either a single date (`dt/`) or a date range (`st/` and `ed/`).
+2. `LogicManager` receives the input string and passes it to `AddressBookParser`.
+3. `AddressBookParser` creates a `FindDeliveryCommandParser` to parse the command arguments.
+4. `FindDeliveryCommandParser` parses the date prefix(es) and constructs a `DeliveryDatePredicate` that encapsulates the search criteria.
+5. `FindDeliveryCommandParser` creates a `FindDeliveryCommand` with the predicate and returns it.
+6. `LogicManager` executes the `FindDeliveryCommand`.
+7. `FindDeliveryCommand` calls `Model#updateFilteredPersonList(predicate)` to filter the customer list.
+8. `FindDeliveryCommand` completes and returns a `CommandResult` indicating how many customers were listed.
+
+#### Design considerations
+
+1. How `find-delivery` accepts date input.
+    * **Chosen:** Support both a single date (`dt/`) and a date range (`st/` and `ed/`), but not both at the same time.
+        * Pros: Flexible; covers the common case of checking a single day as well as planning for a longer window.
+        * Cons: Parser must validate that the two modes are mutually exclusive, adding some complexity.
+    * **Alternative:** Accept only a single date.
+        * Pros: Simpler parsing logic.
+        * Cons: Less useful for staff who need to view deliveries over a multi-day period.
 
 ### Schedule delivery
 
@@ -472,8 +505,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to view all upcoming deliveries for the day
-2. ServeMate shows a list of all upcoming deliveries for the day
+1. User requests to view all upcoming deliveries for the day.
+2. ServeMate shows a list of all upcoming deliveries for the day.
 
    Use case ends.
 
@@ -489,11 +522,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to list customers
-2. ServeMate shows a list of customers
-3. User requests to add a new upcoming delivery for a customer with required fields
-4. ServeMate adds the upcoming delivery to the customer's details
-5. ServeMate shows a success message with the added upcoming delivery's details
+1. User requests to list customers.
+2. ServeMate shows a list of customers.
+3. User requests to add a new upcoming delivery for a customer with required fields.
+4. ServeMate adds the upcoming delivery to the customer's details.
+5. ServeMate shows a success message with the added upcoming delivery's details.
 
    Use case ends.
 
@@ -503,35 +536,35 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-* 3a. The given index is not a positive integer.
+* 3a. ServeMate detects that the given index is not a positive integer.
 
-    * 3a1. ServeMate shows an error message describing the correct command format and requests for a new command from the user.
-
-      Use case resumes at step 3.
-
-* 3b. The given index is out of range.
-
-    * 3b1. ServeMate shows an error message indicating that the provided index is invalid and requests for a new command from the user.
+    * 3a1. ServeMate shows an error message describing the correct command format.
 
       Use case resumes at step 3.
 
-* 3c. Any required field is missing.
+* 3b. ServeMate detects that the given index is out of range.
 
-    * 3c1. ServeMate shows an error message describing the correct command format and requests for a new command from the user.
+    * 3b1. ServeMate shows an error message indicating that the provided index is invalid.
+
+      Use case resumes at step 3.
+
+* 3c. ServeMate detects that there is a required field is missing.
+
+    * 3c1. ServeMate shows an error message describing the correct command format.
 
       Use case resumes from step 3.
 
-* 3d. Any parameter value is invalid.
+* 3d. ServeMate detects that a parameter value is invalid.
 
-    * 3d1. ServeMate shows an error message describing the violated constraint and requests for a new command from the user.
+    * 3d1. ServeMate shows an error message describing the violated constraint.
 
       Use case resumes from step 3.
 
-* 3e. A delivery to the same customer already exists.
+* 3e. ServeMate detects that a delivery to the same customer already exists.
 
-    * 3e1. ServeMate removes the delivery already added to the customer from the customer's details.
+    * 3e1. ServeMate shows an error message describing that the customer already has a delivery scheduled.
 
-      Use case resumes from step 4.
+      Use case resumes from step 3.
 
 **Use case 7: Edit delivery details belonging to a customer**
 
@@ -580,11 +613,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to list customers
-2. ServeMate shows a list of customers
-3. User requests to delete a customer's delivery
-4. ServeMate deletes the delivery associated with the specified customer
-5. ServeMate shows a confirmation message that includes the customer's name and details of the deleted delivery
+1. User requests to list customers.
+2. ServeMate shows a list of customers.
+3. User requests to delete a customer's delivery.
+4. ServeMate deletes the delivery associated with the specified customer.
+5. ServeMate shows a success message that includes the customer's name and details of the deleted delivery.
    Use case ends.
 
 **Extensions**
@@ -593,19 +626,19 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-* 3a. The given index is not a positive integer.
+* 3a. ServeMate detects that the given index is not a positive integer.
 
   * 3a1. ServeMate shows an error message describing the correct command format.
 
     Use case resumes at step 3.
 
-* 3b. The given index is out of range.
+* 3b. ServeMate detects that the given index is out of range.
 
   * 3b1. ServeMate shows an error message describing that the index provided is invalid.
 
     Use case resumes at step 3.
 
-* 3c. The customer at the given index does not have a delivery.
+* 3c. ServeMate detects that the customer at the given index does not have a delivery.
 
   * 3c1. ServeMate shows an error message describing that the specified customer does not have an existing delivery.
 
@@ -615,11 +648,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to list customers
-2. ServeMate shows a list of customers
-3. User requests to tag a customer in the list with a delivery note
-4. ServeMate tags the customer in the customer record with the delivery note
-5. ServeMate shows a success message with the updated customer's details including the delivery note
+1. User requests to list customers.
+2. ServeMate shows a list of customers.
+3. User requests to tag a customer in the list with a delivery note.
+4. ServeMate tags the customer in the customer record with the delivery note.
+5. ServeMate shows a success message with the updated customer's details including the delivery note.
 
 **Extensions**
 
@@ -627,21 +660,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-* 3a. The given index is not a positive integer.
+* 3a. ServeMate detects that the given index is not a positive integer.
 
-    * 3a1. ServeMate shows an error message describing the correct command format and requests for a new command from the user.
-
-      Use case resumes at step 3.
-
-* 3b. The given index is out of range.
-
-    * 3b1. ServeMate shows an error message describing that the index value given is invalid and requests for a new command from the user.
+    * 3a1. ServeMate shows an error message describing the correct command format.
 
       Use case resumes at step 3.
 
-* 3c. The given delivery note is empty.
+* 3b. ServeMate detects that the given index is out of range.
 
-    * 3c1. ServeMate shows an error message describing that the delivery note is missing and requests for a new command from the user.
+    * 3b1. ServeMate shows an error message describing that the index value given is invalid.
+
+      Use case resumes at step 3.
+
+* 3c. ServeMate detects that the given delivery note is empty.
+
+    * 3c1. ServeMate shows an error message describing that the delivery note is missing.
   
       Use case resumes at step 3.
 

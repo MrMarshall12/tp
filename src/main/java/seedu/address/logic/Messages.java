@@ -16,8 +16,8 @@ public class Messages {
     public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command.\n"
             + "Type 'help' to view the user guide for a list of available commands.";
     public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Invalid command format! \n%1$s";
-    public static final String MESSAGE_INVALID_PERSON_DISPLAYED_INDEX = "The person index provided is invalid!";
-    public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
+    public static final String MESSAGE_INVALID_PERSON_DISPLAYED_INDEX = "The customer index provided is invalid!";
+    public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d customers listed!";
     public static final String MESSAGE_DUPLICATE_FIELDS =
                 "Multiple values specified for the following single-valued field(s): ";
 
@@ -36,6 +36,7 @@ public class Messages {
     /**
      * Formats the given {@code person} for display to the user.
      * The person's delivery, if any, is not returned.
+     * <p>Assumes that the person to format is not null.
      *
      * @param person The person to format.
      * @return String representation of the person's information.
@@ -60,6 +61,8 @@ public class Messages {
      * Formats the {@code person}'s delivery for display to the user.
      * If the person has no delivery, only the person's name is returned.
      * Otherwise, both the person's name and delivery are returned.
+     * <p>Assumes that the person whose delivery is to be formatted
+     * is not null.
      *
      * @param person The person whose delivery is to be formatted.
      * @return String representation of the person's name and, if
