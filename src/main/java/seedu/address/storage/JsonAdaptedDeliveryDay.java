@@ -18,7 +18,7 @@ public class JsonAdaptedDeliveryDay {
     /**
      * Constructs a {@code JsonAdaptedDeliveryDay} with the given {@code dayOfWeek}.
      *
-     * @param dayOfWeek The day of the week for the delivery day, must not be null.
+     * @param dayOfWeek The day of the week for the delivery day must not be null.
      */
     @JsonCreator
     public JsonAdaptedDeliveryDay(String dayOfWeek) {
