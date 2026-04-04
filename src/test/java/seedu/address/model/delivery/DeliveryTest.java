@@ -16,8 +16,8 @@ import static seedu.address.testutil.DeliveryUtil.generateEndDate;
 import static seedu.address.testutil.TypicalDeliveries.DELIVERY_ALICE;
 import static seedu.address.testutil.TypicalDeliveries.DELIVERY_CARL;
 
+import java.util.LinkedHashSet;
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
@@ -30,7 +30,7 @@ public class DeliveryTest {
         StartDate startDate = new StartDate(VALID_START_DATE_BOB);
         EndDate endDate = generateEndDate(startDate, -5);
         DeliveryTime deliveryTime = new DeliveryTime(VALID_DELIVERY_TIME_BOB);
-        Set<DeliveryDay> deliveryDaySet = new HashSet<>();
+        Set<DeliveryDay> deliveryDaySet = new LinkedHashSet<>();
         deliveryDaySet.add(toDeliveryDay(VALID_DELIVERY_DAY));
         assertThrows(IllegalArgumentException.class, () ->
                 new Delivery(startDate, endDate, deliveryDaySet, deliveryTime));
