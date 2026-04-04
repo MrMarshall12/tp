@@ -16,7 +16,8 @@ import static seedu.address.testutil.DeliveryUtil.generateEndDate;
 import static seedu.address.testutil.TypicalDeliveries.DELIVERY_ALICE;
 import static seedu.address.testutil.TypicalDeliveries.DELIVERY_CARL;
 
-import java.util.HashSet;
+import java.time.LocalDate;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
@@ -29,7 +30,7 @@ public class DeliveryTest {
         StartDate startDate = new StartDate(VALID_START_DATE_BOB);
         EndDate endDate = generateEndDate(startDate, -5);
         DeliveryTime deliveryTime = new DeliveryTime(VALID_DELIVERY_TIME_BOB);
-        Set<DeliveryDay> deliveryDaySet = new HashSet<>();
+        Set<DeliveryDay> deliveryDaySet = new LinkedHashSet<>();
         deliveryDaySet.add(toDeliveryDay(VALID_DELIVERY_DAY));
         assertThrows(IllegalArgumentException.class, () ->
                 new Delivery(startDate, endDate, deliveryDaySet, deliveryTime));
@@ -58,7 +59,7 @@ public class DeliveryTest {
     }
 
     @Test
-    public void getFormattedDeliverySchedule_validDelivery_returnsDeliverySchedule() {
+    public void getFormattedDeliverySchedule_returnsDeliverySchedule() {
         assertEquals(DELIVERY_ALICE.getStartDate()
                         + " to " + DELIVERY_ALICE.getEndDate()
                         + "  |  " + DELIVERY_ALICE.getDeliveryTime(),
@@ -66,39 +67,82 @@ public class DeliveryTest {
     }
 
     @Test
+    public void hasExpired_deliveryExpired_returnsTrue() {
+        Delivery delivery = new DeliveryBuilder()
+                .withStartDate("2024-03-01")
+                .withEndDate("2024-04-01")
+                .build();
+
+        // Boundary value: delivery expired one day ago
+        LocalDate beforeDate = LocalDate.of(2024, 4, 2);
+        assertTrue(delivery.hasExpired(beforeDate));
+
+        // Equivalence partition for expired delivery
+        beforeDate = LocalDate.of(2026, 3, 27);
+        assertTrue(delivery.hasExpired(beforeDate));
+    }
+
+    @Test
+    public void hasExpired_deliveryNotExpired_returnsFalse() {
+        Delivery delivery = new DeliveryBuilder()
+                .withStartDate("2023-03-01")
+                .withEndDate("2023-04-01")
+                .build();
+
+        // Boundary value: delivery expires today
+        LocalDate beforeDate = LocalDate.of(2023, 4, 1);
+        assertFalse(delivery.hasExpired(beforeDate));
+
+        // Near boundary value: delivery expires in two days
+        beforeDate = LocalDate.of(2023, 3, 31);
+        assertFalse(delivery.hasExpired(beforeDate));
+
+        // Equivalence partition where specified date is between start and end dates of delivery
+        // Specified date is still before the end date of delivery
+        beforeDate = LocalDate.of(2023, 3, 27);
+        assertFalse(delivery.hasExpired(beforeDate));
+
+        // Equivalence partition where specified date is before delivery's start date
+        beforeDate = LocalDate.of(2023, 2, 27);
+        assertFalse(delivery.hasExpired(beforeDate));
+    }
+
+    //@@author BenedTj
+    @Test
     public void equals() {
-        // same values -> returns true
+        // EP: same values -> returns true
         Delivery deliveryOneCopy = new DeliveryBuilder(DELIVERY_ALICE).build();
         assertTrue(DELIVERY_ALICE.equals(deliveryOneCopy));
 
-        // same object -> returns true
+        // EP: same object -> returns true
         assertTrue(DELIVERY_ALICE.equals(DELIVERY_ALICE));
 
-        // null -> returns false
+        // EP: null -> returns false
         assertFalse(DELIVERY_ALICE.equals(null));
 
-        // different type -> returns false
+        // EP: different type -> returns false
         assertFalse(DELIVERY_ALICE.equals(5));
 
-        // different delivery -> returns false
+        // EP: different delivery -> returns false
         assertFalse(DELIVERY_ALICE.equals(DELIVERY_CARL));
 
-        // different start date -> returns false
+        // EP: different start date -> returns false
         Delivery editedDeliveryOne = new DeliveryBuilder(DELIVERY_ALICE).withStartDate(VALID_START_DATE_AMY).build();
         assertFalse(DELIVERY_ALICE.equals(editedDeliveryOne));
 
-        // different end date -> returns false
+        // EP: different end date -> returns false
         Delivery editedDeliveryTwo = new DeliveryBuilder(DELIVERY_CARL).withEndDate(VALID_END_DATE_AMY).build();
         assertFalse(DELIVERY_CARL.equals(editedDeliveryTwo));
 
-        // different delivery time -> returns false
+        // EP: different delivery time -> returns false
         editedDeliveryTwo = new DeliveryBuilder(DELIVERY_CARL).withDeliveryTime(VALID_DELIVERY_TIME_AMY).build();
         assertFalse(DELIVERY_CARL.equals(editedDeliveryTwo));
 
-        // different delivery days -> returns false
+        // EP: different delivery days -> returns false
         editedDeliveryOne = new DeliveryBuilder(DELIVERY_ALICE).withDeliveryDays(VALID_DELIVERY_DAY).build();
         assertFalse(DELIVERY_ALICE.equals(editedDeliveryOne));
     }
+    //@@author
 
     @Test
     public void toStringMethod() {
