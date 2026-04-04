@@ -22,38 +22,38 @@ public class SampleDataUtilTest {
 
     @Test
     void getTagSet_validTags_hasSameTags() {
-        // non-empty set
+        // EP: non-empty set
         Tag vegetarianTag = new Tag(VALID_TAG_VEGETARIAN);
         Tag halalTag = new Tag(VALID_TAG_HALAL);
         assertEquals(Set.of(vegetarianTag, halalTag),
                 getTagSet(VALID_TAG_VEGETARIAN, VALID_TAG_HALAL));
 
-        // duplicate items are removed from set
+        // EP: duplicate items are not included in set
         assertEquals(Set.of(vegetarianTag),
                 getTagSet(VALID_TAG_VEGETARIAN, VALID_TAG_VEGETARIAN));
 
-        // empty set
+        // EP: empty set
         assertEquals(Set.<Tag>of(), getTagSet());
     }
 
     @Test
     public void getTagSet_invalidTags_throwsIllegalArgumentException() {
-        // empty tag
+        // EP: empty tag
         String emptyTagName = "";
         assertThrows(IllegalArgumentException.class, () -> getTagSet(emptyTagName));
 
-        // non-alphanumeric tag
-        String nonAlphanumericTagName = "(foodie)";
+        // EP: non-alphanumeric tag
+        String nonAlphanumericTagName = "(Halal)";
         assertThrows(IllegalArgumentException.class, () -> getTagSet(nonAlphanumericTagName));
 
-        // one invalid tag with many valid tags
+        // EP: mix of valid and invalid tags
         assertThrows(IllegalArgumentException.class, () -> getTagSet(
                 VALID_TAG_VEGETARIAN, VALID_TAG_HALAL, nonAlphanumericTagName));
     }
 
     @Test
     void getDeliveryDaySet_validDeliveryDay_hasSameDeliveryDays() {
-        // non-empty set
+        // EP: non-empty set
         String mondayString = "Monday";
         String tuesdayString = "TueSDAy";
         DeliveryDay monday = toDeliveryDay(mondayString);
@@ -61,25 +61,25 @@ public class SampleDataUtilTest {
         assertEquals(Set.of(monday, tuesday),
                 getDeliveryDaySet(mondayString, tuesdayString));
 
-        // duplicate items are removed from set
+        // EP: duplicate items are not included in set
         assertEquals(Set.of(monday),
                 getDeliveryDaySet(mondayString, mondayString));
 
-        // empty set
+        // EP: empty set
         assertEquals(Set.<DeliveryDay>of(), getDeliveryDaySet());
     }
 
     @Test
     public void getDeliveryDaySet_invalidDeliveryDay_throwsIllegalArgumentException() {
-        // empty delivery day
+        // EP: empty delivery day
         String emptyDeliveryDayString = "";
         assertThrows(IllegalArgumentException.class, () -> getDeliveryDaySet(emptyDeliveryDayString));
 
-        // wrong format for delivery day
+        // EP: wrong format for delivery day
         String invalidDeliveryDayString = "Mon";
         assertThrows(IllegalArgumentException.class, () -> getDeliveryDaySet(invalidDeliveryDayString));
 
-        // one invalid delivery day with many valid delivery days
+        // EP: one invalid delivery day with many valid delivery days
         String mondayString = "Monday";
         String tuesdayString = "TueSDAy";
         assertThrows(IllegalArgumentException.class, () -> getDeliveryDaySet(

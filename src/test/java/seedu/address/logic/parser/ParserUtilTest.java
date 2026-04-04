@@ -43,7 +43,7 @@ public class ParserUtilTest {
     private static final String VALID_ADDRESS = "123 Main Street #0505";
     private static final String VALID_EMAIL = "rachel@example.com";
     private static final String VALID_TAG_1 = "Vegan";
-    private static final String VALID_TAG_2 = "South";
+    private static final String VALID_TAG_2 = "NoEgg";
 
     private static final String INVALID_START_DATE = "12-11-2012";
     private static final String INVALID_END_DATE = "12-13-2012";
