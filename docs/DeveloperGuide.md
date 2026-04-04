@@ -226,7 +226,7 @@ The following sequence diagram illustrates the interactions within the `Logic` c
 **Note:** The lifeline for `ScheduleCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of the diagram. Additionally, another limitation of PlantUML is that a dotted line cannot be shown from the UML note.
 </box>
 
-<puml src="diagrams/ScheduleSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `schedule 1 st/2026-01-01 ed/2026-02-01 tm/14:00 d/123` Command">
+<puml src="diagrams/ScheduleSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `schedule 1 st/2026-01-01 ed/2026-02-01 tm/14:00 d/123` Command" />
 
 **Execution flows:**
 1. The user enters the `schedule` command as an input string.
@@ -378,8 +378,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | user          | reschedule a delivery                                | correct any mistakes or changes to delivery data belongs to a particular customer to keep information accuracy |
 | `* *`    | user          | unschedule a delivery                                | remove cancelled delivery                                                                                      |
 | `* *`    | familiar user | display all upcoming deliveries                      | inform delivery drivers on their delivery points and plan production                                           |
-| `*`      | familiar user | track customers' subscription expiry date            | check how many customers have their subscription close to the expiration date and gently remind them           |
-| `*`      | familiar user | tag each customer by their food preference           | inform the cooks to prepare food that aligns with the customers' food preference                               |
+| `* *`    | familiar user | track customers' subscription expiry date            | check how many customers have their subscription close to the expiration date and gently remind them           |
+| `* *`    | familiar user | tag each customer by their food preference           | inform the cooks to prepare food that aligns with the customers' food preference                               |
 | `*`      | familiar user | create a delivery route                              | inform delivery drivers on their delivery route                                                                |
 | `*`      | busy user     | search for a customer by name, address, or tag       | quickly locate customer details when handling customer enquiries                                               |
 | `*`      | expert user   | reorder stops within a delivery route                | ensures deliveries follow an efficient sequence                                                                |
