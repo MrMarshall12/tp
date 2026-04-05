@@ -50,6 +50,13 @@ public class Person {
     /**
      * Every field must be present and not null.
      * This constructor should be used when delivery is not null.
+     *
+     * @param name Name of the person. Must not be null.
+     * @param phone Phone number of the person. Must not be null.
+     * @param email Email of the person. Must not be null.
+     * @param address Address of the person. Must not be null.
+     * @param tags Set of tags associated with the person. Must not be null.
+     * @param delivery Delivery of the person. Can be null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Delivery delivery) {
         requireAllNonNull(name, phone, email, address, tags);

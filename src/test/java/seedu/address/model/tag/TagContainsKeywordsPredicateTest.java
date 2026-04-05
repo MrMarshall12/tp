@@ -38,13 +38,14 @@ public class TagContainsKeywordsPredicateTest {
         assertFalse(firstPredicate.equals(secondPredicate));
     }
 
+    // EP: At least one matching keyword
     @Test
     public void test_tagContainsKeywords_returnsTrue() {
-        // One keyword
+        // Boundary case: One keyword
         TagContainsKeywordsPredicate predicate = new TagContainsKeywordsPredicate(Collections.singletonList("central"));
         assertTrue(predicate.test(new PersonBuilder().withTags("Central").build()));
 
-        // Multiple keywords match
+        // Duplicate keywords, all match.
         predicate = new TagContainsKeywordsPredicate(Arrays.asList("central", "central"));
         assertTrue(predicate.test(new PersonBuilder().withTags("central").build()));
 
@@ -56,7 +57,11 @@ public class TagContainsKeywordsPredicateTest {
         predicate = new TagContainsKeywordsPredicate(Arrays.asList("CenTraL", "NOrtH"));
         assertTrue(predicate.test(new PersonBuilder().withTags("Central").build()));
 
-        // Test Multiple Tags
+        // Person with multiple tags
+        // Boundary case: Multiple keywords, all match.
+        predicate = new TagContainsKeywordsPredicate(Arrays.asList("central", "vegetarian"));
+        assertTrue(predicate.test(new PersonBuilder().withTags("central", "vegetarian").build()));
+
         // Only one matching keyword
         predicate = new TagContainsKeywordsPredicate(Arrays.asList("Central", "east"));
         assertTrue(predicate.test(new PersonBuilder().withTags("Central", "North").build()));
@@ -66,9 +71,10 @@ public class TagContainsKeywordsPredicateTest {
         assertTrue(predicate.test(new PersonBuilder().withTags("Central", "North").build()));
     }
 
+    // EP: No matching keyword
     @Test
     public void test_tagDoesNotContainKeywords_returnsFalse() {
-        // Zero keywords
+        // Boundary value: Zero keywords
         TagContainsKeywordsPredicate predicate = new TagContainsKeywordsPredicate(Collections.emptyList());
         assertFalse(predicate.test(new PersonBuilder().withTags("Central").build()));
 
@@ -80,15 +86,21 @@ public class TagContainsKeywordsPredicateTest {
         predicate = new TagContainsKeywordsPredicate(Arrays.asList("central", "north"));
         assertFalse(predicate.test(new PersonBuilder().withTags("centralnorth").build()));
 
-        // Keywords match phone, email, name and address, but does not match tag
+        // Keywords match phone, email, name and address, but does not match tag.
         predicate = new TagContainsKeywordsPredicate(
                 Arrays.asList("12345", "alice@email.com", "Alice", "Orchard", "North"));
         assertFalse(predicate.test(new PersonBuilder().withName("Alice").withPhone("12345")
                 .withEmail("alice@email.com").withAddress("238 Orchard Boulevard, Singapore 237973")
                 .withTags("Central").build()));
 
-        // Test Multiple Tags
-        // No matching keywords
+        // Person with multiple tags, no matching keyword.
+        // Test inputs causing predicate.test() to return false individually, before combining them.
+        predicate = new TagContainsKeywordsPredicate(Arrays.asList("west"));
+        assertFalse(predicate.test(new PersonBuilder().withTags("Central", "North").build()));
+
+        predicate = new TagContainsKeywordsPredicate(Arrays.asList("east"));
+        assertFalse(predicate.test(new PersonBuilder().withTags("Central", "North").build()));
+
         predicate = new TagContainsKeywordsPredicate(Arrays.asList("west", "east"));
         assertFalse(predicate.test(new PersonBuilder().withTags("Central", "North").build()));
     }

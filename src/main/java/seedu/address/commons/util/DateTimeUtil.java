@@ -63,8 +63,12 @@ public class DateTimeUtil {
             DateTimeFormatter.ofPattern("HH:mm").withResolverStyle(ResolverStyle.STRICT);
 
     /**
-     * Returns true if a given string is a valid delivery date
-     * in the valid format.
+     * Returns {@code true} if a given string is a valid delivery date
+     * in the valid format and {@code false} otherwise.
+     *
+     * @param test The given string to be verified
+     *             whether it is a valid delivery date.
+     * @return Boolean signifying whether the string is a valid delivery date.
      */
     public static boolean isValidDeliveryDate(String test) {
         try {
@@ -78,10 +82,11 @@ public class DateTimeUtil {
     /**
      * Parses {@code date} into a {@code LocalDate} and returns it.
      *
-     * @throws NullPointerException If the argument passed is null.
-     * @throws DateTimeParseException If the argument passed is an invalid delivery date value.
+     * @param date The string that is attempted to be parsed into LocalDate.
+     *             It should not be null or an invalid delivery date.
+     * @return LocalDate object representing the parsed date.
      */
-    public static LocalDate parseDeliveryDate(String date) throws NullPointerException, DateTimeParseException {
+    public static LocalDate parseDeliveryDate(String date) {
         requireNonNull(date, "delivery date must not be null");
         return LocalDate.parse(date, FORMATTER_DATE);
     }
@@ -89,6 +94,10 @@ public class DateTimeUtil {
     /**
      * Formats {@code date} into a {@code String}
      * with the format of {@link #FORMATTER_DATE} and returns it.
+     *
+     * @param date The LocalDate object to be formatted into a string.
+     *             It should not be null.
+     * @return String that is the formatted version of the date.
      */
     public static String formatDeliveryDate(LocalDate date) {
         requireNonNull(date, "delivery date must not be null");
@@ -96,8 +105,13 @@ public class DateTimeUtil {
     }
 
     /**
-     * Returns true if a given string is a valid
-     * day of the week in the valid format.
+     * Returns {@code true} if a given string is a valid
+     * day of the week in the valid format and {@code false} otherwise.
+     *
+     * @param test The given string to be verified
+     *             whether it is a valid delivery day word.
+     * @return Boolean signifying whether the string
+     *         is a valid delivery day word.
      */
     public static boolean isValidDeliveryDayWord(String test) {
         try {
@@ -118,12 +132,13 @@ public class DateTimeUtil {
     /**
      * Parses {@code day} into a {@code DayOfWeek} and returns it.
      *
-     * @throws NullPointerException If the argument passed is null.
-     * @throws DateTimeParseException If the argument passed is an invalid delivery day word value.
-     * @throws IllegalArgumentException If an empty string is passed as the argument.
+     * @param day The string to be parsed into DayOfWeek.
+     *            It should not be null, an empty string
+     *            or an invalid delivery day word.
+     * @return DayOfWeek object representing
+     *         the parsed day word value.
      */
-    public static DayOfWeek parseDeliveryDayWord(String day)
-            throws NullPointerException, DateTimeParseException, IllegalArgumentException {
+    public static DayOfWeek parseDeliveryDayWord(String day) {
         requireNonNull(day, "delivery day word must not be null");
         if (day.isEmpty()) {
             throw new IllegalArgumentException();
@@ -135,9 +150,14 @@ public class DateTimeUtil {
     }
 
     /**
-     * Returns true if a given string is a valid
-     * number representing the day of the week.
+     * Returns {@code true} if a given string is a valid number
+     * representing the day of the week and {@code false} otherwise.
      * It should only accept numbers 1-7.
+     *
+     * @param test The given string to be verified
+     *             whether it is a valid delivery day number.
+     * @return Boolean signifying whether the string
+     *         is a valid delivery day number.
      */
     public static boolean isValidDeliveryDayNumber(String test) {
         try {
@@ -154,12 +174,10 @@ public class DateTimeUtil {
      * Output examples: Monday, Tuesday, Thursday.
      *
      * @param dayNumber The number representing the day of the week as a string.
+     *                  It should not be null or an invalid delivery day number.
      * @return The full word that represents the day of the week.
-     * @throws NullPointerException If the argument passed is null.
-     * @throws DateTimeParseException If the argument passed is an invalid delivery day number value.
      */
-    public static String convertDayNumberToDayWord(String dayNumber)
-            throws NullPointerException, DateTimeParseException {
+    public static String convertDayNumberToDayWord(String dayNumber) {
         requireNonNull(dayNumber, "delivery day number must not be null");
         DayOfWeek day = DayOfWeek.from(FORMATTER_DAY_NUMBER.parse(dayNumber));
         return day.getDisplayName(TextStyle.FULL, Locale.ENGLISH);
@@ -168,14 +186,24 @@ public class DateTimeUtil {
     /**
      * Formats {@code day} into a {@code String}
      * with the format of {@link #FORMATTER_DAY_NUMBER} and returns it.
+     *
+     * @param day The DayOfWeek object to be formatted into a string.
+     *            It should not be null.
+     * @return String that is the formatted version of the day number value.
      */
     public static String formatDayNumber(DayOfWeek day) {
+        requireNonNull(day, "delivery day must not be null");
         return FORMATTER_DAY_NUMBER.format(day);
     }
 
     /**
-     * Returns true if a given string is a valid time
-     * in the valid format.
+     * Returns {@code true} if a given string is a valid time
+     * in the valid format and {@code false} otherwise.
+     *
+     * @param test The given string to be verified
+     *             whether it is a valid delivery time.
+     * @return Boolean signifying whether the string
+     *         is a valid delivery time.
      */
     public static boolean isValidDeliveryTime(String test) {
         try {
@@ -189,17 +217,26 @@ public class DateTimeUtil {
     /**
      * Parses {@code time} into a {@code LocalTime} and returns it.
      *
-     * @throws NullPointerException If the argument passed is null.
-     * @throws DateTimeParseException If the argument passed is an invalid delivery time value.
+     * @param time The string attempted to be parsed into LocalTime.
+     *             It should not be null or an invalid delivery time.
+     * @return LocalTime object representing the parsed time value.
      */
-    public static LocalTime parseDeliveryTime(String time) throws NullPointerException, DateTimeParseException {
+    public static LocalTime parseDeliveryTime(String time) {
         requireNonNull(time, "delivery time must not be null");
         return LocalTime.parse(time, FORMATTER_TIME);
     }
 
     /**
-     * Returns true if the date range is valid
-     * ({@code startDate} is not after {@code endDate}).
+     * Returns {@code true} if the date range is valid
+     * ({@code startDate} is not after {@code endDate})
+     * and {@code false} otherwise.
+     *
+     * @param startDate The LocalDate object representing
+     *                  the start date.
+     * @param endDate The LocalDate object representing
+     *                the end date.
+     * @return Boolean representing whether the start date
+     *         is not after the end date.
      */
     public static boolean isValidDeliveryDateRange(LocalDate startDate, LocalDate endDate) {
         return !startDate.isAfter(endDate);

@@ -29,6 +29,7 @@ public class EndDate {
      * Constructs a {@code EndDate}.
      *
      * @param date A valid date string in the valid format.
+     *             It must not be null.
      */
     public EndDate(String date) {
         requireNonNull(date);
@@ -37,8 +38,13 @@ public class EndDate {
     }
 
     /**
-     * Returns true if a given string is a valid
-     * end date in the valid format.
+     * Returns {@code true} if a given string is a valid
+     * end date in the valid format and {@code false} otherwise.
+     *
+     * @param test The raw string to be checked whether
+     *             it is a valid end date.
+     * @return Boolean whether the given string {@code test}
+     *         is a valid end date.
      */
     public static boolean isValidEndDate(String test) {
         return isValidDeliveryDate(test);

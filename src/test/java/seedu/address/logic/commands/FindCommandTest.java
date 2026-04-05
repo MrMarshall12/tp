@@ -61,6 +61,8 @@ public class FindCommandTest {
         assertFalse(findFirstCommand.equals(findSecondCommand));
     }
 
+    // EP: Zero keywords in filters
+    // Boundary value: no keywords
     @Test
     public void execute_zeroKeywords_allPersonsFound() {
         PersonMatchesFilterPredicate predicate = new PersonMatchesFilterPredicate(
@@ -75,6 +77,8 @@ public class FindCommandTest {
         assertEquals(getTypicalPersons(), model.getFilteredPersonList());
     }
 
+    // Below test cases, test non-empty keyword lists, at least once.
+    // EP: Non-empty list for: keywordsForName
     @Test
     public void execute_multipleNameKeywords_multiplePersonsFound() {
         PersonMatchesFilterPredicate predicate = new PersonMatchesFilterPredicate(
@@ -89,6 +93,7 @@ public class FindCommandTest {
         assertEquals(Arrays.asList(CARL, ELLE, FIONA), model.getFilteredPersonList());
     }
 
+    // EP: Non-empty list for: keywordsForAddress
     @Test
     public void execute_multipleAddressKeywords_multiplePersonsFound() {
         PersonMatchesFilterPredicate predicate = new PersonMatchesFilterPredicate(
@@ -104,10 +109,11 @@ public class FindCommandTest {
     }
 
     //@@author elijah-ng
+    // EP: Non-empty list for: keywordsForTag
     @Test
     public void execute_multipleTagKeywords_multiplePersonsFound() {
         PersonMatchesFilterPredicate predicate = new PersonMatchesFilterPredicate(
-                Collections.emptyList(), Collections.emptyList(), Arrays.asList("West", "Halal"));
+                Collections.emptyList(), Collections.emptyList(), Arrays.asList("west", "halal"));
         FindCommand command = new FindCommand(predicate);
 
         expectedModel.updateFilteredPersonList(predicate);
@@ -119,6 +125,7 @@ public class FindCommandTest {
     }
     //@@author
 
+    // EP: Non-empty lists for: keywordsForTag, keywordsForAddress
     @Test
     public void execute_multipleFiltersAndKeywords_personFound() {
         PersonMatchesFilterPredicate predicate = new PersonMatchesFilterPredicate(
@@ -134,10 +141,11 @@ public class FindCommandTest {
     }
 
     //@@author elijah-ng
+    // EP: All non-empty lists
     @Test
     public void execute_allFiltersAndMixedCaseKeywords_personFound() {
         PersonMatchesFilterPredicate predicate = new PersonMatchesFilterPredicate(
-                Arrays.asList("dAnieL"), Arrays.asList("strEEt"), Arrays.asList("hAlAL"));
+                Arrays.asList("dAnieL"), Arrays.asList("strEEt"), Arrays.asList("HAlal"));
         FindCommand command = new FindCommand(predicate);
 
         expectedModel.updateFilteredPersonList(predicate);
@@ -158,5 +166,4 @@ public class FindCommandTest {
         String expected = FindCommand.class.getCanonicalName() + "{predicate=" + predicate + "}";
         assertEquals(expected, findCommand.toString());
     }
-
 }

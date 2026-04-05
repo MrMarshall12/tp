@@ -30,6 +30,7 @@ public class StartDate {
      * Constructs a {@code StartDate}.
      *
      * @param date A valid date string in the valid format.
+     *             It must not be null.
      */
     public StartDate(String date) {
         requireNonNull(date);
@@ -38,8 +39,13 @@ public class StartDate {
     }
 
     /**
-     * Returns true if a given string is a valid
-     * start date in the valid format.
+     * Returns {@code true} if a given string is a valid
+     * start date in the valid format and {@code false} otherwise.
+     *
+     * @param test The raw string to be checked whether
+     *             it is a valid start date.
+     * @return Boolean whether the given string {@code test}
+     *         is a valid start date.
      */
     public static boolean isValidStartDate(String test) {
         return isValidDeliveryDate(test);

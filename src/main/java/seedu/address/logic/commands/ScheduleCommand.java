@@ -53,6 +53,9 @@ public class ScheduleCommand extends Command {
     /**
      * Creates a ScheduleCommand to add the specified {@code Delivery}
      * to the Person object found at the specified index of the address book.
+     *
+     * @param targetIndex The Index object used in the command.
+     * @param delivery The Delivery object to be scheduled.
      */
     public ScheduleCommand(Index targetIndex, Delivery delivery) {
         requireNonNull(delivery);
@@ -89,6 +92,10 @@ public class ScheduleCommand extends Command {
     /**
      * Creates and returns a new {@code Person} with the details of
      * {@code personToSchedule} but having {@code toSchedule} as their delivery.
+     *
+     * @param personToSchedule The Person object on whom to schedule the delivery.
+     * @param toSchedule The Delivery object to schedule on personToSchedule.
+     * @return The Person object with the scheduled delivery toSchedule.
      */
     private static Person addDeliveryToPerson(Person personToSchedule, Delivery toSchedule) {
         assert personToSchedule != null;
