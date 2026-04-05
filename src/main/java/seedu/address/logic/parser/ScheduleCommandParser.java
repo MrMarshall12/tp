@@ -30,7 +30,11 @@ public class ScheduleCommandParser implements Parser<ScheduleCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the ScheduleCommand
      * and returns a ScheduleCommand object for execution.
-     * @throws ParseException if the user input does not confirm the expected format.
+     *
+     * @param args The arguments specified after the schedule command word.
+     * @return The constructed {@code ScheduleCommand} object
+     *         parsed from the arguments.
+     * @throws ParseException If the user input does not confirm the expected format.
      */
     public ScheduleCommand parse(String args) throws ParseException {
         requireNonNull(args);

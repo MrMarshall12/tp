@@ -23,6 +23,7 @@ public class DeliveryTime implements Comparable<DeliveryTime> {
      * Constructs a {@code DeliveryTime}.
      *
      * @param time A valid time string in the valid format.
+     *             It must not be null.
      */
     public DeliveryTime(String time) {
         requireNonNull(time);
@@ -31,8 +32,10 @@ public class DeliveryTime implements Comparable<DeliveryTime> {
     }
 
     /**
-     * Returns true if a given string is a valid time
-     * in the valid format.
+     * Returns {@code true} if a given string is a valid time
+     * in the valid format and {@code false} otherwise.
+     *
+     * @param test The raw string
      */
     public static boolean isValidDeliveryTime(String test) {
         return DateTimeUtil.isValidDeliveryTime(test);

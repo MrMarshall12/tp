@@ -29,6 +29,15 @@ public class Delivery {
 
     /**
      * Every field must be present and not null.
+     *
+     * @param startDate The StartDate object representing
+     *                  the start date of the delivery.
+     * @param endDate The EndDate object representing
+     *                the end date of the delivery.
+     * @param deliveryDays The set of DeliveryDay objects
+     *                     representing the days to deliver.
+     * @param deliveryTime The DeliveryTime object representing
+     *                     the time of delivery.
      */
     public Delivery(StartDate startDate,
                     EndDate endDate,
@@ -43,8 +52,14 @@ public class Delivery {
     }
 
     /**
-     * Returns true if the given date range is valid
-     * ({@code startDate} is not after {@code endDate}).
+     * Returns {@code true} if the given date range is valid
+     * ({@code startDate} is not after {@code endDate})
+     * and {@code false} otherwise.
+     *
+     * @param startDate The StartDate object representing the start date.
+     * @param endDate The EndDate object representing the end date.
+     * @return The boolean representing whether the date range
+     *         given by startDate and endDate is valid.
      */
     public static boolean isValidDateRange(StartDate startDate, EndDate endDate) {
         return isValidDeliveryDateRange(startDate.date, endDate.date);

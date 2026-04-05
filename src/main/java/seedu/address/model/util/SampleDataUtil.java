@@ -97,6 +97,10 @@ public class SampleDataUtil {
 
     /**
      * Returns a deliveryDay set containing the list of strings given.
+     *
+     * @param strings The strings that should be parsed
+     *                to a set of delivery days.
+     * @return The set of DeliveryDay objects parsed from the strings.
      */
     public static Set<DeliveryDay> getDeliveryDaySet(String... strings) {
         return Arrays.stream(strings)
