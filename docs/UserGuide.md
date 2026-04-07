@@ -19,29 +19,42 @@ This is where **ServeMate** comes in.
 
 ## Quick start
 
-1. Ensure that Java `17` or later installed on your computer. <br>
-If Java is not installed, follow the installation guide for your operating system:
-   * **Windows:** [Java installation guide for Windows](https://se-education.org/guides/tutorials/javaInstallationWindows.html).
-   * **Mac:** [Java installation guide for Mac](https://se-education.org/guides/tutorials/javaInstallationMac.html).
-   * **Linux:** [Java installation guide for Linux](https://se-education.org/guides/tutorials/javaInstallationLinux.html).
+Welcome to **ServeMate**, the mate that helps you serve faster. Follow these simple steps to start using ServeMate today!
 
-1. Download the latest `.jar` file from [here](https://github.com/AY2526S2-CS2103T-W14-2/tp/releases).
+1. ServeMate needs a helper program called **Java 17** to run.<br>
+   * If you do not have Java installed or are unsure, follow the installation guide for your computer:
+     * **For Windows users:** [Java installation guide for Windows](https://se-education.org/guides/tutorials/javaInstallationWindows.html#java-17-installation-guide-for-windows-users).
+     * **For Mac users:** [Java installation guide for Mac](https://se-education.org/guides/tutorials/javaInstallationMac.html#java-17-installation-guide-for-mac-users).
+     * **For Linux users:** [Java installation guide for Linux](https://se-education.org/guides/tutorials/javaInstallationLinux.html#java-17-installation-guide-for-linux-users).
+2. Download the latest `ServeMate.jar` file from [this link](https://github.com/AY2526S2-CS2103T-W14-2/tp/releases).
+3. Move `ServeMate.jar` to a folder that is easily accessible for you.
+4. Launch ServeMate.
+   * **For Windows users:**
+     1. Open the folder where you saved `ServeMate.jar`.
+     2. Click on the **address bar** at the top (where the folder name is), type `cmd` and press **Enter**.
+     3. A window should pop up. On this window, type `java -jar ServeMate.jar` and press **Enter**.
+   * **For Mac users:**
+     1. Open a Finder window, then navigate to the folder where you saved `ServeMate.jar`.
+     2. If there is no **path bar** at the bottom of the Finder window, click **View** in the top menu bar and select **Show Path Bar**.
+     3. Right-click the folder name at the very end of **path bar** and select **Open in Terminal**.
+     4. A window should pop up. On this window, type `java -jar ServeMate.jar` and press **Return**.
+   * **For Linux users:**
+     1. Right-click the folder where you saved `ServeMate.jar`.
+     2. Select **Open in Terminal**.
+     3. A window should pop up. On this window, type `java -jar ServeMate.jar` and press **Enter**.
+5. The ServeMate window should appear in a few seconds. You are now ready to use ServeMate!
 
-1. Copy the file to the folder you want to use as the _home folder_ for ServeMate.
+--------------------------------------------------------------------------------------------------------------------
 
-1. Open a command terminal and run the application using:
-   ```shell
-   cd [home-folder]
-   java -jar ServeMate.jar
-   ```
-   
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.
-   <br>![UI](images/Ui.png)
-   <!-- @@author elijah-ng -->
+## Dashboard layout
 
-   * The customer panel on the left allows you to view customer information, including their full delivery details.
-   * The delivery panel on the right allows you to view today's deliveries. It provides a quick reference to view deliveries scheduled for the current day, from earliest to latest delivery time.
-   * You can adjust the width of the panels by left-clicking and dragging the divider between them.
+The ServeMate window should look like the image below. Notice how the app contains some sample data.
+<br>![UI](images/Ui.png)
+<!-- @@author elijah-ng -->
+
+* The customer panel on the left allows you to view customer information, including their full delivery details.
+* The delivery panel on the right allows you to view today's deliveries. It provides a quick reference to view deliveries scheduled for the current day, from earliest to latest delivery time.
+* You can adjust the width of the panels by left-clicking and dragging the divider between them.
     
 <box type="info" light>
 
@@ -49,47 +62,102 @@ If Java is not installed, follow the installation guide for your operating syste
 </box>
 <!-- @@author -->
 
-1. You are now ready to use ServeMate!
-
 --------------------------------------------------------------------------------------------------------------------
 
-## Tutorial
+## Step-by-step tutorial
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
+Meet Mdm Tan, an experienced administrative staff at a Tingkat catering business. Let's see how she handles her morning rush with ease using **ServeMate**!
 
-   * `list` : Lists all contacts.
+### Listing all customer records
+Before the day starts, Mdm Tan wants to check the full list of customers.
+<br><br>
+She types the `list` command into the command box at the top, and the customer panel on the left is updated:
+<br>![Tutorial for List Command](images/Tutorial-ListCommand.png)
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to ServeMate.
+### Welcoming a new customer
+The phone rings. It's Bryan Wong from Paya Lebar who wants to start a Tingkat service for his family. He requests for his meals to not contain eggs.
+<br><br>
+As Bryan provides his contact details, Mdm Tan quickly types the **add** command:
+```text
+add n/Bryan Wong p/86422468 a/25 Paya Lebar Crescent, S536050 e/wongbryan87@gmail.com t/NoEgg
+```
+<br>
 
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
+Bryan appears instantly in the customer panel on the left, and becomes the 7th customer on the list:
+<br>![Tutorial for Add Command](images/Tutorial-AddCommand.png)
+<br><br>
+Now that Bryan has finally paid for his two-month Tingkat plan every day from 7 April 2026, Mdm Tan starts to schedule his recurring delivery at 5pm:
+```text
+schedule 7 st/2026-04-07 ed/2026-06-07 d/1234567 tm/17:00
+```
+<br>
 
-   * `clear` : Deletes all contacts.
+<box type="info" light>
 
-   * `exit` : Exits the app.
+**Note:** The examples provided in this tutorial use **7 April 2026** as today's date. To see Bob’s name appear in the delivery panel, ensure that `st/` (start date) is today, and `ed/` (end date) is 2 months later.
+</box>
+<br>
 
-1. Refer to the [Features](#features) below for details of each command.
+Since Bryan’s Tingkat plan starts today, his delivery will also be added to the delivery panel on the right:
+<br>![Tutorial for Schedule Command](images/Tutorial-ScheduleCommand.png)
+
+### Handling customer feedback
+An hour later, Mdm Tan receives a Whatsapp message. This time, it is Irfan from Tampines who is complaining about yesterday's meal being too oily.
+<br><br>
+Instead of slowly scrolling through the entire list of customers, Mdm Tan uses the `find` command to locate Irfan's contact:
+```text
+find n/Irfan a/Tampines
+```
+<br>
+
+The customer panel will display a filtered list containing all customers with the name `Irfan` and address in `Tampines`:
+<br>![Tutorial for Find Command](images/Tutorial-FindCommand.png)
+<br><br>
+Next, Mdm Tan uses the `edit` command to update Irfan's tags to reflect his preference for less oily food:
+```text
+edit 1 t/Halal t/LessOil
+```
+<br>
+
+<box type="warning" light>
+
+**Warning:** When you use the `edit` command to add new tags to a customer, ServeMate will **replace** all old tags. Always include the original tags (e.g. `Halal`) in your command if you want to keep them!
+</box>
+<br>
+
+Mdm Tan checks that Irfan's record is updated correctly:
+<br>![Tutorial for Edit Command](images/Tutorial-EditCommand.png)
+<br>
+
+<box type="success" light>
+
+**Congrats!** You are now ready to use ServeMate for your daily tasks.
+</box>
+
+### What's next
+
+You can refer to the [Features](#features) section below to look up details on a specific command.
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
 
-Action | Command Format (with Examples)
------------------|-------------------------------------------------------------------------------------------------
-**Getting help** | `help`
-**Add customer** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…`<br><br>Example:<br>`add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/Halal t/NoEgg`
-**List all customers** | `list`
-**Edit customer** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…`<br><br>Example:<br>`edit 2 n/James Lee e/jameslee@example.com`
-**Delete customer** | `delete INDEX`<br><br>Example:<br>`delete 3`
-**Find customers by attribute** | `find [n/NAME_KEYWORDS...] [a/ADDRESS_KEYWORDS...] [t/TAG_KEYWORDS...]`<br><br>Example:<br>`find n/James Jake a/Jurong`
-**Find customers with delivery on date** | `find-delivery dt/DATE`<br><br>Example:<br>`find-delivery dt/2026-10-22`
-**Find customers with delivery within date range** | `find-delivery st/START_DATE ed/END_DATE`<br><br>Example:<br>`find-delivery st/2026-10-27 ed/2026-11-10`
-**Find customers with expired delivery** | `expired bf/DATE`<br><br>Example:<br>`expired bf/2026-12-22`
-**Schedule delivery** | `schedule INDEX st/START_DATE ed/END_DATE tm/DELIVERY_TIME d/DELIVERY_DAYS`<br><br>Example:<br>`schedule 3 st/2026-04-09 ed/2026-04-21 tm/16:00 d/12367`
-**Reschedule delivery** | `reschedule INDEX [st/START_DATE] [ed/END_DATE] [tm/DELIVERY_TIME] [d/DELIVERY_DAYS]`<br><br>Example:<br>`reschedule 3 ed/2026-04-21 tm/16:00`
-**Unschedule delivery** | `unschedule INDEX`<br><br>Example:<br>`unschedule 3`
-**Clear all entries** | `clear`
-**Exit program** | `exit`
+| Action                                             | Command Format (with Examples)                                                                                                                                          |
+|----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Getting help**                                   | `help`                                                                                                                                                                  |
+| **Add customer**                                   | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…`<br><br>Example:<br>`add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/Halal t/NoEgg` |
+| **List all customers**                             | `list`                                                                                                                                                                  |
+| **Edit customer**                                  | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…`<br><br>Example:<br>`edit 2 n/James Lee e/jameslee@example.com`                                    |
+| **Delete customer**                                | `delete INDEX`<br><br>Example:<br>`delete 3`                                                                                                                            |
+| **Find customers by attribute**                    | `find [n/NAME_KEYWORDS...] [a/ADDRESS_KEYWORDS...] [t/TAG_KEYWORDS...]`<br><br>Example:<br>`find n/James Jake a/Jurong`                                                 |
+| **Find customers with delivery on date**           | `find-delivery dt/DATE`<br><br>Example:<br>`find-delivery dt/2026-10-22`                                                                                                |
+| **Find customers with delivery within date range** | `find-delivery st/START_DATE ed/END_DATE`<br><br>Example:<br>`find-delivery st/2026-10-27 ed/2026-11-10`                                                                |
+| **Find customers with expired delivery**           | `expired bf/DATE`<br><br>Example:<br>`expired bf/2026-12-22`                                                                                                            |
+| **Schedule delivery**                              | `schedule INDEX st/START_DATE ed/END_DATE tm/DELIVERY_TIME d/DELIVERY_DAYS`<br><br>Example:<br>`schedule 3 st/2026-04-09 ed/2026-04-21 tm/16:00 d/12367`                |
+| **Reschedule delivery**                            | `reschedule INDEX [st/START_DATE] [ed/END_DATE] [tm/DELIVERY_TIME] [d/DELIVERY_DAYS]`<br><br>Example:<br>`reschedule 3 ed/2026-04-21 tm/16:00`                          |
+| **Unschedule delivery**                            | `unschedule INDEX`<br><br>Example:<br>`unschedule 3`                                                                                                                    |
+| **Clear all entries**                              | `clear`                                                                                                                                                                 |
+| **Exit program**                                   | `exit`                                                                                                                                                                  |
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -385,7 +453,7 @@ If you like to find customers matching any of the filters (e.g. find all custome
 
 ## Known issues
 
-1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
+1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the ServeMate window will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 <box type="warning" light>
 
 **Warning:**
