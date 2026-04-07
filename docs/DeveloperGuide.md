@@ -391,6 +391,7 @@ The following sequence diagram illustrates the interactions within the `Logic` c
     * **Alternative:** Name the command as `cancel`.
       * Pros: Familiar word that users are unlikely to mistype.
       * Cons: Ambiguous, since `cancel` could refer to cancelling of a payment made for the delivery instead.
+2. How `unschedule` removes the delivery from a customer.
     * **Chosen:** Implement a dedicated `unschedule` command.
       * Pros: One-shot command that enables users to easily remove the delivery of the specified customer.
       * Cons: Requires implementing a new command class.
@@ -806,7 +807,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User requests to find all customers whose deliveries have ended before a specific date.
-2. ServeMate displays the list of all matching customers.
+2. ServeMate displays the list of all matching customers on the customer panel.
 
    Use case ends.
 
@@ -826,7 +827,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1c. No customers have deliveries which end before the specified date.
 
-    * 1c1. ServeMate displays an empty result list.
+    * 1c1. ServeMate displays an empty customer list on the customer panel.
 
       Use case ends.
 
@@ -844,7 +845,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 #### 💻 Portability
 1. The application should support any _mainstream OS_ with Java `17` or higher.
 2. The application should be packaged into a single JAR file or a single zip file, with a maximum size of 100MB.
-3. The application should function as a standalone product that does not require additional user installations.
+3. The application should function as a standalone product that does not require additional user installations other than Java.
 
 #### ⌨️ Usability
 1. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
