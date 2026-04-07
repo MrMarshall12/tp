@@ -58,7 +58,7 @@ The ServeMate window should look like the image below. Notice how the app alread
 
 <box type="info" light>
 
-**Note:** The date shown on the delivery panel is based on your computer's date setting. If you find today's date is incorrectly reflected, check that your computer's date is correct, then close and relaunch ServeMate.
+**Note:** The date shown in the delivery panel is based on your computer's date setting. If you find today's date is incorrectly reflected, check that your computer's date is correct, then close and relaunch ServeMate.
 </box>
 <!-- @@author -->
 
