@@ -105,7 +105,7 @@ Since Bryan’s Tingkat plan starts today, his delivery will also be added to th
 <br>![Tutorial for Schedule Command](images/Tutorial-ScheduleCommand.png)
 
 ### Handling customer feedback
-An hour later, Mdm Tan receives a Whatsapp message. This time, it is Irfan from Tampines who is complaining about yesterday's meal being too oily.
+An hour later, Mdm Tan receives a Whatsapp message. This time, it is Irfan from Tampines who complains about yesterday's meal being too oily.
 <br><br>
 Instead of slowly scrolling through the entire list of customers, Mdm Tan uses the `find` command to locate Irfan's contact:
 ```text
