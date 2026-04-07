@@ -68,7 +68,6 @@ public class EditCommand extends Command {
         this.editPersonDescriptor = new EditPersonDescriptor(editPersonDescriptor);
     }
 
-    //@@author
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -89,7 +88,6 @@ public class EditCommand extends Command {
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.formatPerson(editedPerson)));
     }
-    //@@author
 
     /**
      * Creates and returns a {@code Person} with the details of {@code personToEdit}
