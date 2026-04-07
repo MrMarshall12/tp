@@ -417,7 +417,7 @@ The following sequence diagram illustrates the interactions within the `Logic` c
 
 #### Target user profile
 
-* handle the **planning and administration of deliveries** for administrative staff of a single plan Tingkat caterer
+* handle the **planning and administration of deliveries** for administrative staff of a Tingkat caterer
 * has a need to **manage a significant number** of customers
 * prefer **desktop apps** over other types
 * can **type fast**
@@ -866,16 +866,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Glossary
 
-* **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **Tingkat Delivery**: Subscription-based home-cooked meal delivery service commonly found in Singapore.
-* **Tingkat Package**: The food catering package, ordered for a set number of days, usually 5, 10, or 20 days.
-* **Command Line Interface (CLI)**: A text-based user interface used to interact with software by typing commands.
-* **Graphical User Interface (GUI)**: A visual interface that allows users to interact with the application through graphical elements like buttons, windows, and icons.
 * **Customer**: A person who subscribes to the Tingkat delivery service.
 * **Delivery Rider/Driver**: A person who delivers meals to customers.
 * **Tingkat Administrative Staff**: A person who manages the Tingkat delivery service.
 * **Delivery Route**: A sequence of stops planned for delivering meals to customers.
-* **Subscription**: A predefined plan for meal delivery over a specific period (e.g., 5, 10, or 20 days).
+* **Mainstream OS**: Windows, Linux, Unix, MacOS
+* **Tingkat Delivery**: Subscription-based home-cooked meal delivery service commonly found in Singapore.
+* **Tingkat Package**: The food catering package, ordered from a predefined start date to an end date.
+* **Command Line Interface (CLI)**: A text-based user interface used to interact with software by typing commands.
+* **Graphical User Interface (GUI)**: A visual interface that allows users to interact with the application through graphical elements like buttons, windows, and icons.
+* **Subscription**: A predefined plan for meal delivery within a period from start date to end date.
 * **Command**: A user input that triggers a specific action in the application (e.g., `add`, `delete`, `list`).
 * **JavaScript Object Notation (JSON)**: A file format for storing and transmitting data as human-readable text.
 * **Java Archive (JAR)**: A file format that can be used to compress and bundle multiple files associated with a Java application into a single file for ease of distribution and execution.
