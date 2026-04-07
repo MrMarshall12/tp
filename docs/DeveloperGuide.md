@@ -386,7 +386,7 @@ The following sequence diagram illustrates the interactions within the `Logic` c
 
 1. How the command is named.
     * **Chosen:** Name the command as `unschedule`.
-      * Pros: User-friendly and intuitive, as it maintains consistency with delivery-related commands (`schedule`, `reschedule`).
+      * Pros: User-friendly and intuitive, as it maintains consistency with delivery-related commands such as `schedule` and `reschedule`.
       * Cons: Not commonly used in standard English, which may cause first-time users to find it unusual.
     * **Alternative:** Name the command as `cancel`.
       * Pros: Familiar word that users are unlikely to mistype.
