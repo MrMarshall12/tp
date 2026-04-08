@@ -16,7 +16,7 @@
 * If you are interested about developing ServeMate, the [**Developer Guide**](DeveloperGuide.html) is a good place to start.
 
 
-**Acknowledgements**
+## Acknowledgements
 
-* Libraries used: [JavaFX](https://openjfx.io/), [Jackson](https://github.com/FasterXML/jackson), [JUnit5](https://github.com/junit-team/junit5), [PlantUML](https://plantuml.com/stdlib)
-* AI models used: Google Gemini, GitHub Copilot
+* **Libraries used:** [JavaFX](https://openjfx.io/), [Jackson](https://github.com/FasterXML/jackson), [JUnit5](https://github.com/junit-team/junit5), [PlantUML](https://plantuml.com/stdlib)
+* **AI models used:** Google Gemini, GitHub Copilot, ChatGPT
