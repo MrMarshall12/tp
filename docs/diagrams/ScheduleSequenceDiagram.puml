@@ -11,7 +11,6 @@ participant "r:CommandResult" as CommandResult LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
-participant "target:Person" as TargetPerson MODEL_COLOR
 participant "updated:Person" as UpdatedPerson MODEL_COLOR
 participant "m:Model" as Model MODEL_COLOR
 end box
@@ -51,18 +50,18 @@ deactivate AddressBookParser
 LogicManager -> ScheduleCommand : execute(m)
 
 activate ScheduleCommand
-ScheduleCommand -> TargetPerson : addDeliveryToPerson(target, scheduledDelivery)
-activate TargetPerson
+ScheduleCommand -> ScheduleCommand : addDeliveryToPerson(target, scheduledDelivery)
+activate ScheduleCommand
+
 
 create UpdatedPerson
-TargetPerson -> UpdatedPerson
+ScheduleCommand -> UpdatedPerson
 activate UpdatedPerson
-
-UpdatedPerson --> TargetPerson
+UpdatedPerson --> ScheduleCommand
 deactivate UpdatedPerson
 
-TargetPerson --> ScheduleCommand : updated
-deactivate TargetPerson
+ScheduleCommand --> ScheduleCommand : updated
+deactivate ScheduleCommand
 
 ScheduleCommand -> Model : setPerson(target, updated)
 activate Model
