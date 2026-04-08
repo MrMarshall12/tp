@@ -85,13 +85,11 @@ deactivate RescheduleCommand
 RescheduleCommand -> Model : setPerson(target, updated)
 activate Model
 
-Model --> RescheduleCommand
 deactivate Model
 
 RescheduleCommand -> Model : updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS)
 activate Model
 
-Model --> RescheduleCommand
 deactivate Model
 
 create CommandResult
