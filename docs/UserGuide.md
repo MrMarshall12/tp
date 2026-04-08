@@ -33,11 +33,22 @@ Welcome to **ServeMate**, the mate that helps you serve faster. Follow these sim
      1. Open the folder where you saved `ServeMate.jar`.
      2. Click on the **address bar** at the top (where the folder name is), type `cmd` and press **Enter**.
      3. A window should pop up. On this window, type `java -jar ServeMate.jar` and press **Enter**.
+    <!--
+    @@author DenseLance-alt-reused
+    Reused from https://support.apple.com/en-ca/guide/terminal/trmlb20c7888/2.15/mac/26
+     with minor modifications
+    -->
    * **For Mac users:**
      1. Open a Finder window, then navigate to the folder where you saved `ServeMate.jar`.
      2. If there is no **path bar** at the bottom of the Finder window, click **View** in the top menu bar and select **Show Path Bar**.
      3. Right-click the folder name at the very end of **path bar** and select **Open in Terminal**.
      4. A window should pop up. On this window, type `java -jar ServeMate.jar` and press **Return**.
+    <!-- @@author -->
+    <!--
+    @@author DenseLance-alt-reused
+    Reused from https://askubuntu.com/a/969311
+     with minor modifications
+    -->
    * **For Linux users:**
      1. Right-click the folder where you saved `ServeMate.jar`.
      2. Select **Open in Terminal**.
