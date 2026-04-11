@@ -457,29 +457,43 @@ Furthermore, certain edits can cause the ServeMate to behave in unexpected ways 
 
 ## FAQ
 
-**Question**: How do I transfer my data to another computer?<br>
+1. **Question**: How do I transfer my data to another computer?<br>
 **Answer**: Install the ServeMate application on your second computer by following the instructions in the "Quick Start" section. On your original computer, locate the `[JAR file location]/data` folder which should contain the `addressbook.json` data file. Copy the `data` folder to your second computer, and place it in the ServeMate application folder located at `[JAR file location]` (if the `data` folder already exists, replace it). Run the ServeMate application on your second computer. You should be able to see the data you have transferred.
+
 <br>
 
-**Question**: Why does the delivery panel not automatically update today's date and deliveries when the time passes 12 midnight?<br>
+2. **Question**: Why does the delivery panel not automatically update today's date and deliveries when the time passes 12 midnight?<br>
 **Answer**: ServeMate currently does not support automatically refreshing the date on the delivery panel if the time passes 12 midnight, in case you are still referring to the previous day's deliveries. To refresh the date on the panel, simply close and relaunch ServeMate.
+
 <br>
 
-**Question**: Why can't I use the delivery panel to view deliveries on other dates?<br>
+3. **Question**: Why can't I use the delivery panel to view deliveries on other dates?<br>
 **Answer**: ServeMate currently does not support viewing deliveries on other dates in the delivery panel. The delivery panel is intended as a quick reference to view deliveries scheduled on the current day for your operations. If you need to view deliveries on other dates, you can use the `find-delivery` command.
+
 <br>
 
-**Question**: Why is the delivery panel wider than the customer panel when I make the ServeMate application window narrower?<br>
+4. **Question**: Why is the delivery panel wider than the customer panel when I make the ServeMate application window narrower?<br>
 **Answer**: When the ServeMate application window is narrow, the delivery panel is given a larger width to provide a quick reference to deliveries scheduled on the current day. If you need to view more information in the customer panel, you can resize the application window and expand the customer panel for a better viewing experience.
+
 <br>
 
-**Question**: Why does the `find` command only return customers that matches all filters?<br>
-**Answer**: ServeMate's `find` command is designed to match all filters so you can easily narrow down to the most relevant results to find the customer that you are looking for (e.g. `find n/John a/Clementi` finds all customers named `John` with an address containing `Clementi`). <br>
-If you like to find customers matching any of the filters (e.g. find all customers with name `Richard` or address `Jurong`), you may issue separate commands (e.g. `find n/Richard` and `find a/Jurong`).
+5. **Question**: Why is the delivery panel wider than the customer panel when I make the ServeMate application window narrower?<br>
+   **Answer**: When the ServeMate application window is narrow, the delivery panel is given a larger width to provide a quick reference to deliveries scheduled on the current day. If you need to view more information in the customer panel, you can resize the application window and expand the customer panel for a better viewing experience.
+
 <br>
 
-**Question**: Why does the `find` command use full word matching for keywords?<br>
-**Answer**: ServeMate's `find` command does not support partial word matching, to reduce the number of irrelevant results returned so that you can find customers quickly. In the event that you might not remember exactly the full word to search for (e.g. `Richard` or `Richards`), you may specify multiple keywords within a filter (e.g. `find n/Richard Richards`) to find customers matching any 1 keyword.
+6. **Question**: Why does the delivery panel have a horizontal scrollbar at the bottom when there are long names or addresses that exceed the panel's width?<br>
+**Answer**: ServeMate's delivery panel uses horizontal scrolling to ensure that delivery information for the current day can be quickly scanned through, even when the names or addresses are long. It is designed to provide a quick reference for viewing deliveries at a glance. To maintain a readable layout even when the delivery panel is resized to a narrower width, longer names and addresses are kept to a single line. However, tags may still appear on multiple lines as they are typically short and fewer in number. If you would like to view the full information for a delivery, simply use the horizontal scroll bar at the bottom.
+
+<br>
+
+7. **Question**: Why does the `find` command use full word matching for keywords?<br>
+**Answer**: ServeMate's `find` command does not support partial word matching, to reduce the number of irrelevant results returned so that you can find customers quickly. For example, filtering addresses with the keyword `18` will not match `18,`. In the event that you might not remember exactly the full word to search for (e.g. `Richard` or `Richards`), you may specify multiple keywords within a filter (e.g. `find n/Richard Richards`) to find customers matching any 1 keyword.
+
+<br>
+
+8. **Question**: Why can't I see the full status message when I execute a command?<br>
+   **Answer**: ServeMate currently does not support resizing the status message panel. If the message exceeds the length of the panel, you can scroll down to view the rest of the message.
 
 --------------------------------------------------------------------------------------------------------------------
 
