@@ -506,6 +506,9 @@ The `preferences.json` file saves configuration settings used by ServeMate. If y
 Use the `find` command to search for the customer you want for faster navigation!
 </box>
 
+4. **Tags are restricted to 25 characters**: If you try to add a tag that is more than 25 characters long, ServeMate will not accept it and display an error message.
+   <br>**Solution**: Use tags that are 25 characters or less. If you need to add a longer tag, you can break it down into multiple tags.
+
 ------------------------------------------------------------------------------------------------------------------
 ## Coming soon
 1. **Integrated `find` command:** Finding specific deliveries will be easier and more convenient. We plan to combine the `find-delivery` and `find` commands, so that you can search for both delivery details (e.g. dates) and customer details (e.g. address) all at once.
