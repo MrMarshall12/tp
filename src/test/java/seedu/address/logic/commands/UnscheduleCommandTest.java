@@ -29,17 +29,7 @@ public class UnscheduleCommandTest {
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
-        Person personToUnschedule = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person personWithNoDelivery = new PersonBuilder(personToUnschedule).withDelivery(null).build();
-        UnscheduleCommand unscheduleCommand = new UnscheduleCommand(INDEX_FIRST_PERSON);
-
-        String expectedMessage = String.format(UnscheduleCommand.MESSAGE_DELETE_DELIVERY_SUCCESS,
-                Messages.formatDeliveryFromPerson(personToUnschedule));
-
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
-        expectedModel.setPerson(model.getFilteredPersonList().get(0), personWithNoDelivery);
-
-        assertCommandSuccess(unscheduleCommand, model, expectedMessage, expectedModel);
+        assertUnscheduleCommandSuccess();
     }
 
     @Test
@@ -62,18 +52,7 @@ public class UnscheduleCommandTest {
     @Test
     public void execute_validIndexFilteredList_success() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
-
-        Person personToUnschedule = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person personWithNoDelivery = new PersonBuilder(personToUnschedule).withDelivery(null).build();
-        UnscheduleCommand unscheduleCommand = new UnscheduleCommand(INDEX_FIRST_PERSON);
-
-        String expectedMessage = String.format(UnscheduleCommand.MESSAGE_DELETE_DELIVERY_SUCCESS,
-                Messages.formatDeliveryFromPerson(personToUnschedule));
-
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
-        expectedModel.setPerson(model.getFilteredPersonList().get(0), personWithNoDelivery);
-
-        assertCommandSuccess(unscheduleCommand, model, expectedMessage, expectedModel);
+        assertUnscheduleCommandSuccess();
     }
 
     @Test
@@ -118,4 +97,23 @@ public class UnscheduleCommandTest {
         String expected = UnscheduleCommand.class.getCanonicalName() + "{targetIndex=" + targetIndex + "}";
         assertEquals(expected, unscheduleCommand.toString());
     }
+
+    /**
+     * Executes an UnscheduleCommand and asserts that command succeeds with the correct
+     * behaviour and message returned.
+     */
+    public void assertUnscheduleCommandSuccess() {
+        Person personToUnschedule = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Person personWithNoDelivery = new PersonBuilder(personToUnschedule).withDelivery(null).build();
+        UnscheduleCommand unscheduleCommand = new UnscheduleCommand(INDEX_FIRST_PERSON);
+
+        String expectedMessage = String.format(UnscheduleCommand.MESSAGE_DELETE_DELIVERY_SUCCESS,
+                Messages.formatDeliveryFromPerson(personToUnschedule));
+
+        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        expectedModel.setPerson(model.getFilteredPersonList().get(0), personWithNoDelivery);
+
+        assertCommandSuccess(unscheduleCommand, model, expectedMessage, expectedModel);
+    }
+
 }
