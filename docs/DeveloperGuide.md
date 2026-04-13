@@ -1061,13 +1061,13 @@ testers are expected to do more *exploratory* testing.
 ### Scheduling a delivery
 
 1. Scheduling a delivery for a customer without an existing delivery.
-    1. Prerequisites: Charlotte Oliveiro must be present in the customer list without a delivery (she has none in the default sample data). Run `find n/Charlotte` — she should appear at index 1 with no delivery information on her card.
-    2. Test case: `find n/Charlotte`, then `schedule 1 st/2026-05-01 ed/2026-05-31 tm/12:00 d/135`<br>
-       Expected: Delivery details appear on Charlotte Oliveiro's card. A success message is shown in the result display.
+    1. Prerequisites: Ensure that there is no existing customer named John. Add one: `add n/John p/99999999 e/john@example.com a/123 Clementi Road`. Run `find n/John` — John should appear at index 1 with no delivery information on his card.
+    2. Test case: `find n/John`, then `schedule 1 st/2026-05-01 ed/2026-05-31 tm/12:00 d/135`<br>
+       Expected: Delivery details appear on John's card. A success message is shown in the result display.
 
 2. Scheduling a delivery for a customer who already has one.
-    1. Prerequisites: Charlotte Oliveiro must have an existing delivery. If not yet set up, first complete the previous test case.
-    2. Test case: `find n/Charlotte`, then `schedule 1 st/2026-06-01 ed/2026-06-30 tm/14:00 d/2`<br>
+    1. Prerequisites: John must have an existing delivery. If not yet set up, first complete the previous test case. Run `find n/John` — he should appear at index 1 with delivery information on his card.
+    2. Test case: `find n/John`, then `schedule 1 st/2026-06-01 ed/2026-06-30 tm/14:00 d/2`<br>
        Expected: An error message indicating that the customer already has an existing delivery is shown.
     3. Other incorrect commands to try: start date after end date, delivery day out of range (e.g. `d/8`), `24:00` as delivery time<br>
        Expected: An error message for the violated constraint is shown.
@@ -1075,27 +1075,27 @@ testers are expected to do more *exploratory* testing.
 ### Rescheduling a delivery
 
 1. Rescheduling the delivery of a customer who has one.
-    1. Prerequisites: Charlotte Oliveiro must have an existing delivery. Run `find n/Charlotte` — she should appear at index 1. If she has no delivery, run `schedule 1 st/2026-05-01 ed/2026-05-31 tm/12:00 d/135` to set one up.
-    2. Test case: `find n/Charlotte`, then `reschedule 1 ed/2026-06-30`<br>
+    1. Prerequisites: Ensure that there is no existing customer named John. Add one and schedule a delivery: `add n/John p/99999999 e/john@example.com a/123 Clementi Road`, then `find n/John`, then `schedule 1 st/2026-05-01 ed/2026-05-31 tm/12:00 d/135`. Run `find n/John` — he should appear at index 1 with delivery information on his card.
+    2. Test case: `find n/John`, then `reschedule 1 ed/2026-06-30`<br>
        Expected: The end date of the delivery is updated to 2026-06-30. A success message is shown in the result display.
 
 2. Rescheduling the delivery of a customer without one.
-    1. Prerequisites: David Li must be present in the customer list without a delivery (he has none in the default sample data). Run `find n/David` — he should appear at index 1 with no delivery information on his card.
-    2. Test case: `find n/David`, then `reschedule 1 ed/2026-06-30`<br>
+    1. Prerequisites: Ensure that there is no existing customer named John. Add one: `add n/John p/99999999 e/john@example.com a/123 Clementi Road`. Run `find n/John` — he should appear at index 1 with no delivery information on his card.
+    2. Test case: `find n/John`, then `reschedule 1 ed/2026-06-30`<br>
        Expected: An error message indicating that the customer does not have an existing delivery is shown.
-    3. Other incorrect commands to try: `find n/Charlotte`, then `reschedule 1` (no fields provided)<br>
+    3. Other incorrect commands to try: `find n/John`, then `reschedule 1` (no fields provided)<br>
        Expected: An error message for the command format is shown.
 
 ### Unscheduling a delivery
 
 1. Unscheduling the delivery of a customer who has one.
-    1. Prerequisites: Charlotte Oliveiro must have an existing delivery. Run `find n/Charlotte` — she should appear at index 1. If she has no delivery, run `schedule 1 st/2026-05-01 ed/2026-05-31 tm/12:00 d/135` to set one up.
-    2. Test case: `find n/Charlotte`, then `unschedule 1`<br>
-       Expected: Delivery details are removed from Charlotte Oliveiro's card. A success message is shown in the result display.
+    1. Prerequisites: Ensure that there is no existing customer named John. Add one and schedule a delivery: `add n/John p/99999999 e/john@example.com a/123 Clementi Road`, then `find n/John`, then `schedule 1 st/2026-05-01 ed/2026-05-31 tm/12:00 d/135`. Run `find n/John` — he should appear at index 1 with delivery information on his card.
+    2. Test case: `find n/John`, then `unschedule 1`<br>
+       Expected: Delivery details are removed from John's card. A success message is shown in the result display.
 
 2. Unscheduling the delivery of a customer without one.
-    1. Prerequisites: Charlotte Oliveiro must not have a delivery. If not yet set up, first complete the previous test case.
-    2. Test case: `find n/Charlotte`, then `unschedule 1`<br>
+    1. Prerequisites: John must not have a delivery. If not yet set up, first complete the previous test case. Run `find n/John` — he should appear at index 1 with no delivery information on his card.
+    2. Test case: `find n/John`, then `unschedule 1`<br>
        Expected: An error message indicating that the customer does not have an existing delivery is shown.
 
 ### Deleting a customer
