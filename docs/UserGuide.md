@@ -117,8 +117,9 @@ schedule 7 st/2026-04-07 ed/2026-06-07 d/1234567 tm/17:00
 
 <box type="info">
 
-**Note:** The examples provided in this tutorial use **7 April 2026** as today's date. To see Bob’s name appear in the delivery panel, ensure that `st/` (start date) is today, and `ed/` (end date) is 2 months later.
+**Note:** The examples provided in this tutorial use **7 April 2026** as today's date. To see Bryan’s name appear in the delivery panel, ensure that `st/` (start date) is today, and `ed/` (end date) is 2 months later.
 </box>
+<br>
 
 Since Bryan’s Tingkat plan starts today, his delivery will also be added to the delivery panel on the right:
 <br>![Tutorial for Schedule Command](images/Tutorial-ScheduleCommand.png)
@@ -328,7 +329,8 @@ Format: `find-delivery dt/DATE` or `find-delivery st/START_DATE ed/END_DATE`
 * `dt/` searches for an exact date. `st/` and `ed/` must be used together to search within a date range.
 * A customer is shown only if all of the following criteria are met:
   * They have a delivery assigned.
-  * The customer has a scheduled delivery that falls on the given date or within the date range specified (including the start and end dates itself).
+  * The given date, or at least one date within the given date range, falls within the customer’s delivery period (including the start and end dates).
+  * That matching date is one of the customer’s scheduled delivery days.
 * If no customers match, an empty list is shown.
 
 Examples:
@@ -355,12 +357,12 @@ Examples:
 
 ### Scheduling a delivery : `schedule`
 
-Adds a delivery or overwrites the existing delivery associated with the specified customer.
+Adds a delivery to the specified customer.
 
 Format: `schedule INDEX st/START_DATE ed/END_DATE tm/DELIVERY_TIME d/DELIVERY_DAYS`
 
 * Adds the delivery for the customer at the specified `INDEX`.
-* If the specified customer already has a delivery, the delivery field is overwritten.
+* If the specified customer already has a delivery, adding a new delivery to the same customer should not be allowed using this command.
 * The index refers to the index number shown in the displayed customer list.
 * The index **must be a positive integer** 1, 2, 3, …​
 * `DELIVERY_DAYS` must be a set of numbers **within the range of 1-7 inclusive** without whitespaces where 1 = Monday, 2 = Tuesday, …​, 7 = Sunday.
@@ -480,6 +482,11 @@ If you like to find customers matching any of the filters (e.g. find all custome
 
 **Question**: Why does the `find` command use full word matching for keywords?<br>
 **Answer**: ServeMate's `find` command does not support partial word matching, to reduce the number of irrelevant results returned so that you can find customers quickly. In the event that you might not remember exactly the full word to search for (e.g. `Richard` or `Richards`), you may specify multiple keywords within a filter (e.g. `find n/Richard Richards`) to find customers matching any 1 keyword.
+
+<br>
+
+9. **Question**: Why do some error messages refer to ServeMate as an address book?<br>
+   **Answer**: ServeMate is an address book since it helps to store your customers' contact information.
 
 --------------------------------------------------------------------------------------------------------------------
 
