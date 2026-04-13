@@ -269,6 +269,11 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 * You can remove all the customer’s tags by typing `t/` without
     specifying any tags after it.
 
+<box type="warning">
+
+**Warning:** You cannot perform removal of all tags using `t/` and specifying new tags at the same time (e.g. `edit INDEX t/ t/vegetarian` is not allowed).
+</box>
+
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st customer to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd customer to be `Betsy Crower` and clears all existing tags.
