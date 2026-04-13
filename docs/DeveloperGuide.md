@@ -122,7 +122,7 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 
 <box type="info">
 
-**Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of diagram.
+**Note:** The lifelines for `DeleteCommandParser` and `DeleteCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifelines continue till the end of diagram.
 </box>
 
 <puml src="diagrams/DeleteSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `delete 1` Command" />
@@ -273,7 +273,7 @@ The following sequence diagram illustrates the interactions within the `Logic` c
 
 <box type="info">
 
-**Note:** The lifeline for `ExpiredCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of the diagram.
+**Note:** The lifelines for `ExpiredCommandParser` and `ExpiredCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifelines continue till the end of the diagram.
 </box>
 
 <puml src="diagrams/ExpiredSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `expired bf/2026-02-01` Command" />
@@ -397,7 +397,7 @@ The following sequence diagram illustrates the interactions within the `Logic` c
 
 <box type="info">
 
-**Note:** The lifeline for `UnscheduleCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of diagram.
+**Note:** The lifelines for `UnscheduleCommandParser`, `UnscheduleCommand`, and `target` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifelines continue till the end of diagram.
 </box>
 
 <puml src="diagrams/UnscheduleSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `unschedule 2` Command" />
@@ -504,6 +504,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 <br>
 
+<!-- @@author Chen-Beitian -->
+
 **Use case 1: Add a customer**
 
 **MSS**
@@ -538,117 +540,117 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Use case 2: Delete a customer**
 
+Preconditions: A list of customers is displayed
+
 **MSS**
 
-1. User requests to list customers.
-2. ServeMate shows a list of customers.
-3. User requests to delete a customer in the list.
-4. ServeMate deletes the customer.
-5. ServeMate shows a success message with the deleted customer’s details.
+1. User requests to delete a customer in the list.
+2. ServeMate deletes the customer.
+3. ServeMate shows a success message with the deleted customer’s details.
 
     Use case ends.
 
 **Extensions**
 
-* 1a. The list is empty.
+* 1a. ServeMate detects that the given index is not a positive integer.
 
-  Use case ends.
+    * 1a1. ServeMate shows an error message describing the correct command format.
 
-* 3a. ServeMate detects that the given index is not a positive integer.
+      Use case resumes at step 1.
 
-    * 3a1. ServeMate shows an error message describing the correct command format.
+* 1b. ServeMate detects that the given index is out of range.
 
-      Use case resumes at step 3.
+    * 1b1. ServeMate shows an error message indicating that the provided index is invalid.
 
-* 3b. ServeMate detects that the given index is out of range.
-
-    * 3b1. ServeMate shows an error message indicating that the provided index is invalid.
-
-      Use case resumes at step 3.
+      Use case resumes at step 1.
 
 <br>
 
 **Use case 3: Edit customer record**
 
+Preconditions: A list of customers is displayed
+
 **MSS**
 
-1. User requests to list customers.
-2. ServeMate shows a list of customers.
-3. User requests to edit a customer in the list.
-4. ServeMate updates the customer record.
-5. ServeMate shows a success message with the updated customer’s details.
+1. User requests to edit a customer in the list.
+2. ServeMate updates the customer record.
+3. ServeMate shows a success message with the updated customer’s details.
 
    Use case ends.
 
 **Extensions**
 
-* 1a. The list is empty.
+* 1a. ServeMate detects that the given index is not a positive integer.
 
-  Use case ends.
+    * 1a1. ServeMate shows an error message describing the correct command format.
 
-* 3a. ServeMate detects that the given index is not a positive integer.
+      Use case resumes at step 1.
 
-    * 3a1. ServeMate shows an error message describing the correct command format.
+* 1b. ServeMate detects that the given index is out of range.
 
-      Use case resumes at step 3.
+    * 1b1. ServeMate shows an error message indicating that the provided index is invalid.
 
-* 3b. ServeMate detects that the given index is out of range.
+      Use case resumes at step 1.
 
-    * 3b1. ServeMate shows an error message indicating that the provided index is invalid.
+* 1c. ServeMate detects that no fields are specified for editing.
 
-      Use case resumes at step 3.
+    * 1c1. ServeMate shows an error message indicating that at least one field must be provided for editing.
 
-* 3c. ServeMate detects that no fields are specified for editing.
+      Use case resumes at step 1.
 
-    * 3c1. ServeMate shows an error message indicating that at least one field must be provided for editing.
+* 1d. ServeMate detects that an invalid field is provided.
 
-      Use case resumes at step 3.
+    * 1d1. ServeMate shows an error message describing the violated constraint.
 
-* 3d. ServeMate detects that an invalid field is provided.
+      Use case resumes at step 1.
 
-    * 3d1. ServeMate shows an error message describing the violated constraint.
+* 1e. ServeMate detects that editing the name causes a duplicate with an existing customer.
 
-      Use case resumes at step 3.
+    * 1e1. ServeMate shows an error message indicating that the customer already exists.
 
-* 3e. ServeMate detects that editing the name causes a duplicate with an existing customer.
-
-    * 3e1. ServeMate shows an error message indicating that the customer already exists.
-
-      Use case resumes at step 3.
+      Use case resumes at step 1.
 
 <br>
 
+<!-- @@author  -->
+
+<!-- @@author elijah-ng -->
+
 **Use case 4: Filter customers by attributes**
 
+Preconditions: A list of customers is displayed
+
 **MSS**
-1. User requests to list customers.
-2. ServeMate displays a list of customers.
-3. User requests to filter customers by attributes and provides one or more filters, each containing one or more keywords.
-4. ServeMate displays the list of customers that match the given filter(s).
+1. User requests to filter customers by attributes and provides one or more filters, each containing one or more keywords.
+2. ServeMate displays the list of customers that match the given filter(s).
 
    Use case ends.
 
 **Extensions**
 
-* 3a. ServeMate detects an error in the command format.
+* 1a. ServeMate detects an error in the command format.
 
-    * 3a1. ServeMate displays an error message describing the correct command format.
+    * 1a1. ServeMate displays an error message describing the correct command format.
 
-      Use case resumes at step 3.
+      Use case resumes at step 1.
 
-* 3b. ServeMate detects a violation of keyword format constraints in a filter.
+* 1b. ServeMate detects a violation of keyword format constraints in a filter.
 
-    * 3b1. ServeMate displays an error message describing the violated constraint.
+    * 1b1. ServeMate displays an error message describing the violated constraint.
 
-      Use case resumes at step 3.
+      Use case resumes at step 1.
 
-* 3c. No customers match the specified filters.
+* 1c. No customers match the specified filters.
 
-    * 3c1. ServeMate displays an empty result list.
+    * 1c1. ServeMate displays an empty result list.
 
       Use case ends.
 
 <br>
+
+<!-- @@author  -->
+
+<!-- @@author BenedTj -->
 
 **Use case 5: View all upcoming deliveries for the day**
 
@@ -671,131 +673,123 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Use case 6: Add delivery for a customer**
 
+Preconditions: A list of customers is displayed
+
 **MSS**
 
-1. User requests to list customers.
-2. ServeMate shows a list of customers.
-3. User requests to add a new delivery for a customer with required fields.
-4. ServeMate adds the delivery to the customer's details.
-5. ServeMate shows a success message with the added delivery's details.
+1. User requests to add a new delivery for a customer with required fields.
+2. ServeMate adds the delivery to the customer's details.
+3. ServeMate shows a success message with the added delivery's details.
 
    Use case ends.
 
 **Extensions**
 
-* 1a. The list is empty.
+* 1a. ServeMate detects that the given index is not a positive integer.
 
-  Use case ends.
+    * 1a1. ServeMate shows an error message describing the correct command format.
 
-* 3a. ServeMate detects that the given index is not a positive integer.
+      Use case resumes at step 1.
 
-    * 3a1. ServeMate shows an error message describing the correct command format.
+* 1b. ServeMate detects that the given index is out of range.
 
-      Use case resumes at step 3.
+    * 1b1. ServeMate shows an error message indicating that the provided index is invalid.
 
-* 3b. ServeMate detects that the given index is out of range.
+      Use case resumes at step 1.
 
-    * 3b1. ServeMate shows an error message indicating that the provided index is invalid.
+* 1c. ServeMate detects that there is a required field is missing.
 
-      Use case resumes at step 3.
+    * 1c1. ServeMate shows an error message describing the correct command format.
 
-* 3c. ServeMate detects that there is a required field is missing.
+      Use case resumes from step 1.
 
-    * 3c1. ServeMate shows an error message describing the correct command format.
+* 1d. ServeMate detects that a parameter value is invalid.
 
-      Use case resumes from step 3.
+    * 1d1. ServeMate shows an error message describing the violated constraint.
 
-* 3d. ServeMate detects that a parameter value is invalid.
+      Use case resumes from step 1.
 
-    * 3d1. ServeMate shows an error message describing the violated constraint.
+* 1e. ServeMate detects that a delivery to the same customer already exists.
 
-      Use case resumes from step 3.
+    * 1e1. ServeMate shows an error message describing that the customer already has a delivery scheduled.
 
-* 3e. ServeMate detects that a delivery to the same customer already exists.
-
-    * 3e1. ServeMate shows an error message describing that the customer already has a delivery scheduled.
-
-      Use case resumes from step 3.
+      Use case resumes from step 1.
 
 <br>
+
+<!-- @@author  -->
 
 **Use case 7: Edit delivery details belonging to a customer**
 
+Preconditions: A list of customers is displayed
+
 **MSS**
 
-1. User requests to list customers.
-2. ServeMate shows a list of customers.
-3. User requests to edit the delivery details of a customer in the list.
-4. ServeMate updates the customer's delivery details.
-5. ServeMate shows a success message with the updated customer’s delivery details.
+1. User requests to edit the delivery details of a customer in the list.
+2. ServeMate updates the customer's delivery details.
+3. ServeMate shows a success message with the updated customer’s delivery details.
 
    Use case ends.
 
 **Extensions**
 
-* 1a. The list is empty.
+* 1a. The given index is not a positive integer.
 
-  Use case ends.
+    * 1a1. ServeMate shows an error message describing the correct command format.
 
-* 3a. The given index is not a positive integer.
+      Use case resumes at step 1.
 
-    * 3a1. ServeMate shows an error message describing the correct command format.
+* 1b. The given index is out of range.
 
-      Use case resumes at step 3.
+    * 1b1. ServeMate shows an error message indicating that the provided index is invalid.
 
-* 3b. The given index is out of range.
+      Use case resumes at step 1.
 
-    * 3b1. ServeMate shows an error message indicating that the provided index is invalid.
+* 1c. No fields are specified for editing.
 
-      Use case resumes at step 3.
+    * 1c1. ServeMate shows an error message indicating that at least one field must be provided for editing.
 
-* 3c. No fields are specified for editing.
+      Use case resumes at step 1.
 
-    * 3c1. ServeMate shows an error message indicating that at least one field must be provided for editing.
-
-      Use case resumes at step 3.
-
-* 3d. Any provided field value is invalid.
+* 1d. Any provided field value is invalid.
 
     * 3d1. ServeMate shows an error message describing the violated constraint.
 
-      Use case resumes at step 3.
+      Use case resumes at step 1.
 
 <br>
 
+<!-- @@author DenseLance-alt -->
+
 **Use case 8: Delete a delivery associated with a customer**
+
+Preconditions: A list of customers is displayed
 
 **MSS**
 
-1. User requests to list customers.
-2. ServeMate shows a list of customers.
-3. User requests to delete a customer's delivery.
-4. ServeMate deletes the delivery associated with the specified customer.
-5. ServeMate shows a success message that includes the customer's name and details of the deleted delivery.
-   
+1. User requests to delete a customer's delivery.
+2. ServeMate deletes the delivery associated with the specified customer.
+3. ServeMate shows a success message that includes the customer's name and details of the deleted delivery.
+
    Use case ends.
 
 **Extensions**
 
-* 1a. The list of customers is empty.
+* 1a. ServeMate detects that the given index is not a positive integer.
 
-  Use case ends.
+  * 1a1. ServeMate shows an error message describing the correct command format.
 
-* 3a. ServeMate detects that the given index is not a positive integer.
+    Use case resumes at step 1.
 
-  * 3a1. ServeMate shows an error message describing the correct command format.
+* 1b. ServeMate detects that the given index is out of range.
 
-    Use case resumes at step 3.
+  * 1b1. ServeMate shows an error message describing that the index provided is invalid.
 
-* 3b. ServeMate detects that the given index is out of range.
+    Use case resumes at step 1.
 
-  * 3b1. ServeMate shows an error message describing that the index provided is invalid.
+* 1c. ServeMate detects that the customer at the given index does not have a delivery.
 
-    Use case resumes at step 3.
-
-* 3c. ServeMate detects that the customer at the given index does not have a delivery.
-
-  * 3c1. ServeMate shows an error message describing that the specified customer does not have an existing delivery.
+  * 1c1. ServeMate shows an error message describing that the specified customer does not have an existing delivery.
 
     Use case ends.
 
@@ -831,6 +825,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 <br>
+
+<!-- @@author  -->
+
+<!-- @@author Chen-Beitian -->
 
 **Use case 10: Find customers by delivery date**
 
@@ -898,6 +896,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 <br>
 
+<!-- @@author  -->
+
 ### Non-functional requirements
 
 #### ⚙️ Technical
@@ -960,45 +960,173 @@ testers are expected to do more *exploratory* testing.
 
 ### Launch and shutdown
 
-1. Initial launch
+1. Initial launch.
+    1. Download the jar file and copy into an empty folder.
+    2. Open a terminal in that folder and run `java -jar ServeMate.jar`.<br>
+       Expected: The GUI is shown with a set of sample customers. The window size may not be optimum.
 
-   1. Download the jar file and copy into an empty folder
-
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
-
-1. Saving window preferences
-
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
-
-   1. Re-launch the app by double-clicking the jar file.<br>
+2. Saving window preferences.
+    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+    2. In the same folder, run `java -jar ServeMate.jar` again.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+### Today's deliveries panel
+
+1. Verifying deliveries displayed on launch.
+    1. Prerequisites: Launch the app in an empty folder so that the default sample data is loaded.
+    2. Note the date shown in the delivery panel header and verify it matches your computer's current date. 
+    3. Enter the date in `yyyy-MM-dd` format and run `find-delivery dt/DATE`.<br>
+       Expected: The customers shown in the delivery panel match those returned by the command.
+
+2. Verifying that the panel is unaffected by filter commands.
+    1. Prerequisites: Note the current contents of the delivery panel.
+    2. Test case: `find n/David`<br>
+       Expected: The customer panel shows filtered results. The delivery panel remains unchanged.
+
+### Finding customers by attributes (name, address, tag)
+
+1. Finding customers by name.
+
+    1. Prerequisites: List all customers using the `list` command. There are multiple customers in the list.
+
+    2. Test case: `find n/alex`<br>
+       Expected: Only customers whose name contains `alex` (case-insensitive) are listed (if any).
+
+    3. Test case: `find n/al-ex`<br>
+       Expected: `find` command is not executed and the list of customers remains the same. An error message for the name keywords format is shown.
+
+    4. Test case: `find n/`<br>
+       Expected: `find` command is not executed and the list of customers remains the same. An error message for the command format is shown.
+
+2. Finding customers by name and address.
+
+    1. Prerequisites: List all customers using the `list` command. There are multiple customers in the list.
+
+    2. Test case: `find n/alex a/geylang`<br>
+       Expected: Only customers whose name contains `alex` and address contains `geylang` (both case-insensitive) are listed (if any).
+
+3. Finding customers by name, address and tag.
+
+    1. Prerequisites: List all customers using the `list` command. There are multiple customers in the list.
+
+    2. Test case: `find n/alex a/geylang t/vegetarian`<br>
+       Expected: Only customers whose name contains `alex`, address contains `geylang` and tagged with `vegetarian` (all three are case-insensitive) are listed (if any).
+
+    3. Test case: `find n/alex a/geylang t/vege-tarian`<br>
+       Expected: `find` command is not executed and the list of customers remains the same. An error message for the tag keywords format is shown.
+
+### Finding customers by delivery date
+
+1. Finding customers by exact delivery date.
+    1. Prerequisites: List all customers using the `list` command.
+    2. Test case: `find-delivery dt/2026-10-08`<br>
+       Expected: Only customers whose delivery period includes 2026-10-08 (a Thursday) and who have Thursday as a delivery day are listed.
+    3. Test case: `find-delivery dt/2026-10-10`<br>
+       Expected: Only customers with Saturday as a delivery day and whose delivery period includes 2026-10-10 are listed. Customers whose delivery period includes this date but do not have Saturday as a delivery day are not listed.
+    4. Test case: `find-delivery dt/2024-12-31`<br>
+       Expected: No customers are listed, as no delivery periods include this date.
+
+2. Finding customers by delivery date range.
+    1. Prerequisites: List all customers using the `list` command.
+    2. Test case: `find-delivery st/2026-09-20 ed/2026-09-20`<br>
+       Expected: Only customers whose delivery period includes 2026-09-20 (a Sunday) and who have Sunday as a delivery day are listed. Verifies that the range start date is inclusive.
+    3. Test case: `find-delivery st/2026-09-20 ed/2026-12-20`<br>
+       Expected: All customers with at least one delivery day falling within 2026-09-20 to 2026-12-20 are listed.
+    4. Test case: `find-delivery st/2026-09-15 ed/2026-09-19`<br>
+       Expected: Only customers whose delivery period overlaps with 2026-09-15 to 2026-09-19 and who have at least one delivery day within this range are listed. Customers whose delivery period starts after 2026-09-19 are not listed.
+
+3. Invalid `find-delivery` commands.
+    1. Test case: `find-delivery dt/2026-04-01 st/2026-04-01 ed/2026-04-30`<br>
+       Expected: `find-delivery` command is not executed and the list of customers remains the same. An error message for the command format is shown.
+    2. Test case: `find-delivery st/2026-10-30 ed/2026-10-15`<br>
+       Expected: `find-delivery` command is not executed and the list of customers remains the same. An error message indicating that the start date must not be after the end date is shown.
+    3. Test case: `find-delivery st/2026-10-15`<br>
+       Expected: `find-delivery` command is not executed and the list of customers remains the same. An error message for the command format is shown.
+    4. Other incorrect commands to try: `find-delivery dt/2026-13-01` (invalid date), `find-delivery` (no arguments)<br>
+       Expected: `find-delivery` command is not executed and the list of customers remains the same. An error message for the date format or command format is shown respectively.
+
+### Finding customers with expired delivery
+
+1. Finding customers whose deliveries have expired.
+    1. Prerequisites: List all customers using the `list` command.
+    2. Test case: `expired bf/2026-12-21`<br>
+       Expected: Only customers whose delivery end date is strictly before 2026-12-21 are listed (if any).
+    3. Test case: `expired bf/2026-12-20`<br>
+       Expected: Customers whose delivery end date falls on exactly 2026-12-20 are not listed, as only end dates strictly before the given date qualify.
+    4. Test case: `expired bf/2027-02-10`<br>
+       Expected: Only customers whose delivery end date is strictly before 2027-02-10 are listed (if any).
+    5. Other incorrect commands to try: `expired bf/2026-13-01` (invalid date), `expired` (no arguments)<br>
+       Expected: `expired` command is not executed and the list of customers remains the same. An error message for the date format or command format is shown respectively.
+
+### Scheduling a delivery
+
+1. Scheduling a delivery for a customer without an existing delivery.
+    1. Prerequisites: Ensure that there is no existing customer named John. Add one: `add n/John p/99999999 e/john@example.com a/123 Clementi Road`. Run `find n/John` — John should appear at index 1 with no delivery information on his card.
+    2. Test case: `find n/John`, then `schedule 1 st/2026-05-01 ed/2026-05-31 tm/12:00 d/135`<br>
+       Expected: Delivery details appear on John's card. A success message is shown in the result display.
+
+2. Scheduling a delivery for a customer who already has one.
+    1. Prerequisites: John must have an existing delivery. If not yet set up, first complete the previous test case. Run `find n/John` — he should appear at index 1 with delivery information on his card.
+    2. Test case: `find n/John`, then `schedule 1 st/2026-06-01 ed/2026-06-30 tm/14:00 d/2`<br>
+       Expected: An error message indicating that the customer already has an existing delivery is shown.
+    3. Other incorrect commands to try: start date after end date, delivery day out of range (e.g. `d/8`), `24:00` as delivery time<br>
+       Expected: An error message for the violated constraint is shown.
+
+### Rescheduling a delivery
+
+1. Rescheduling the delivery of a customer who has one.
+    1. Prerequisites: Ensure that there is no existing customer named John. Add one and schedule a delivery: `add n/John p/99999999 e/john@example.com a/123 Clementi Road`, then `find n/John`, then `schedule 1 st/2026-05-01 ed/2026-05-31 tm/12:00 d/135`. Run `find n/John` — he should appear at index 1 with delivery information on his card.
+    2. Test case: `find n/John`, then `reschedule 1 ed/2026-06-30`<br>
+       Expected: The end date of the delivery is updated to 2026-06-30. A success message is shown in the result display.
+
+2. Rescheduling the delivery of a customer without one.
+    1. Prerequisites: Ensure that there is no existing customer named John. Add one: `add n/John p/99999999 e/john@example.com a/123 Clementi Road`. Run `find n/John` — he should appear at index 1 with no delivery information on his card.
+    2. Test case: `find n/John`, then `reschedule 1 ed/2026-06-30`<br>
+       Expected: An error message indicating that the customer does not have an existing delivery is shown.
+    3. Other incorrect commands to try: `find n/John`, then `reschedule 1` (no fields provided)<br>
+       Expected: An error message for the command format is shown.
+
+### Unscheduling a delivery
+
+1. Unscheduling the delivery of a customer who has one.
+    1. Prerequisites: Ensure that there is no existing customer named John. Add one and schedule a delivery: `add n/John p/99999999 e/john@example.com a/123 Clementi Road`, then `find n/John`, then `schedule 1 st/2026-05-01 ed/2026-05-31 tm/12:00 d/135`. Run `find n/John` — he should appear at index 1 with delivery information on his card.
+    2. Test case: `find n/John`, then `unschedule 1`<br>
+       Expected: Delivery details are removed from John's card. A success message is shown in the result display.
+
+2. Unscheduling the delivery of a customer without one.
+    1. Prerequisites: John must not have a delivery. If not yet set up, first complete the previous test case. Run `find n/John` — he should appear at index 1 with no delivery information on his card.
+    2. Test case: `find n/John`, then `unschedule 1`<br>
+       Expected: An error message indicating that the customer does not have an existing delivery is shown.
 
 ### Deleting a customer
 
-1. Deleting a customer while all customers are being shown
+1. Deleting a customer while all customers are being shown.
+    1. Prerequisites: List all customers using the `list` command. Multiple customers in the list.
+    2. Test case: `delete 1`<br>
+       Expected: The first customer is deleted from the list. A success message is shown in the result display.
+    3. Test case: `delete 0`<br>
+       Expected: No customer is deleted. An error message for the invalid index is shown.
+    4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+       Expected: No customer is deleted. An error message for the command format or an invalid index is shown.
 
-   1. Prerequisites: List all customers using the `list` command. Multiple customers in the list.
+2. Deleting a customer who has a delivery.
+    1. Prerequisites: Bernice Yu must be present in the customer list with a delivery (she has one in the default sample data). Run `find n/Bernice` — she should appear at index 1.
+    2. Test case: `find n/Bernice`, then `delete 1`<br>
+       Expected: Bernice Yu is deleted from the list. Run `find-delivery st/2026-08-09 ed/2027-02-09` should no longer show the deleted customer, confirming that her associated delivery was also removed.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+### Editing a customer
 
-   1. Test case: `delete 0`<br>
-      Expected: No customer is deleted. Error details shown in the status message. Status bar remains the same.
-
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
-
-1. _{ more test cases …​ }_
+1. Verifying that an existing delivery is retained after editing a customer.
+    1. Prerequisites: Irfan Ibrahim must be present in the customer list with a delivery. Run `find n/Irfan` — he should appear at index 1 with delivery information on his card.
+    2. Test case: `find n/Irfan`, then `edit 1 p/91234567`<br>
+       Expected: Irfan Ibrahim's phone number is updated. The delivery information on his card remains unchanged.
 
 ### Saving data
 
-1. Dealing with missing/corrupted data files
-
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
-1. _{ more test cases …​ }_
+1. Dealing with missing data files.
+    1. Prerequisites: Close the app and navigate to the folder containing `data/addressbook.json`.
+    2. Delete `data/addressbook.json`, then launch the app again from the same folder.<br>
+       Expected: The app starts successfully and loads the default sample data.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -1008,11 +1136,23 @@ Team size: 5
 2. **Combine existing find commands:** The current separation of the `find-delivery` and `find` commands does not allow filtering by both delivery information (e.g. date) and customer information (e.g. address). We plan to combine both commands into a single `find` command, so that filtering by both delivery information and customer information is possible (e.g. `find n/John dt/2026-04-01`).
 3. **Allow special characters for customer's name**: The current name field for a customer does not allow names containing special characters, which may be in the customer's legal name. We plan to allow special characters in names (e.g. `s/o`).
 4. **Allow alphabets, special characters and spaces for customer's phone number**: The current phone number field for a customer does not allow phone numbers containing alphabets, special characters and spaces. We plan to allow entering phone numbers with alphabets, special characters and spaces (e.g. `+65 9876 5432 (HP) 6560-6060 (Office)` when a customer has multiple phone numbers).
-5. **Handle tags longer than 25 characters:** Currently, tags are restricted to 25 characters. We plan to allow tags with more than 25 characters, but the 26th character onwards will be clipped. The user can view the full tag by clicking on the clipped tag, which will show the full tag in a tooltip or a pop-up window.
-6. **Implement `undo` command:** Other than to manually re-enter data or keep a backup `addressbook.json` file, there is currently no simple method to recover from accidental modifications or deletions. We plan to implement the `undo` command for users to revert their changes made.
+5. **Implement `undo` command:** Other than to manually re-enter data or keep a backup `addressbook.json` file, there is currently no simple method to recover from accidental modifications or deletions. We plan to implement the `undo` command for users to revert their changes made.
     * ServeMate will store a history of the past 5 address book states in a stack.
     * When any command except `undo` is executed, the state before the command is executed will be pushed to the stack.
     * When `undo` is executed, ServeMate will pop the previous state from the stack and restore it if the stack is non-empty.
-7. **Implement checking that the chosen delivery days fall within `startDate` and `endDate`**: The current implementation of the `schedule` and `reschedule` commands allow users to choose delivery days which are not within `startDate` and `endDate`. We plan to implement checks to ensure that all days of the week entered by the user fall within the date range. If this criterion is not satisfied, an error message will be shown to the user.
+6. **Implement recoverable data validation when converting JSON to Java objects:** Currently, if users manually edit `addressbook.json` and introduce invalid data (e.g `startDate` is not strictly before `endDate`), the app will crash. We plan to implement data validation that allows the app to recover when such a condition happens.
+    * When invalid data is detected, the app will catch show the user which fields are invalid and the reason for invalidity.
+    * The app prompts the user to either fix the data or ignore them.
+    * If the user chooses to ignore the invalid data, the app will load the data while ignoring them (e.g. if `startDate` and `endDate` are invalid, the app will load without the delivery whose start and end dates are invalid).
+7. **Implement customer duplicate checking using phone number:** Currently, ServeMate uses case-sensitive name to detect duplicate customers. This may be restrictive if users have different customers with the same name. Furthermore, the case-sensitivity allows customer with the same name but different casing to be added. This may break the duplicate detection mechanism. We plan to use phone number to detect duplicates instead.
+    * When a new customer is added, ServeMate will reject if the new customer has the same phone number with an existing customer.
+    * When an existing customer is edited, ServeMate will reject if the edited customer has the same phone number with another existing customer.
+8. **Forbid tag duplication for a customer regardless of the tag casing:** Currently, ServeMate accepts duplicate tags for a customer if the tag casing is different (e.g. `Vegan` is accepted although `vegan` exists). We plan to forbid duplicate tags regardless of the casing.
+    * When a new customer is added, ServeMate will reject if the new customer has duplicate tags regardless of the tag casing.
+    * When an existing customer is edited, ServeMate will reject if the edited customer has duplicate tags regardless of the tag casing.
+9. **Implement specific error messages for invalid command prefix:** Currently, ServeMate does not provide specific error messages for invalid commands. If invalid prefixes exist after a valid prefix, it will be treated as an input to that prefix. For example `edit 1 t/vegan r/` will be detected as invalid input to the prefix `t/`, displaying an error message "Tags names should be alphanumeric with no more than 25 characters". Another example, if an invalid prefix is used after the address prefix (`a/`), it will be treated as an input to `a/`. We plan to implement a specific error message for invalid command prefix to give more helpful information to users.
+    * When an invalid command prefix is detected, ServeMate will show an error message indicating an invalid command prefix and showing the command format with valid prefixes for that command.
+10. **Implement more rigorous email validation:** Currently, ServeMate allows some invalid emails (e.g. `123@123`, `andy@example`) to be added. We plan to implement more rigorous email validation to prevent invalid emails from being added.
+11. **Implement checking that the chosen delivery days fall within `startDate` and `endDate`**: The current implementation of the `schedule` and `reschedule` commands allow users to choose delivery days which are not within `startDate` and `endDate`. We plan to implement checks to ensure that all days of the week entered by the user fall within the date range. If this criterion is not satisfied, an error message will be shown to the user.
     * Example 1: `schedule st/2026-04-13 ed/2026-04-13 tm/12:00 d/5` is currently accepted by ServeMate but the date range in this command does not contain an actual date because `2026-04-13` represents a date that is on a Monday and not a Friday.
     * Example 2: `reschedule st/2026-04-13 ed/2026-04-14 tm/13:30 d/123` is currently accepted by ServeMate but the date range in this command does not contain any dates that is on a Wednesday.

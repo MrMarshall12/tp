@@ -195,6 +195,9 @@ You can refer to the [Features](#features) section below to look up details abou
 
 **Notes about the command format:**<br>
 
+* Command words are case-insensitive.<br>
+  e.g. `liSt`, `List` and `LIST` all refer to the `list` command.
+
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 
@@ -273,6 +276,11 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 * You can remove all the customer’s tags by typing `t/` without
     specifying any tags after it.
 
+<box type="warning">
+
+**Warning:** You cannot perform removal of all tags using `t/` and specifying new tags at the same time (e.g. `edit INDEX t/ t/vegetarian` is not allowed).
+</box>
+
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st customer to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd customer to be `Betsy Crower` and clears all existing tags.
@@ -317,8 +325,8 @@ Examples:
 * `find t/Vegetarian` displays all customers tagged with dietary restriction `Vegetarian`.
 * `find n/Alex t/Vegetarian` displays customers whose names contain `Alex` *and* tagged with dietary restriction `Vegetarian`.
 * `find n/Bernice a/Yishun Jurong` displays customers whose names contain `Bernice` *and* with address containing `Yishun` or `Jurong`.
-* `find n/Alex Roy a/Street t/Vegetarian` displays customers whose names contain `Alex` or `Roy`, with address containing `Street` *and* tagged with dietary restriction `Vegetarian`.<br>
-  <img src="images/FindCommand.png" alt="result for `find n/Alex Roy a/Street t/Vegetarian`" width="350"/>
+* `find n/Alex Roy a/Street t/Vegetarian` displays customers whose names contain `Alex` or `Roy`, with address containing `Street` *and* tagged with dietary restriction `Vegetarian`.
+  <br>![result for 'find n/Alex Roy a/Street t/Vegetarian'](images/FindCommand.png)
 
 <br>
 
@@ -339,6 +347,7 @@ Format: `find-delivery dt/DATE` or `find-delivery st/START_DATE ed/END_DATE`
 Examples:
 * `find-delivery dt/2026-04-01` returns all customers with a delivery on Wednesday, 1 April 2026.
 * `find-delivery st/2026-04-01 ed/2026-04-30` returns all customers with a delivery scheduled within April 2026.
+  <br>![result for 'find-delivery st/2026-04-01 ed/2026-04-30'](images/FindDeliveryCommand.png)
 
 <br>
 
@@ -373,6 +382,7 @@ Format: `schedule INDEX st/START_DATE ed/END_DATE tm/DELIVERY_TIME d/DELIVERY_DA
 Examples:
 * `schedule 1 st/2026-02-01 ed/2026-02-02 tm/13:00 d/12` adds a delivery for the 1st customer on the list. The delivery starts on 1 February 2026, ends on 2 February 2026 and occurs at 1 PM on Mondays and Tuesdays.
 * `schedule 4 st/2026-03-11 ed/2026-04-01 tm/15:30 d/246` adds a delivery for the 4th customer on the list. The delivery starts on 11 March 2026, ends on 1 April 2026 and occurs at 3:30 PM on Tuesday, Thursdays and Saturdays.
+  <br>![result for 'schedule 4 st/2026-03-11 ed/2026-04-01 tm/15:30 d/246'](images/ScheduleCommand.png)
 
 <br>
 
@@ -462,34 +472,54 @@ Furthermore, certain edits can cause the ServeMate to behave in unexpected ways 
 
 ## FAQ
 
-**Question**: How do I transfer my data to another computer?<br>
-**Answer**: Install the ServeMate application on your second computer by following the instructions in the "Quick Start" section. On your original computer, locate the `[JAR file location]/data` folder which should contain the `addressbook.json` data file. Copy the `data` folder to your second computer, and place it in the ServeMate application folder located at `[JAR file location]` (if the `data` folder already exists, replace it). Run the ServeMate application on your second computer. You should be able to see the data you have transferred.
+1. **Question**: How do I transfer my data to another computer?<br>
+   **Answer**: Install the ServeMate application on your second computer by following the instructions in the "Quick Start" section. On your original computer, locate the `[JAR file location]/data` folder which should contain the `addressbook.json` data file. Copy the `data` folder to your second computer, and place it in the ServeMate application folder located at `[JAR file location]` (if the `data` folder already exists, replace it). Run the ServeMate application on your second computer. You should be able to see the data you have transferred.
+
 <br>
 
-**Question**: Why does the delivery panel not automatically update today's date and deliveries when the time passes 12 midnight?<br>
-**Answer**: ServeMate currently does not support automatically refreshing the date on the delivery panel if the time passes 12 midnight, in case you are still referring to the previous day's deliveries. To refresh the date on the panel, simply close and relaunch ServeMate.
+2. **Question**: Why does the delivery panel not automatically update today's date and deliveries when the time passes 12 midnight?<br>
+   **Answer**: ServeMate currently does not support automatically refreshing the date on the delivery panel if the time passes 12 midnight, in case you are still referring to the previous day's deliveries. To refresh the date on the panel, simply close and relaunch ServeMate.
+
 <br>
 
-**Question**: Why can't I use the delivery panel to view deliveries on other dates?<br>
-**Answer**: ServeMate currently does not support viewing deliveries on other dates in the delivery panel. The delivery panel is intended as a quick reference to view deliveries scheduled on the current day for your operations. If you need to view deliveries on other dates, you can use the `find-delivery` command.
+3. **Question**: Why can't I use the delivery panel to view deliveries on other dates?<br>
+   **Answer**: ServeMate currently does not support viewing deliveries on other dates in the delivery panel. The delivery panel is intended as a quick reference to view deliveries scheduled on the current day for your operations. If you need to view deliveries on other dates, you can use the `find-delivery` command.
+
 <br>
 
-**Question**: Why is the delivery panel wider than the customer panel when I make the ServeMate application window narrower?<br>
-**Answer**: When the ServeMate application window is narrow, the delivery panel is given a larger width to provide a quick reference to deliveries scheduled on the current day. If you need to view more information in the customer panel, you can resize the application window and expand the customer panel for a better viewing experience.
+4. **Question**: Why is the delivery panel wider than the customer panel when I make the ServeMate application window narrower?<br>
+   **Answer**: When the ServeMate application window is narrow, the delivery panel is given a larger width to provide a quick reference to deliveries scheduled on the current day. If you need to view more information in the customer panel, you can resize the application window and expand the customer panel for a better viewing experience.
+
 <br>
 
-**Question**: Why does the `find` command only return customers that matches all filters?<br>
-**Answer**: ServeMate's `find` command is designed to match all filters so you can easily narrow down to the most relevant results to find the customer that you are looking for (e.g. `find n/John a/Clementi` finds all customers named `John` with an address containing `Clementi`). <br>
-If you like to find customers matching any of the filters (e.g. find all customers with name `Richard` or address `Jurong`), you may issue separate commands (e.g. `find n/Richard` and `find a/Jurong`).
+5. **Question**: Why does the delivery panel have a horizontal scrollbar at the bottom when there are long names or addresses that exceed the panel's width?<br>
+   **Answer**: ServeMate's delivery panel uses horizontal scrolling to ensure that delivery information for the current day can be quickly scanned through, even when the names or addresses are long. It is designed to provide a quick reference for viewing deliveries at a glance. To maintain a readable layout even when the delivery panel is resized to a narrower width, longer names and addresses are kept to a single line. However, tags may still appear on multiple lines as they are typically short and fewer in number. If you would like to view the full information for a delivery, simply use the horizontal scroll bar at the bottom.
+
 <br>
 
-**Question**: Why does the `find` command use full word matching for keywords?<br>
-**Answer**: ServeMate's `find` command does not support partial word matching, to reduce the number of irrelevant results returned so that you can find customers quickly. In the event that you might not remember exactly the full word to search for (e.g. `Richard` or `Richards`), you may specify multiple keywords within a filter (e.g. `find n/Richard Richards`) to find customers matching any 1 keyword.
+6. **Question**: Why does the `find` command only return customers that matches all filters?<br>
+   **Answer**: ServeMate's `find` command is designed to match all filters so you can easily narrow down to the most relevant results to find the customer that you are looking for (e.g. `find n/John a/Clementi` finds all customers named `John` with an address containing `Clementi`).<br>
+   If you like to find customers matching any of the filters (e.g. find all customers with name `Richard` or address `Jurong`), you may issue separate commands (e.g. `find n/Richard` and `find a/Jurong`).
+
+<br>
+
+7. **Question**: Why does the `find` command use full word matching for keywords?<br>
+   **Answer**: ServeMate's `find` command does not support partial word matching, to reduce the number of irrelevant results returned so that you can find customers quickly. For example, filtering addresses with the keyword `18` will not match `18,`. In the event that you might not remember exactly the full word to search for (e.g. `Richard` or `Richards`), you may specify multiple keywords within a filter (e.g. `find n/Richard Richards`) to find customers matching any 1 keyword.
+
+<br>
+
+8. **Question**: Why can't I see the full status message (below where the command was entered), after running a command?<br>
+   **Answer**: ServeMate currently does not support resizing the panel displaying the status message. If the message exceeds the length of the panel, you can scroll down within the panel to view the rest of the message.
 
 <br>
 
 9. **Question**: Why do some error messages refer to ServeMate as an address book?<br>
    **Answer**: ServeMate is an address book since it helps to store your customers' contact information.
+
+<br>
+
+10. **Question**: Why does ServeMate allow users to input delivery dates that happen in the past?<br>
+    **Answer**: This action is allowed to allow users to track past deliveries.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -515,6 +545,9 @@ The `preferences.json` file saves configuration settings used by ServeMate. If y
 **Tip:**
 Use the `find` command to search for the customer you want for faster navigation!
 </box>
+
+4. **Tags are restricted to 25 characters**: If you try to add a tag that is more than 25 characters long, ServeMate will not accept it and display an error message.
+   <br>**Solution**: Use tags that are 25 characters or less. If you need to add a longer tag, you can break it down into multiple tags.
 
 ------------------------------------------------------------------------------------------------------------------
 ## Coming soon
