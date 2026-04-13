@@ -1006,12 +1006,12 @@ testers are expected to do more *exploratory* testing.
     2. In the same folder, run `java -jar ServeMate.jar` again.<br>
        Expected: The most recent window size and location is retained.
 
-### Today's delivery panel
+### Today's deliveries panel
 
 1. Verifying deliveries displayed on launch.
     1. Prerequisites: Launch the app in an empty folder so that the default sample data is loaded.
     2. Note the date shown in the delivery panel header and verify it matches your computer's current date. 
-    3. Convert that date to `yyyy-MM-dd` format and run `find-delivery dt/DATE`.<br>
+    3. Enter the date in `yyyy-MM-dd` format and run `find-delivery dt/DATE`.<br>
        Expected: The customers shown in the delivery panel match those returned by the command.
 
 2. Verifying that the panel is unaffected by filter commands.
