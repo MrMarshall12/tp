@@ -1048,6 +1048,6 @@ Team size: 5
 7. **Implement customer duplicate checking using phone number:** Currently, ServeMate use case-sensitive name to detect duplicate customers. This may be restrive if users have different customers with the same name. Furthermore, the case-sensitivity allows customer with the same name but different casing to be added. This may break the duplicate detection mechanism. We plan to use phone number to detect duplicates instead.
     * When a new customer is added, ServeMate will reject if the new customer has the same phone number with an existing customer.
     * When an existing customer is edited, ServeMate will reject if the edited customer has the same phone number with another existing customer.
-8. **Forbid tag duplication for a customer regardless of the tag casing:** Currently, ServeMate accepts duplicate tags for a customer if the tag casing is different. We plan to forbid duplicate tags regardless of the casing.
+8. **Forbid tag duplication for a customer regardless of the tag casing:** Currently, ServeMate accepts duplicate tags for a customer if the tag casing is different (e.g. `Vegan` is accepted although `vegan` exists). We plan to forbid duplicate tags regardless of the casing.
     * When a new customer is added, ServeMate will reject if the new customer has duplicate tags regardless of the tag casing.
     * When an existing customer is edited, ServeMate will reject if the edited customer has duplicate tags regardless of the tag casing.
