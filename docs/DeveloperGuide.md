@@ -1022,6 +1022,13 @@ testers are expected to do more *exploratory* testing.
     2. Test case: `find n/Bernice`, then `delete 1`<br>
        Expected: Bernice Yu is deleted from the list. Run `find-delivery st/2026-08-09 ed/2027-02-09` — Bernice Yu should no longer appear, confirming that her associated delivery was also removed.
 
+### Editing a customer
+
+1. Verifying that an existing delivery is retained after editing a customer.
+    1. Prerequisites: Alex Yeoh must be present in the customer list with a delivery (he has one in the default sample data). Run `find n/Alex` — he should appear at index 1 with delivery information on his card.
+    2. Test case: `find n/Alex`, then `edit 1 p/91234567`<br>
+       Expected: Alex Yeoh's phone number is updated. The delivery information on his card remains unchanged. Run `find-delivery dt/2026-10-09` — Alex Yeoh should still appear, confirming that the delivery was not affected by the edit.
+
 ### Today's delivery panel
 
 1. Verifying deliveries displayed on launch.
