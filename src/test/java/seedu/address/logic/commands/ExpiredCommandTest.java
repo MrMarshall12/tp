@@ -37,7 +37,7 @@ public class ExpiredCommandTest {
         LocalDate beforeDate = LocalDate.of(2024, 4, 1);
         List<Person> expectedPersons = List.of(ELLE, FIONA);
 
-        assertExpiredCommand(beforeDate, expectedPersons);
+        assertExpiredCommandSuccess(beforeDate, expectedPersons);
     }
 
     @Test
@@ -46,7 +46,7 @@ public class ExpiredCommandTest {
         LocalDate beforeDate = LocalDate.of(2019, 3, 28);
         List<Person> expectedPersons = List.of(ELLE);
 
-        assertExpiredCommand(beforeDate, expectedPersons);
+        assertExpiredCommandSuccess(beforeDate, expectedPersons);
     }
 
     @Test
@@ -55,7 +55,7 @@ public class ExpiredCommandTest {
         LocalDate beforeDate = LocalDate.MIN;
         List<Person> expectedPersons = Collections.emptyList();
 
-        assertExpiredCommand(beforeDate, expectedPersons);
+        assertExpiredCommandSuccess(beforeDate, expectedPersons);
     }
 
     @Test
@@ -64,7 +64,7 @@ public class ExpiredCommandTest {
         LocalDate beforeDate = LocalDate.MAX;
         List<Person> expectedPersons = Arrays.asList(ALICE, CARL, DANIEL, ELLE, FIONA);
 
-        assertExpiredCommand(beforeDate, expectedPersons);
+        assertExpiredCommandSuccess(beforeDate, expectedPersons);
     }
 
     @Test
@@ -112,7 +112,7 @@ public class ExpiredCommandTest {
      * @param beforeDate Date to compare against.
      * @param expectedPersons List of expected persons in filtered list.
      */
-    private void assertExpiredCommand(LocalDate beforeDate, List<Person> expectedPersons) {
+    private void assertExpiredCommandSuccess(LocalDate beforeDate, List<Person> expectedPersons) {
         PersonHasExpiredDeliveryPredicate predicate = new PersonHasExpiredDeliveryPredicate(beforeDate);
         ExpiredCommand command = new ExpiredCommand(predicate);
 
