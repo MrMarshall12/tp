@@ -512,8 +512,7 @@ Use the `find` command to search for the customer you want for faster navigation
 2. **Refresh delivery panel:** Currently, you need to relaunch ServeMate to view deliveries scheduled for the new day. Soon, you will be able to refresh the delivery panel whenever needed to view deliveries scheduled on the current day without relaunching ServeMate.
 3. **Support for special characters in a customer's name**: You will be able to enter names containing special characters (e.g. `s/o`), which may appear in your customer's legal name.
 4. **Support for alphabets, special characters and spaces in a customer's phone number**: You will be able to enter phone numbers containing alphabets, special characters and spaces. This allows you to specify country codes and multiple phone numbers for a customer (e.g. `+65 9876 5432 (HP) 6560-6060 (Office)`).
-5. **More specific error message regarding date parsing**: If you entered either a date string with an invalid format or an invalid date, ServeMate will specify which of either cases caused the date string to be invalid. This allows you to immediately be notified of the issue and rectify it.
-<box type="warning">
-Examples of dates that trigger errors:
-* Wrong date: date does not exist (e.g. `2026-02-29`).
-* Wrong format: the string does not follow `yyyy-MM-dd` (e.g. `02026-12-03`).
+5. **Increase specificity of error message for date parsing**: If you entered either a date string with an invalid format or an invalid date, ServeMate will specify which of either cases caused the date string to be invalid. This allows you to immediately be notified of the issue and rectify it.
+   <br> Examples of dates that trigger errors:
+  * Wrong date: date does not exist (e.g. `2026-02-29`).
+  * Wrong format: the string does not follow `yyyy-MM-dd` (e.g. `02026-12-03`).
