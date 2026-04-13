@@ -514,6 +514,11 @@ Furthermore, certain edits can cause the ServeMate to behave in unexpected ways 
 9. **Question**: Why do some error messages refer to ServeMate as an address book?<br>
    **Answer**: ServeMate is an address book since it helps to store your customers' contact information.
 
+<br>
+
+10. **Question**: Why does ServeMate allow users to input delivery dates that happen in the past?<br>
+    **Answer**: This action is allowed to allow users to track past deliveries.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
