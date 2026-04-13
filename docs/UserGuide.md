@@ -213,6 +213,9 @@ You can refer to the [Features](#features) section below to look up details abou
 * Dates are in `yyyy-MM-dd` format, where `yyyy` is the 4-digit year, `MM` is the 2-digit month, and `dd` is the 2-digit day.<br>
   e.g. 9th March 2026 can be written as `2026-03-09`.
 
+* Times should be in the 24-hour `HH:mm` format, where `HH` is the 2-digit hour and `mm` is the 2-digit minute, and be between `00:00` and `23:59`.<br>
+  e.g. 9:30 PM can be written as `21:30`.
+
 * Tags (`t/[TAG]`) are intended for use in placing delivery notes for a particular customer.
   * Tags should only consist of alphanumerical values without whitespaces.
   * Suggested usages:
@@ -366,7 +369,6 @@ Format: `schedule INDEX st/START_DATE ed/END_DATE tm/DELIVERY_TIME d/DELIVERY_DA
 * The index refers to the index number shown in the displayed customer list.
 * The index **must be a positive integer** 1, 2, 3, …​
 * `DELIVERY_DAYS` must be a set of numbers **within the range of 1-7 inclusive** without whitespaces where 1 = Monday, 2 = Tuesday, …​, 7 = Sunday.
-* `24:00` is not a valid value for `DELIVERY_TIME`.
 
 Examples:
 * `schedule 1 st/2026-02-01 ed/2026-02-02 tm/13:00 d/12` adds a delivery for the 1st customer on the list. The delivery starts on 1 February 2026, ends on 2 February 2026 and occurs at 1 PM on Mondays and Tuesdays.
@@ -388,6 +390,7 @@ Format: `reschedule INDEX [st/START_DATE] [ed/END_DATE] [tm/DELIVERY_TIME] [d/DE
 * The specified customer must have an existing delivery.
 * The index refers to the index number shown in the displayed customer panel.
 * The index **must be a positive integer** 1, 2, 3, …​
+* `DELIVERY_DAYS` must be a set of numbers **within the range of 1-7 inclusive** without whitespaces where 1 = Monday, 2 = Tuesday, …​, 7 = Sunday.
 
 Examples:
 * `reschedule 1 ed/2026-02-02 tm/12:45` Edits the delivery end date and delivery time for the 1st customer to be `2026-02-02` and `12:45` respectively.
@@ -519,3 +522,7 @@ Use the `find` command to search for the customer you want for faster navigation
 2. **Refresh delivery panel:** Currently, you need to relaunch ServeMate to view deliveries scheduled for the new day. Soon, you will be able to refresh the delivery panel whenever needed to view deliveries scheduled on the current day without relaunching ServeMate.
 3. **Support for special characters in a customer's name**: You will be able to enter names containing special characters (e.g. `s/o`), which may appear in your customer's legal name.
 4. **Support for alphabets, special characters and spaces in a customer's phone number**: You will be able to enter phone numbers containing alphabets, special characters and spaces. This allows you to specify country codes and multiple phone numbers for a customer (e.g. `+65 9876 5432 (HP) 6560-6060 (Office)`).
+5. **Increase specificity of error message for date parsing**: If you entered either a date string with an invalid format or an invalid date, ServeMate will specify which of either cases caused the date string to be invalid. This allows you to immediately be notified of the issue and rectify it.
+   <br> Examples of erroneous dates:
+  * Wrong date: `2026-02-29` is a date that does not exist since 2026 is not a leap year.
+  * Wrong format: `10000-12-03` does not follow the expected format `yyyy-MM-dd`.
