@@ -557,5 +557,9 @@ Use the `find` command to search for the customer you want for faster navigation
 4. **Support for alphabets, special characters and spaces in a customer's phone number**: You will be able to enter phone numbers containing alphabets, special characters and spaces. This allows you to specify country codes and multiple phone numbers for a customer (e.g. `+65 9876 5432 (HP) 6560-6060 (Office)`).
 5. **Increase specificity of error message for date parsing**: If you entered either a date string with an invalid format or an invalid date, ServeMate will specify which of either cases caused the date string to be invalid. This allows you to immediately be notified of the issue and rectify it.
    <br> Examples of erroneous dates:
-  * Wrong date: `2026-02-29` is a date that does not exist since 2026 is not a leap year.
-  * Wrong format: `10000-12-03` does not follow the expected format `yyyy-MM-dd`.
+    * Wrong date: `2026-02-29` is a date that does not exist since 2026 is not a leap year.
+    * Wrong format: `10000-12-03` does not follow the expected format `yyyy-MM-dd`.
+6. Improve delivery day checking for `schedule` and `reschedule` commands: If the chosen delivery days do not fall within `startDate` and `endDate`, ServeMate will specify that this issue has occurred and reject the choice of delivery day. This allows you to be immediately notified of the issue so that you can rectify it.
+   <br> Examples of erroneous `schedule` and `reschedule` commands:
+    * No dates in the date range: `schedule st/2026-04-13 ed/2026-04-13 tm/12:00 d/5` does not contain any actual dates within the date range that is on a Friday.
+    * Not all days are in the date range: `reschedule st/2026-04-13 ed/2026-04-14 tm/13:30 d/123` does not contain actual dates within the date range that is on Wednesday even though it does on Monday and Tuesday.
