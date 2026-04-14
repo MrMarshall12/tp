@@ -564,7 +564,7 @@ Use the `find` command to search for the customer you want for faster navigation
    <br> Examples of erroneous dates:
     * Wrong date: `2026-02-29` is a date that does not exist since 2026 is not a leap year.
     * Wrong format: `10000-12-03` does not follow the expected format `yyyy-MM-dd`.
-6. Improve delivery day checking for `schedule` and `reschedule` commands: If the chosen delivery days do not fall within `startDate` and `endDate`, ServeMate will specify that this issue has occurred and reject the choice of delivery day. This allows you to be immediately notified of the issue so that you can rectify it.
+6. **Improve delivery day checking for `schedule` and `reschedule` commands**: If the chosen delivery days do not fall within `startDate` and `endDate`, ServeMate will specify that this issue has occurred and reject the choice of delivery day. This allows you to be immediately notified of the issue so that you can rectify it.
    <br> Examples of erroneous `schedule` and `reschedule` commands:
     * No dates in the date range: `schedule st/2026-04-13 ed/2026-04-13 tm/12:00 d/5` does not contain any actual dates within the date range that is on a Friday.
     * Not all days are in the date range: `reschedule st/2026-04-13 ed/2026-04-14 tm/13:30 d/123` does not contain actual dates within the date range that is on Wednesday even though it does on Monday and Tuesday.
